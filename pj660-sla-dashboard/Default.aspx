@@ -6,8 +6,5 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     
     <h2>Welcome to 99X Dashboard</h2>
-    hei
-
-    hei hei
 
 </asp:Content>
