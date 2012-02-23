@@ -6,7 +6,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace no.nith.pj660.dashboard.Account
+namespace no.nith.pj600.dashboard.Account
 {
    public partial class Register : System.Web.UI.Page
    {

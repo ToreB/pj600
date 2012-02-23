@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace no.nith.pj660.dashboard.Account
+namespace no.nith.pj600.dashboard.Account
 {
 
 

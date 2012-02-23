@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="About Us" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Dashboard.aspx.cs" Inherits="no.nith.pj660.dashboard.Dashboard" %>
+    CodeBehind="Dashboard.aspx.cs" Inherits="no.nith.pj600.dashboard.Dashboard" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

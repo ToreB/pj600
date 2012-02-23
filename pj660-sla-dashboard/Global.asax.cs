@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 
-namespace no.nith.pj660.dashboard
+namespace no.nith.pj600.dashboard
 {
    public class Global : System.Web.HttpApplication
    {
