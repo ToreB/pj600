@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace no.nith.pj600.dashboard
 {
@@ -11,7 +12,12 @@ namespace no.nith.pj600.dashboard
    {
       protected void Page_Load(object sender, EventArgs e)
       {
-
+         //Adds a link in the navigation menu if the current user is an admin
+         if (Context.User.IsInRole("Admin"))
+         {
+            MenuItem item = new MenuItem("Admin Panel", null, null, "~/AdminPanel.aspx");
+            NavigationMenu.Items.Add(item);
+         }
       }
    }
 }
