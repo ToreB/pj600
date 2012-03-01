@@ -7,8 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace no.nith.pj600.dashboard
-{
+namespace no.nith.pj600.dashboard {
     
     
     public partial class SiteMaster {
@@ -39,6 +38,15 @@ namespace no.nith.pj600.dashboard
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Menu NavigationMenu;
+        
+        /// <summary>
+        /// LogoutPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel LogoutPanel;
         
         /// <summary>
         /// MainContent control.

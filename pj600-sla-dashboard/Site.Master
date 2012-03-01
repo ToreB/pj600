@@ -24,7 +24,7 @@
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/Account/LogoutSuccess.aspx" /> ]
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>
@@ -39,6 +39,9 @@
             </div>
         </div>
         <div class="main">
+            <!--<asp:Panel ID="LogoutPanel" runat="server" Visible="false" EnableViewState="false" >
+               <p class="infoMessage">You have successfully been logged out.</p>
+            </asp:Panel>-->
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
         </div>
         <div class="clear">

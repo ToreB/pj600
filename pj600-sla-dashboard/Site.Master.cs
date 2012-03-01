@@ -19,5 +19,11 @@ namespace no.nith.pj600.dashboard
             NavigationMenu.Items.Add(item);
          }
       }
+
+      /*protected void HeadLoginStatus_LoggedOut(object sender, EventArgs e)
+      {
+         LogoutPanel.Visible = true;
+         //Context.Response.Redirect("Default.aspx");
+      }*/
    }
 }

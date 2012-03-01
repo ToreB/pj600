@@ -301,3 +301,12 @@ div.accountInfo
 	padding: 5px;
 	width: 370px;
 }
+
+.infoMessage 
+{
+   font-size: 1.2em;
+	color: green;
+	border-style: solid;
+	padding: 5px;
+	width: 370px;
+}
