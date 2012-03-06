@@ -64,7 +64,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Account\LogoutSuccess.aspx" />
+    <Content Include="Account\LogoutMessage.aspx" />
     <Content Include="MyAccount.aspx" />
     <Content Include="AdminPanel.aspx" />
     <Content Include="Styles\Site.css" />
@@ -127,12 +127,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Account\LogoutSuccess.aspx.cs">
-      <DependentUpon>LogoutSuccess.aspx</DependentUpon>
+    <Compile Include="Account\LogoutMessage.aspx.cs">
+      <DependentUpon>LogoutMessage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\LogoutSuccess.aspx.designer.cs">
-      <DependentUpon>LogoutSuccess.aspx</DependentUpon>
+    <Compile Include="Account\LogoutMessage.aspx.designer.cs">
+      <DependentUpon>LogoutMessage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MyAccount.aspx.cs">
       <DependentUpon>MyAccount.aspx</DependentUpon>

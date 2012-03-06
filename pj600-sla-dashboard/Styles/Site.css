@@ -99,7 +99,7 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: #4b6c9e;
+    background: orange;
     width: 100%;
 }
 
@@ -144,7 +144,7 @@ first child of the left and right table columns */
 
 div.hideSkiplink
 {
-    background-color:#3a4f63;
+    background-color: Black;
     width:100%;
 }
 
