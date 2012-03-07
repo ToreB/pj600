@@ -6,10 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 
+using log4net;
+
 namespace no.nith.pj600.dashboard
 {
    public partial class SiteMaster : System.Web.UI.MasterPage
    {
+      private static readonly ILog log = LogManager.GetLogger(typeof(SiteMaster)); 
+
       protected void Page_Load(object sender, EventArgs e)
       {
          //Adds a link in the navigation menu if the current user is an admin
@@ -20,10 +24,12 @@ namespace no.nith.pj600.dashboard
          }
       }
 
-      /*protected void HeadLoginStatus_LoggedOut(object sender, EventArgs e)
+      protected void OnLoggedOut(object sender, EventArgs e)
       {
-         LogoutPanel.Visible = true;
+         log.Info(Membership.GetUser().UserName + " has logged out.");
+
+         //LogoutPanel.Visible = true;
          //Context.Response.Redirect("Default.aspx");
-      }*/
+      }
    }
 }

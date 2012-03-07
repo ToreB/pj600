@@ -7,8 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace no.nith.pj600.dashboard.Account
-{
+namespace no.nith.pj600.dashboard.Account {
     
     
     public partial class Login {

@@ -14,6 +14,8 @@ namespace no.nith.pj600.dashboard
       {
          // Code that runs on application startup
 
+         log4net.Config.XmlConfigurator.Configure();
+
       }
 
       void Application_End(object sender, EventArgs e)
