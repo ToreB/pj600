@@ -150,7 +150,7 @@ div.hideSkiplink
 
 div.menu
 {
-    padding: 4px 0px 4px 8px;
+    padding: 4px 0px 4px 8px;  
 }
 
 div.menu ul
@@ -163,14 +163,15 @@ div.menu ul
 
 div.menu ul li a, div.menu ul li a:visited
 {
-    background-color: #465c71;
+    background-color: Orange;
     border: 1px #4e667d solid;
-    color: #dde4ec;
+    color: White;
     display: block;
     line-height: 1.35em;
     padding: 4px 20px;
     text-decoration: none;
     white-space: nowrap;
+    font-weight: bold;
 }
 
 div.menu ul li a:hover
