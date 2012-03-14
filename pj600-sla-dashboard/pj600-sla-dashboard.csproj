@@ -85,6 +85,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\ExcelHandler.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -161,7 +162,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Code\" />
     <Folder Include="LogFiles\" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +170,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Log4Net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Data\Excel.xlsx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

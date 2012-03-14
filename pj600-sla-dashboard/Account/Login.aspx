@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        Log In
+        Log in
     </h2>
     <p>
         Please enter your username and password.
@@ -22,7 +22,7 @@
 
             <div class="accountInfo">
                 <fieldset class="login">
-                    <legend>Account Information</legend>
+                    <legend>Account information</legend>
                     <p>
                         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Username:</asp:Label>
                         <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>

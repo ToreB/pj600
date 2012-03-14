@@ -7,7 +7,8 @@
     <h2>
         Dashboard
     </h2>
-    <p>
-        Put content here.
-    </p>
+   
+   <asp:GridView ID="GridView1" runat="server">
+   </asp:GridView>
+
 </asp:Content>
