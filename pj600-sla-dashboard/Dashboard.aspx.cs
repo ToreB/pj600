@@ -21,8 +21,11 @@ namespace no.nith.pj600.dashboard
       {
          DataSet ds = ExcelHandler.GetDataSet("Excel.xlsx");
 
-         GridView1.DataSource = ds.Tables[0].DefaultView;
-         GridView1.DataBind();
+         if (ds != null)
+         {
+            GridView1.DataSource = ds.Tables[0].DefaultView;
+            GridView1.DataBind();
+         }
          
       }
    }

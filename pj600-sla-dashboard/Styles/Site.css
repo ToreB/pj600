@@ -311,3 +311,10 @@ div.accountInfo
 	padding: 5px;
 	width: 370px;
 }
+
+.borderWithPadding
+{
+   border-style: solid;
+   padding: 10px;
+   width: 50%;
+}

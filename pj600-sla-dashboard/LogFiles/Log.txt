@@ -24,3 +24,8 @@
 13-03-2012 13:06:54,063 INFO  no.nith.pj600.dashboard.Account.Login - Admin has logged in.
 13-03-2012 13:35:47,020 INFO  no.nith.pj600.dashboard.SiteMaster - Admin has logged out.
 13-03-2012 13:35:55,959 INFO  no.nith.pj600.dashboard.Account.Login - Admin has logged in.
+14-03-2012 10:36:47,314 INFO  no.nith.pj600.dashboard.Account.Login - User has logged in.
+14-03-2012 10:36:54,875 INFO  no.nith.pj600.dashboard.SiteMaster - User has logged out.
+14-03-2012 10:37:04,377 INFO  no.nith.pj600.dashboard.Account.Login - Admin has logged in.
+14-03-2012 10:53:43,385 INFO  no.nith.pj600.dashboard.Account.Login - Admin has logged in.
+14-03-2012 10:54:36,982 INFO  no.nith.pj600.dashboard.SiteMaster - Admin has logged out.

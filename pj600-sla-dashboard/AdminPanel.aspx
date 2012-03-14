@@ -4,5 +4,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-   <h2>Admin Panel</h2>
+   <h1>Admin Panel</h1>
+
+   <h2>Upload Excel file</h2>
+   <asp:Panel ID="ExcelUploadPanel" runat="server" CssClass="borderWithPadding" >
+      <asp:Label ID="ExcelUploadLabel" runat="server" Text="Upload Excel file: " AssociatedControlID="ExcelUploadPanel" /><asp:FileUpload ID="ExcelFileUpload" runat="server" />
+      <asp:Button ID="ExcelUploadButton" runat="server" Text="Upload" OnClick="ExcelUploadButton_Click"/>
+      <br />
+      <p>
+         <asp:Label ID="ExcelUploadStatusLabel" runat="server" Text=""></asp:Label>
+      </p>
+   </asp:Panel>
 </asp:Content>
