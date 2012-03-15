@@ -33,3 +33,17 @@
 15-03-2012 09:49:31,576 INFO  no.nith.pj600.dashboard.SiteMaster - User has logged out.
 15-03-2012 09:49:41,264 INFO  no.nith.pj600.dashboard.Account.Login - User has logged in.
 15-03-2012 09:50:38,022 INFO  no.nith.pj600.dashboard.SiteMaster - User has logged out.
+15-03-2012 10:01:40,776 INFO  no.nith.pj600.dashboard.Account.Login - User has logged in.
+15-03-2012 10:03:48,803 INFO  no.nith.pj600.dashboard.Account.Login - User has logged in.
+15-03-2012 10:11:32,435 INFO  no.nith.pj600.dashboard.Account.Login - User has logged in.
+15-03-2012 10:11:41,175 INFO  no.nith.pj600.dashboard.Account.ChangePassword - User changed his/her password.
+15-03-2012 10:12:16,065 INFO  no.nith.pj600.dashboard.Account.Login - Admin has logged in.
+15-03-2012 10:12:30,675 INFO  no.nith.pj600.dashboard.SiteMaster - Admin has logged out.
+15-03-2012 10:24:49,661 INFO  no.nith.pj600.dashboard.Account.Login - Admin has logged in.
+15-03-2012 10:24:51,187 ERROR no.nith.pj600.dashboard.Code.ExcelHandler - Something went wrong while accessing Excel.xlsx: 'Tables$' is not a valid name. Make sure that it does not include invalid characters or punctuation and that it is not too long.
+15-03-2012 10:25:34,984 ERROR no.nith.pj600.dashboard.Code.ExcelHandler - Something went wrong while accessing Excel.xlsx: The Microsoft Access database engine could not find the object 'Ark1$$'. Make sure the object exists and that you spell its name and the path name correctly. If 'Ark1$$' is not a local object, check your network connection or contact the server administrator.
+15-03-2012 10:28:45,194 INFO  no.nith.pj600.dashboard.Account.Login - Admin has logged in.
+15-03-2012 10:32:31,609 INFO  no.nith.pj600.dashboard.Account.Login - Admin has logged in.
+15-03-2012 10:32:33,469 ERROR no.nith.pj600.dashboard.Code.ExcelHandler - Something went wrong while accessing Excel.xlsx: Fill: expected a non-empty string for the SourceTable name.
+Parameter name: srcTable
+15-03-2012 10:33:28,723 INFO  no.nith.pj600.dashboard.Account.Login - Admin has logged in.

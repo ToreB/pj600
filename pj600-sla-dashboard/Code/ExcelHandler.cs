@@ -30,12 +30,18 @@ namespace no.nith.pj600.dashboard.Code
          {
             con.Open();
 
-            OleDbCommand cmd = new OleDbCommand("select * from [Ark1$]", con);
+            //Gets the name of the first sheet in the Excel document
+            DataTable dataTable = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+            string sheetName = dataTable.Rows[0]["TABLE_NAME"].ToString();
+
+            //Sets the select command
+            OleDbCommand cmd = new OleDbCommand("select * from [" + sheetName + "]", con);
             OleDbDataAdapter adapter = new OleDbDataAdapter();
             adapter.SelectCommand = cmd;
 
+            //Fills a DataSet with the data from the Excel document
             dataSet = new DataSet();
-            adapter.Fill(dataSet, "Table");
+            adapter.Fill(dataSet);
          }
          catch (Exception ex)
          {
