@@ -19,7 +19,7 @@
             <span class="failureNotification">
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>
             </span>
-            <asp:ValidationSummary ID="ChangeUserPasswordValidationSummary" runat="server" CssClass="failureNotification" 
+            <asp:ValidationSummary ID="ChangeUserPasswordValidationSummary" runat="server" CssClass="errorMessage" 
                  ValidationGroup="ChangeUserPasswordValidationGroup"/>
             <div class="accountInfo">
                 <fieldset class="changePassword">

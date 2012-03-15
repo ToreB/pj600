@@ -4,6 +4,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
    
-   <h2>My Account</h2>
+   <h1>My Account</h1>
+
+   <p>
+      <asp:HyperLink ID="ChangePasswordLink" runat="server" NavigateUrl="Account/ChangePassword.aspx">Change password</asp:HyperLink>
+   </p>
    
 </asp:Content>
