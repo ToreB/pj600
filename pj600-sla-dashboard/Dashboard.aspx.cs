@@ -19,14 +19,23 @@ namespace no.nith.pj600.dashboard
 
       protected void Page_Load(object sender, EventArgs e)
       {
-         DataSet ds = ExcelHandler.GetDataSet("Excel.xlsx");
+         /*
+         DatabaseClassesDataContext dataContext = new DatabaseClassesDataContext();
+         var query = (from Customer in dataContext.Customers select Customer).Take(10);
 
-         if (ds != null)
+         GridView1.DataSource = query;
+         GridView1.DataBind();
+         */
+
+        /* 
+        DataSet ds = ExcelHandler.GetDataSet("Excel.xlsx");
+
+        if (ds != null)
          {
             GridView1.DataSource = ds.Tables[0].DefaultView;
             GridView1.DataBind();
          }
-         
+        */
       }
    }
 }
