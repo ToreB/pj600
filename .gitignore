@@ -27,3 +27,4 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 Log.txt
 App_Data/Database.mdf
+App_Data/Database_log.LDF
