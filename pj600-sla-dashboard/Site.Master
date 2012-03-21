@@ -31,17 +31,14 @@
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Index"/>
                         <asp:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Dashboard"/>
                         <asp:MenuItem NavigateUrl="~/MyAccount.aspx" Text="My Account"/>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" /> 
                     </Items>
                 </asp:Menu>
             </div>
         </div>
         <div class="main">
-            <!--<asp:Panel ID="LogoutPanel" runat="server" Visible="false" EnableViewState="false" >
-               <p class="infoMessage">You have successfully been logged out.</p>
-            </asp:Panel>-->
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
         </div>
         <div class="clear">

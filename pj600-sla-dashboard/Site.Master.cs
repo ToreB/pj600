@@ -20,7 +20,7 @@ namespace no.nith.pj600.dashboard
          if (Context.User.IsInRole("Admin"))
          {
             MenuItem item = new MenuItem("Admin Panel", null, null, "~/AdminPanel.aspx");
-            NavigationMenu.Items.Add(item);
+            NavigationMenu.Items.AddAt(2, item);
          }
       }
 

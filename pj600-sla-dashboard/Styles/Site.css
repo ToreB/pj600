@@ -330,3 +330,44 @@ div.accountInfo
   float: left;
   width: 50%;
 }
+
+/* Dashboard tabs */
+
+.dashboardTabContainer .ajax__tab_tab 
+{ 
+     padding: 8px;
+     border:1px solid Black; 
+     margin:0;
+     color: White;
+     font-weight: bold;
+     background-color: Orange; 
+}
+
+.dashboardTabContainer .ajax__tab_hover .ajax__tab_tab 
+{ 
+    background-color: #bfcbd6;
+    color: #465c71;
+    text-decoration: none;
+}
+
+.dashboardTabContainer .ajax__tab_active .ajax__tab_tab 
+{
+   background-color: #BF6600;
+   color: #cfdbe6;
+   text-decoration: none;
+}
+
+.dashboardTabContainer .ajax__tab_panel
+{
+   padding: 10px;
+   border:1px solid Black; 
+   margin-left: 10px;
+   margin-bottom: 0;
+   height: 400px;
+}
+
+.dashboardTabContainer .ajax__tab_header_verticalleft 
+{
+  margin-top: 50px;
+  
+}

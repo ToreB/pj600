@@ -11,11 +11,12 @@
       
    <asp:TabContainer ID="TabContainer" runat="server" 
                      ActiveTabIndex="0" ScrollBars="Auto" UseVerticalStripPlacement="true"
-                     VerticalStripWidth="130px">
+                     VerticalStripWidth="130px"
+                     CssClass="dashboardTabContainer">
       <asp:TabPanel ID="OverviewTab" runat="server" HeaderText="Overview" ScrollBars="Auto">
-         <ContentTemplate>
-            
+         <ContentTemplate>       
             <!-- Content OverviewTab goes here -->
+               <h1>Overview</h1>
 
          </ContentTemplate>
       </asp:TabPanel>
@@ -23,6 +24,7 @@
          <ContentTemplate>
             
             <!-- Content SLATab goes here -->
+            <h1>SLA Agreements</h1>
 
          </ContentTemplate>
       </asp:TabPanel>
@@ -30,6 +32,7 @@
          <ContentTemplate>
             
             <!-- Content AddServicesTab goes here -->
+            <h1>Additional Services</h1>
 
          </ContentTemplate>
       </asp:TabPanel>
@@ -37,6 +40,7 @@
          <ContentTemplate>
             
             <!-- Content GraphsTab goes here -->
+            <h1>Graphs</h1>
 
          </ContentTemplate>
       </asp:TabPanel>
