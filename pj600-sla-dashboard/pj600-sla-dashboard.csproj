@@ -35,9 +35,11 @@
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=4.1.51116.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>Code\Libs\AjaxControlToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\Documents\Skole\NITH\PJ600\log4net-1.2.11-bin-newkey\log4net-1.2.11\bin\net\4.0\release\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Code\Libs\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -176,6 +178,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Code\Libs\" />
     <Folder Include="LogFiles\" />
   </ItemGroup>
   <ItemGroup>
