@@ -234,7 +234,7 @@ input.passwordEntry
 
 div.accountInfo
 {
-    width: 42%;
+    width: 400px;
 }
 
 /* MISC  
@@ -317,4 +317,16 @@ div.accountInfo
    border-style: solid;
    padding: 10px;
    width: 50%;
+}
+
+#loginRight 
+{
+  float: left;
+  padding-left: 20px; 
+}
+
+#loginLeft 
+{
+  float: left;
+  width: 50%;
 }

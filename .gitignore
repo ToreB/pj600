@@ -25,7 +25,7 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-/pj600-sla-dashboard/LogFiles/*.txt
 
 /pj600-sla-dashboard/App_Data/Database.mdf
 /pj600-sla-dashboard/App_Data/Database_log.LDF
+/pj600-sla-dashboard/LogFiles/Log*.txt
