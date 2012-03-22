@@ -197,7 +197,6 @@
     <Content Include="Log4Net.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\Excel.xlsx" />
     <None Include="Code\DatabaseClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DatabaseClasses.designer.cs</LastGenOutput>

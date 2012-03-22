@@ -360,14 +360,19 @@ div.accountInfo
 .dashboardTabContainer .ajax__tab_panel
 {
    padding: 10px;
-   border:1px solid Black; 
+   /*border:1px solid Black; */
    margin-left: 10px;
    margin-bottom: 0;
-   height: 400px;
+   /*height: 400px;*/
 }
 
 .dashboardTabContainer .ajax__tab_header_verticalleft 
 {
   margin-top: 50px;
   
+}
+
+.dashboardTab 
+{
+   /*overflow: auto;*/
 }

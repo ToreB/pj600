@@ -4,19 +4,37 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+
+<script type="text/javascript">
+   
+   /* Makes a postback everytime the active tab changes */
+   function ActiveTabChanged(sender, e) {
+      __doPostBack('TabContainer', sender.get_activeTab().get_headerText()); 
+   }
+
+</script>
+
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
    
-   <asp:ScriptManager ID="ScriptManager1" runat="server" />
-      
+   <asp:ScriptManager ID="ScriptManager" runat="server" />
+
    <asp:TabContainer ID="TabContainer" runat="server" 
                      ActiveTabIndex="0" ScrollBars="Auto" UseVerticalStripPlacement="true"
                      VerticalStripWidth="130px"
-                     CssClass="dashboardTabContainer">
+                     CssClass="dashboardTabContainer"
+                     OnClientActiveTabChanged="ActiveTabChanged"
+                     OnActiveTabChanged="TabContainerTabChange"
+                     >
       <asp:TabPanel ID="OverviewTab" runat="server" HeaderText="Overview" ScrollBars="Auto">
          <ContentTemplate>       
             <!-- Content OverviewTab goes here -->
-               <h1>Overview</h1>
+            <div class="dashboardTab">
+               <asp:GridView ID="OverviewTable" runat="server" AllowPaging="true" PageSize="10" 
+                  PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
+                  OnPageIndexChanged="OnPageIndexChanged">
+               </asp:GridView>
+            </div>
 
          </ContentTemplate>
       </asp:TabPanel>
@@ -24,11 +42,16 @@
          <ContentTemplate>
             
             <!-- Content SLATab goes here -->
-            <h1>SLA Agreements</h1>
+            <div class="dashboardTab">
+               <asp:GridView ID="SLATable" runat="server" AllowPaging="true" PageSize="10" 
+                  PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
+                  OnPageIndexChanged="OnPageIndexChanged">
+               </asp:GridView>
+            </div>
 
          </ContentTemplate>
       </asp:TabPanel>
-      <asp:TabPanel ID="AddServicesTab" runat="server" HeaderText="Additional Services" ScrollBars="Auto">
+      <asp:TabPanel ID="AddlServicesTab" runat="server" HeaderText="Additional Services" ScrollBars="Auto">
          <ContentTemplate>
             
             <!-- Content AddServicesTab goes here -->

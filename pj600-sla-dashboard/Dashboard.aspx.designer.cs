@@ -13,13 +13,13 @@ namespace no.nith.pj600.dashboard {
     public partial class Dashboard {
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// ScriptManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.ScriptManager ScriptManager;
         
         /// <summary>
         /// TabContainer control.
@@ -40,6 +40,15 @@ namespace no.nith.pj600.dashboard {
         protected global::AjaxControlToolkit.TabPanel OverviewTab;
         
         /// <summary>
+        /// OverviewTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView OverviewTable;
+        
+        /// <summary>
         /// SLATab control.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,22 @@ namespace no.nith.pj600.dashboard {
         protected global::AjaxControlToolkit.TabPanel SLATab;
         
         /// <summary>
-        /// AddServicesTab control.
+        /// SLATable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel AddServicesTab;
+        protected global::System.Web.UI.WebControls.GridView SLATable;
+        
+        /// <summary>
+        /// AddlServicesTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel AddlServicesTab;
         
         /// <summary>
         /// GraphsTab control.
