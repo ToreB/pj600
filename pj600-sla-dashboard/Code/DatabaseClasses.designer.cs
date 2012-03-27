@@ -30,6 +30,9 @@ namespace no.nith.pj600.dashboard.Code
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertTripletexImport(TripletexImport instance);
+    partial void UpdateTripletexImport(TripletexImport instance);
+    partial void DeleteTripletexImport(TripletexImport instance);
     #endregion
 		
 		public DatabaseClassesDataContext() : 
@@ -115,6 +118,14 @@ namespace no.nith.pj600.dashboard.Code
 			get
 			{
 				return this.GetTable<Project>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TripletexImport> TripletexImports
+		{
+			get
+			{
+				return this.GetTable<TripletexImport>();
 			}
 		}
 	}
@@ -6928,6 +6939,260 @@ namespace no.nith.pj600.dashboard.Code
 				{
 					this._TimeIncludeExtCommentAsTextLineYesNo = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TripletexImport")]
+	public partial class TripletexImport : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _ProjectNo;
+		
+		private string _ProjectName;
+		
+		private string _ProjectLeader;
+		
+		private string _DepName;
+		
+		private string _EmployeeName;
+		
+		private System.DateTime _Date;
+		
+		private decimal _Hours;
+		
+		private string _Comment;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnProjectNoChanging(int value);
+    partial void OnProjectNoChanged();
+    partial void OnProjectNameChanging(string value);
+    partial void OnProjectNameChanged();
+    partial void OnProjectLeaderChanging(string value);
+    partial void OnProjectLeaderChanged();
+    partial void OnDepNameChanging(string value);
+    partial void OnDepNameChanged();
+    partial void OnEmployeeNameChanging(string value);
+    partial void OnEmployeeNameChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnHoursChanging(decimal value);
+    partial void OnHoursChanged();
+    partial void OnCommentChanging(string value);
+    partial void OnCommentChanged();
+    #endregion
+		
+		public TripletexImport()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectNo", DbType="Int NOT NULL")]
+		public int ProjectNo
+		{
+			get
+			{
+				return this._ProjectNo;
+			}
+			set
+			{
+				if ((this._ProjectNo != value))
+				{
+					this.OnProjectNoChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectNo = value;
+					this.SendPropertyChanged("ProjectNo");
+					this.OnProjectNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ProjectName
+		{
+			get
+			{
+				return this._ProjectName;
+			}
+			set
+			{
+				if ((this._ProjectName != value))
+				{
+					this.OnProjectNameChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectName = value;
+					this.SendPropertyChanged("ProjectName");
+					this.OnProjectNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProjectLeader", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string ProjectLeader
+		{
+			get
+			{
+				return this._ProjectLeader;
+			}
+			set
+			{
+				if ((this._ProjectLeader != value))
+				{
+					this.OnProjectLeaderChanging(value);
+					this.SendPropertyChanging();
+					this._ProjectLeader = value;
+					this.SendPropertyChanged("ProjectLeader");
+					this.OnProjectLeaderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DepName
+		{
+			get
+			{
+				return this._DepName;
+			}
+			set
+			{
+				if ((this._DepName != value))
+				{
+					this.OnDepNameChanging(value);
+					this.SendPropertyChanging();
+					this._DepName = value;
+					this.SendPropertyChanged("DepName");
+					this.OnDepNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string EmployeeName
+		{
+			get
+			{
+				return this._EmployeeName;
+			}
+			set
+			{
+				if ((this._EmployeeName != value))
+				{
+					this.OnEmployeeNameChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeName = value;
+					this.SendPropertyChanged("EmployeeName");
+					this.OnEmployeeNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hours", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Hours
+		{
+			get
+			{
+				return this._Hours;
+			}
+			set
+			{
+				if ((this._Hours != value))
+				{
+					this.OnHoursChanging(value);
+					this.SendPropertyChanging();
+					this._Hours = value;
+					this.SendPropertyChanged("Hours");
+					this.OnHoursChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comment", DbType="VarChar(50)")]
+		public string Comment
+		{
+			get
+			{
+				return this._Comment;
+			}
+			set
+			{
+				if ((this._Comment != value))
+				{
+					this.OnCommentChanging(value);
+					this.SendPropertyChanging();
+					this._Comment = value;
+					this.SendPropertyChanged("Comment");
+					this.OnCommentChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

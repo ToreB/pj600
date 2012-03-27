@@ -109,7 +109,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseClasses.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Code\ExcelHandler.cs" />
+    <Compile Include="Code\FileHandler.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

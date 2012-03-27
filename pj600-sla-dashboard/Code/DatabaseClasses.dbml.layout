@@ -44,5 +44,11 @@
         <elementListCompartment Id="a5d08efb-d581-4152-a16e-ed3ea73560cb" absoluteBounds="0.515, 4.96, 1.9700000000000002, 6.7876383463541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="276f157c-0eb1-4295-94a6-511f7b07ac25" isExpanded="false" absoluteBounds="0.5, 5.25, 2, 0.45">
+      <DataClassMoniker Name="/DatabaseClassesDataContext/TripletexImport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2ebe283f-7384-4e25-8c26-c3f996401fcb" absoluteBounds="0.51500000000000012, 5.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

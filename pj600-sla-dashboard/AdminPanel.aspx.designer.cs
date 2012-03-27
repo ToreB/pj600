@@ -13,48 +13,48 @@ namespace no.nith.pj600.dashboard.Styles {
     public partial class AdminPanel {
         
         /// <summary>
-        /// ExcelUploadPanel control.
+        /// FileUploadPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ExcelUploadPanel;
+        protected global::System.Web.UI.WebControls.Panel FileUploadPanel;
         
         /// <summary>
-        /// ExcelUploadLabel control.
+        /// FileUploadLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ExcelUploadLabel;
+        protected global::System.Web.UI.WebControls.Label FileUploadLabel;
         
         /// <summary>
-        /// ExcelFileUpload control.
+        /// FileUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload ExcelFileUpload;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload;
         
         /// <summary>
-        /// ExcelUploadButton control.
+        /// FileUploadButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ExcelUploadButton;
+        protected global::System.Web.UI.WebControls.Button FileUploadButton;
         
         /// <summary>
-        /// ExcelUploadStatusLabel control.
+        /// FileUploadStatusLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ExcelUploadStatusLabel;
+        protected global::System.Web.UI.WebControls.Label FileUploadStatusLabel;
     }
 }

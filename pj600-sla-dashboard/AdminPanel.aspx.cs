@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 using log4net;
+using no.nith.pj600.dashboard.Code;
 
 namespace no.nith.pj600.dashboard.Styles
 {
@@ -13,38 +14,54 @@ namespace no.nith.pj600.dashboard.Styles
    {
       private static readonly ILog log = LogManager.GetLogger(typeof(AdminPanel));
 
-      private const string xlsMIME = "application/vnd.ms-excel";
-      private const string xlsxMIME = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-
       protected void Page_Load(object sender, EventArgs e)
       {
 
       }
 
-      protected void ExcelUploadButton_Click(object sender, EventArgs e) 
+      protected void FileUploadButton_Click(object sender, EventArgs e) 
       {
 
-         if (ExcelFileUpload.HasFile)
+         if (FileUpload.HasFile)
          {
-            if (ExcelFileUpload.PostedFile.ContentType == xlsMIME || ExcelFileUpload.PostedFile.ContentType == xlsxMIME)
+
+            /*string[] CSV_MIME = { "text/comma-separated-values", 
+                                         "text/csv", "application/csv", 
+                                         "application/excel",
+                                         "application/vnd.ms-excel",
+                                         "application/vnd.msexcel" };
+
+            //Check if it's a csv file
+            bool valid = false;
+            foreach (string mime in CSV_MIME)
             {
-               ExcelFileUpload.SaveAs(Server.MapPath("~/App_Data/Excel.xlsx"));
+               if (ExcelFileUpload.PostedFile.ContentType.Equals(mime))
+               {
+                  valid = true;
+                  break;
+               }
+            }*/
 
-               ExcelUploadStatusLabel.CssClass = "infoMessage";
-               ExcelUploadStatusLabel.Text = "File successfully uploaded.";
+            //if (valid)
+            //{
+               //ExcelFileUpload.SaveAs(Server.MapPath("~/App_Data/Excel.xlsx"));
+               FileHandler.ReadCSVAndWriteToDB(FileUpload.PostedFile.InputStream);
 
-               log.Info("A new Excel data source has been uploaded.");
-            }
-            else //Not an Excel file
+               FileUploadStatusLabel.CssClass = "infoMessage";
+               FileUploadStatusLabel.Text = "File successfully uploaded.";
+
+               //log.Info("A new Excel data source has been uploaded.");
+            //}
+            /*else //Not an valid file
             {
                ExcelUploadStatusLabel.CssClass = "errorMessage";
                ExcelUploadStatusLabel.Text = "The specified file is not an Excel file.";
-            }
+            }*/
          }
          else //No file selected
          {
-            ExcelUploadStatusLabel.CssClass = "errorMessage";
-            ExcelUploadStatusLabel.Text = "You need to specify a file to upload.";
+            FileUploadStatusLabel.CssClass = "errorMessage";
+            FileUploadStatusLabel.Text = "You need to specify a file to upload.";
          }
       }
    }

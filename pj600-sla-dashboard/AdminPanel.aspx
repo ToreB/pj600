@@ -6,13 +6,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
    <h1>Admin Panel</h1>
 
-   <h2>Upload Excel file</h2>
-   <asp:Panel ID="ExcelUploadPanel" runat="server" CssClass="borderWithPadding" >
-      <asp:Label ID="ExcelUploadLabel" runat="server" Text="Upload Excel file: " AssociatedControlID="ExcelUploadPanel" /><asp:FileUpload ID="ExcelFileUpload" runat="server" />
-      <asp:Button ID="ExcelUploadButton" runat="server" Text="Upload" OnClick="ExcelUploadButton_Click"/>
+   <h2>Upload export file from Tripletex</h2>
+   <asp:Panel ID="FileUploadPanel" runat="server" CssClass="borderWithPadding" >
+      <asp:Label ID="FileUploadLabel" runat="server" Text="Upload file: " AssociatedControlID="FileUploadPanel" /><asp:FileUpload ID="FileUpload" runat="server" />
+      <asp:Button ID="FileUploadButton" runat="server" Text="Upload" OnClick="FileUploadButton_Click"/>
       <br />
       <p>
-         <asp:Label ID="ExcelUploadStatusLabel" runat="server" Text=""></asp:Label>
+         <asp:Label ID="FileUploadStatusLabel" runat="server" Text=""></asp:Label>
       </p>
    </asp:Panel>
 </asp:Content>

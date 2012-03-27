@@ -3,20 +3,24 @@ using System.Data;
 using System.Data.OleDb;
 
 using log4net;
+using System.IO;
 
 
 namespace no.nith.pj600.dashboard.Code
 {
 
-   public class ExcelHandler
+   public class FileHandler
    {
-      private static readonly ILog log = LogManager.GetLogger(typeof(ExcelHandler));
+      private static readonly ILog log = LogManager.GetLogger(typeof(FileHandler));
+
+      public const string XLS_MIME = "application/vnd.ms-excel";
+      public const string XLSX_MIME = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
       /**<summary>
        * Gets a DataSet for the specified Excel document.
        * </summary>
        */
-      public static DataSet GetDataSet(string fileName)
+      public static DataSet GetDataSetFromExcel(string fileName)
       {
          /*
             "HDR=Yes;" indicates that the first row contains columnnames, not data. "HDR=No;" indicates the opposite.
@@ -53,6 +57,49 @@ namespace no.nith.pj600.dashboard.Code
          }
 
          return dataSet;
+      }
+
+      public static void ReadCSVAndWriteToDB(Stream stream)
+      {        
+         StreamReader reader = new StreamReader(stream);
+         DatabaseClassesDataContext db = new DatabaseClassesDataContext();
+
+         string line;
+         while((line = reader.ReadLine()) != null) 
+         {
+            line = line.Substring(1, line.Length-2); //Removes the surrounding ""
+            string[] columns = line.Split(';');
+
+            TripletexImport row = new TripletexImport
+            {
+               ProjectNo = int.Parse(columns[0]),
+               ProjectName = columns[1],
+               ProjectLeader = columns[2],
+               DepName = columns[3],
+               EmployeeName = columns[4],
+               Date = DateTime.Parse(columns[5]),
+               Hours = decimal.Parse(columns[6]),
+               Comment = columns[7]
+            };
+
+            db.TripletexImports.InsertOnSubmit(row);
+         }
+
+         try
+         {
+            //Deletes the current content
+            db.ExecuteCommand("DELETE FROM TripletexImport");
+
+            //Submits the new content
+            db.SubmitChanges();
+
+            log.Info("A new CSV file was read and TripletexImport table was updated.");
+         }
+         catch (Exception e)
+         {
+            log.Error("Something went wrong while trying to update the TripletexImport table: " + e.Message);
+
+         }
       }
 
    }

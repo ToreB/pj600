@@ -13,6 +13,24 @@ namespace no.nith.pj600.dashboard.Account {
     public partial class Login {
         
         /// <summary>
+        /// LogoutPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel LogoutPanel;
+        
+        /// <summary>
+        /// LogoutMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LogoutMessage;
+        
+        /// <summary>
         /// LoginUser control.
         /// </summary>
         /// <remarks>
