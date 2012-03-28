@@ -29,6 +29,8 @@
       <asp:TabPanel ID="OverviewTab" runat="server" HeaderText="Overview" ScrollBars="Auto">
          <ContentTemplate>       
             <!-- Content OverviewTab goes here -->
+            <h1>Overview</h1>
+
             <div class="dashboardTab">
                <asp:GridView ID="OverviewTable" runat="server" AllowPaging="true" PageSize="10" 
                   PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"

@@ -68,13 +68,13 @@ namespace no.nith.pj600.dashboard
 
       private void LoadOverviewTab()
       {
-         dataContext = new DatabaseClassesDataContext();
+         /*dataContext = new DatabaseClassesDataContext();
          var query = from Customer in dataContext.Customers 
                      where Customer.Name != null
                      select Customer;
          
          OverviewTable.DataSource = query;
-         OverviewTable.DataBind();
+         OverviewTable.DataBind();*/
       }
 
       private void LoadSLATab()
