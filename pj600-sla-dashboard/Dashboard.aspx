@@ -47,11 +47,12 @@
             <div class="dashboardTab">
                <asp:GridView ID="SLATable" runat="server" AllowPaging="true" PageSize="10" 
                   PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
-                  OnPageIndexChanged="OnPageIndexChanged" AutoGenerateColumns="false">
+                  OnPageIndexChanged="OnPageIndexChanged" AutoGenerateColumns="false" 
+                  AllowSorting="true" OnSorting="SLATable_OnSorting">
                   <Columns>
-                     <asp:BoundField DataField="ProjectNo" HeaderText="Project No." />                  
-                     <asp:BoundField DataField="ProjectName" HeaderText="Project Name" />
-                     <asp:BoundField DataField="CustomerName" HeaderText="Customer Name" />
+                     <asp:BoundField DataField="ProjectNo" HeaderText="Project No." SortExpression="ProjectNo"/>                  
+                     <asp:BoundField DataField="ProjectName" HeaderText="Project Name" SortExpression="ProjectName"/>
+                     <asp:BoundField DataField="CustomerName" HeaderText="Customer Name" SortExpression="CustomerName"/>
                   </Columns>
                </asp:GridView>
             </div>
