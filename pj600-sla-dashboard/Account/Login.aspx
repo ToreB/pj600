@@ -42,6 +42,9 @@
                            <asp:CheckBox ID="RememberMe" runat="server"/>
                            <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline">Remember me</asp:Label>
                        </p>
+                       <p>
+                          </a><asp:HyperLink ID="ResetLink" runat="server" NavigateUrl="~/Account/ResetPassword.aspx">Forgotten your password?</asp:HyperLink>
+                       </p>
                    </fieldset>
                    <p class="submitButton">
                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="LoginUserValidationGroup"/>

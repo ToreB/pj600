@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using log4net;
+using System.Web.Security;
+using no.nith.pj600.dashboard.Code;
+
+namespace no.nith.pj600.dashboard.Account
+{
+   public partial class ResetPassword : System.Web.UI.Page
+   {
+      private static readonly ILog log = LogManager.GetLogger(typeof(ResetPassword));
+      private MembershipUser user;
+      private string email;
+
+      protected void Page_Load(object sender, EventArgs e)
+      {
+         
+      }
+
+      private bool VerifyEmail()
+      {
+         email = ((TextBox) ResetPasswordView.FindControl("EmailInput")).Text;
+         string username = Membership.GetUserNameByEmail(email);        
+
+         if (username != null)
+         {
+            user = Membership.GetUser(username);
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+
+      protected void ResetButton_Click(object sender, EventArgs e)
+      {
+         Label message = (Label) ResetPasswordView.FindControl("Message");
+
+         if (VerifyEmail())
+         {
+            string newPassword = user.ResetPassword();
+
+            String mailBody = "Your new password is: " + newPassword;
+            bool success = MailSender.Send(email, "Password Reset", mailBody);
+
+            if (success)
+            {
+               message.Text = "Your password has been reset. Your new password has been sent to you in an email.";
+            }
+            else
+            {
+               message.Text = "Something went wrong. Please try again.";
+            }
+         }
+         else
+         {
+            message.Text = "A user with that email is not found.";
+         }
+      }
+   }
+}
