@@ -71,6 +71,9 @@
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
     <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.LDF">
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
     <Content Include="Default.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
@@ -122,6 +125,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Code\Exceptions\TripletexImportException.cs" />
     <Compile Include="Code\FileHandler.cs" />
     <Compile Include="Code\MailSender.cs" />
     <Compile Include="Default.aspx.cs">

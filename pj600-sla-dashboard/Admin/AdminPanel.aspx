@@ -11,10 +11,10 @@
       <asp:Label ID="FileUploadLabel" runat="server" Text="Upload file: " AssociatedControlID="FileUploadPanel" /><asp:FileUpload ID="FileUpload" runat="server" />
       <asp:Button ID="FileUploadButton" runat="server" Text="Upload" OnClick="FileUploadButton_Click"/>
       <br />
-      <p>
-         <asp:Label ID="FileUploadStatusLabel" runat="server" Text=""></asp:Label>
-      </p>
    </asp:Panel>
+   <p>
+      <asp:Label ID="FileUploadStatusLabel" runat="server" Text=""></asp:Label>
+   </p>
 
    <br />
    

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using log4net;
 using no.nith.pj600.dashboard.Code;
+using no.nith.pj600.dashboard.Code.Exceptions;
 
 namespace no.nith.pj600.dashboard.Admin
 {
@@ -45,10 +46,19 @@ namespace no.nith.pj600.dashboard.Admin
             //if (valid)
             //{
                //ExcelFileUpload.SaveAs(Server.MapPath("~/App_Data/Excel.xlsx"));
-               FileHandler.ReadCSVAndWriteToDB(FileUpload.PostedFile.InputStream);
+               try
+               {
+                  FileHandler.ReadCSVAndWriteToDB(FileUpload.PostedFile.InputStream);
 
-               FileUploadStatusLabel.CssClass = "infoMessage";
-               FileUploadStatusLabel.Text = "File successfully uploaded.";
+                  FileUploadStatusLabel.CssClass = "infoMessage";
+                  FileUploadStatusLabel.Text = "File successfully uploaded.";
+               }
+               catch (TripletexImportException tiEx)
+               {
+                  FileUploadStatusLabel.CssClass = "errorMessage";
+                  FileUploadStatusLabel.Text = tiEx.Message;
+               }
+               
 
                //log.Info("A new Excel data source has been uploaded.");
             //}

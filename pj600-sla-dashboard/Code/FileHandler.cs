@@ -4,6 +4,7 @@ using System.Data.OleDb;
 
 using log4net;
 using System.IO;
+using no.nith.pj600.dashboard.Code.Exceptions;
 
 
 namespace no.nith.pj600.dashboard.Code
@@ -67,22 +68,31 @@ namespace no.nith.pj600.dashboard.Code
          string line;
          while((line = reader.ReadLine()) != null) 
          {
-            line = line.Substring(1, line.Length-2); //Removes the surrounding ""
-            string[] columns = line.Split(';');
-
-            TripletexImport row = new TripletexImport
+            try
             {
-               ProjectNo = int.Parse(columns[0]),
-               ProjectName = columns[1],
-               ProjectLeader = columns[2],
-               DepName = columns[3],
-               EmployeeName = columns[4],
-               Date = DateTime.Parse(columns[5]),
-               Hours = decimal.Parse(columns[6]),
-               Comment = columns[7]
-            };
+               line = line.Substring(1, line.Length-2); //Removes the surrounding ""
+               string[] columns = line.Split(';');
+            
+               TripletexImport row = new TripletexImport
+               {
+                  ProjectNo = int.Parse(columns[0]),
+                  ProjectName = columns[1],
+                  ProjectLeader = columns[2],
+                  DepName = columns[3],
+                  EmployeeName = columns[4],
+                  Date = DateTime.Parse(columns[5]),
+                  Hours = decimal.Parse(columns[6]),
+                  Comment = columns[7]
+               };
 
-            db.TripletexImports.InsertOnSubmit(row);
+               db.TripletexImports.InsertOnSubmit(row);
+            }
+            catch (Exception e)
+            {
+               TripletexImportException tiEx = new TripletexImportException(e.Message);
+               log.Error(tiEx.Message);
+               throw tiEx;
+            }
          }
 
          try
