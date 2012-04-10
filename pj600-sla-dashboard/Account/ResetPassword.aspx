@@ -4,11 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-   <p>
       <asp:LoginView ID="ResetPasswordView" runat="server" EnableViewState="false">
          <AnonymousTemplate>
 
             <h1>Reset Password</h1>
+
+            <br />
 
             <asp:ValidationSummary ID="EmailValidationSummary" runat="server" CssClass="errorMessage" 
                     ValidationGroup="EmailValidationGroup" />
@@ -26,6 +27,5 @@
 
          </AnonymousTemplate>
       </asp:LoginView>
-   </p>
 
 </asp:Content>
