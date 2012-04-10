@@ -301,6 +301,7 @@ div.accountInfo
 	border-style: solid;
 	padding: 5px;
 	width: 370px;
+	margin-bottom: 10px;
 }
 
 .infoMessage 

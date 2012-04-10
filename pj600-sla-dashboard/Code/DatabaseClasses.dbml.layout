@@ -50,5 +50,11 @@
         <elementListCompartment Id="2ebe283f-7384-4e25-8c26-c3f996401fcb" absoluteBounds="0.51500000000000012, 5.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="794f4f02-5827-4b84-a1bf-054786405ddb" isExpanded="false" absoluteBounds="0.5, 6, 2, 0.45">
+      <DataClassMoniker Name="/DatabaseClassesDataContext/SLAProject" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8aa5ea81-b1a3-4942-abd0-a9920ddaa20f" absoluteBounds="0.51499999999999968, 6.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

@@ -7,54 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace no.nith.pj600.dashboard.Styles {
+namespace no.nith.pj600.dashboard.Admin {
     
     
-    public partial class AdminPanel {
+    public partial class ManageSLAProjects {
         
         /// <summary>
-        /// FileUploadPanel control.
+        /// SlaProjectsDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel FileUploadPanel;
+        protected global::System.Web.UI.WebControls.SqlDataSource SlaProjectsDataSource;
         
         /// <summary>
-        /// FileUploadLabel control.
+        /// InputValidationSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FileUploadLabel;
+        protected global::System.Web.UI.WebControls.ValidationSummary InputValidationSummary;
         
         /// <summary>
-        /// FileUpload control.
+        /// EditValidationSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload;
+        protected global::System.Web.UI.WebControls.ValidationSummary EditValidationSummary;
         
         /// <summary>
-        /// FileUploadButton control.
+        /// SLAProjectsList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button FileUploadButton;
-        
-        /// <summary>
-        /// FileUploadStatusLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FileUploadStatusLabel;
+        protected global::System.Web.UI.WebControls.ListView SLAProjectsList;
     }
 }

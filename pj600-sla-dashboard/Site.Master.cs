@@ -12,14 +12,15 @@ namespace no.nith.pj600.dashboard
 {
    public partial class SiteMaster : System.Web.UI.MasterPage
    {
-      private static readonly ILog log = LogManager.GetLogger(typeof(SiteMaster)); 
+      private static readonly ILog log = LogManager.GetLogger(typeof(SiteMaster));
+      private const string ADMINPANEL_PATH = "~/Admin/AdminPanel.aspx";
 
       protected void Page_Load(object sender, EventArgs e)
       {
          //Adds a link in the navigation menu if the current user is an admin
          if (Context.User.IsInRole("Admin"))
          {
-            MenuItem item = new MenuItem("Admin Panel", null, null, "~/AdminPanel.aspx");
+            MenuItem item = new MenuItem("Admin Panel", null, null, ADMINPANEL_PATH);
             NavigationMenu.Items.AddAt(2, item);
          }
       }

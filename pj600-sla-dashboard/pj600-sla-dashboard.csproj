@@ -65,6 +65,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
+    <Content Include="Admin\ManageSLAProjects.aspx" />
     <Content Include="App_Data\ASPNETDB.MDF" />
     <Content Include="App_Data\ASPNETDB_log.ldf">
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
@@ -80,7 +81,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\LogoutMessage.aspx" />
     <Content Include="MyAccount.aspx" />
-    <Content Include="AdminPanel.aspx" />
+    <Content Include="Admin\AdminPanel.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Global.asax" />
@@ -111,6 +112,13 @@
     </Compile>
     <Compile Include="Account\ResetPassword.aspx.designer.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageSLAProjects.aspx.cs">
+      <DependentUpon>ManageSLAProjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageSLAProjects.aspx.designer.cs">
+      <DependentUpon>ManageSLAProjects.aspx</DependentUpon>
     </Compile>
     <Compile Include="Code\DatabaseClasses.designer.cs">
       <AutoGen>True</AutoGen>
@@ -186,11 +194,11 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="AdminPanel.aspx.cs">
+    <Compile Include="Admin\AdminPanel.aspx.cs">
       <DependentUpon>AdminPanel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminPanel.aspx.designer.cs">
+    <Compile Include="Admin\AdminPanel.aspx.designer.cs">
       <DependentUpon>AdminPanel.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

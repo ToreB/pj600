@@ -8,7 +8,7 @@ using System.IO;
 using log4net;
 using no.nith.pj600.dashboard.Code;
 
-namespace no.nith.pj600.dashboard.Styles
+namespace no.nith.pj600.dashboard.Admin
 {
    public partial class AdminPanel : System.Web.UI.Page
    {
