@@ -1,21 +1,80 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="no.nith.pj600.dashboard._Default" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+
+<script type="text/javascript">
+
+   /* Makes a postback everytime the active tab changes */
+   function ActiveTabChanged(sender, e) {
+      __doPostBack('TabContainer', sender.get_activeTab().get_headerText());
+   }
+
+</script>
+
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    
-    <h2>Upload Excel file</h2>
-    <asp:Panel ID="ExcelUploadPanel" runat="server" CssClass="borderWithPadding" >
-      <asp:Label ID="ExcelUploadLabel" runat="server" Text="Upload Excel file: " AssociatedControlID="ExcelUploadPanel" /><asp:FileUpload ID="ExcelFileUpload" runat="server" />
-      <asp:Button ID="ExcelUploadButton" runat="server" Text="Upload" OnClick="ExcelUploadButton_Click"/>
-      <br />
-      <p>
-         <asp:Label ID="ExcelUploadStatusLabel" runat="server" Text=""></asp:Label>
-      </p>
-   </asp:Panel>
-    <br />
-   <asp:GridView ID="GridView1" runat="server">
-   </asp:GridView>
+   
+   <asp:ScriptManager ID="ScriptManager" runat="server" />
+
+   <asp:TabContainer ID="TabContainer" runat="server" 
+                     ActiveTabIndex="0" ScrollBars="Auto" UseVerticalStripPlacement="true"
+                     VerticalStripWidth="130px"
+                     CssClass="dashboardTabContainer"
+                     OnClientActiveTabChanged="ActiveTabChanged"
+                     OnActiveTabChanged="TabContainerTabChange"
+                     >
+      <asp:TabPanel ID="OverviewTab" runat="server" HeaderText="Overview" ScrollBars="Auto">
+         <ContentTemplate>       
+            <!-- Content OverviewTab goes here -->
+            <h1>Overview</h1>
+
+            <div class="dashboardTab">
+               <asp:GridView ID="OverviewTable" runat="server" AllowPaging="true" PageSize="10" 
+                  PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
+                  OnPageIndexChanged="OnPageIndexChanged">
+               </asp:GridView>
+            </div>
+
+         </ContentTemplate>
+      </asp:TabPanel>
+      <asp:TabPanel ID="SLATab" runat="server" HeaderText="SLA Agreements" ScrollBars="Auto">
+         <ContentTemplate>
+            
+            <!-- Content SLATab goes here -->
+            <div class="dashboardTab">
+               <asp:GridView ID="SLATable" runat="server" AllowPaging="true" PageSize="10" 
+                  PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
+                  OnPageIndexChanged="OnPageIndexChanged" AutoGenerateColumns="false" 
+                  AllowSorting="true" OnSorting="SLATable_OnSorting">
+                  <Columns>
+                     <asp:BoundField DataField="ProjectNo" HeaderText="Project No." SortExpression="ProjectNo"/>                  
+                     <asp:BoundField DataField="ProjectName" HeaderText="Project Name" SortExpression="ProjectName"/>
+                     <asp:BoundField DataField="CustomerName" HeaderText="Customer Name" SortExpression="CustomerName"/>
+                  </Columns>
+               </asp:GridView>
+            </div>
+
+         </ContentTemplate>
+      </asp:TabPanel>
+      <asp:TabPanel ID="AddlServicesTab" runat="server" HeaderText="Additional Services" ScrollBars="Auto">
+         <ContentTemplate>
+            
+            <!-- Content AddServicesTab goes here -->
+            <h1>Additional Services</h1>
+
+         </ContentTemplate>
+      </asp:TabPanel>
+      <asp:TabPanel ID="GraphsTab" runat="server" HeaderText="Graphs" ScrollBars="Auto">
+         <ContentTemplate>
+            
+            <!-- Content GraphsTab goes here -->
+            <h1>Graphs</h1>
+
+         </ContentTemplate>
+      </asp:TabPanel>
+   </asp:TabContainer>
 
 </asp:Content>

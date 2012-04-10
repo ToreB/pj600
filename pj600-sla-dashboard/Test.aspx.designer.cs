@@ -10,78 +10,60 @@
 namespace no.nith.pj600.dashboard {
     
     
-    public partial class Dashboard {
+    public partial class Test {
         
         /// <summary>
-        /// ScriptManager control.
+        /// ExcelUploadPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager;
+        protected global::System.Web.UI.WebControls.Panel ExcelUploadPanel;
         
         /// <summary>
-        /// TabContainer control.
+        /// ExcelUploadLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabContainer TabContainer;
+        protected global::System.Web.UI.WebControls.Label ExcelUploadLabel;
         
         /// <summary>
-        /// OverviewTab control.
+        /// ExcelFileUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel OverviewTab;
+        protected global::System.Web.UI.WebControls.FileUpload ExcelFileUpload;
         
         /// <summary>
-        /// OverviewTable control.
+        /// ExcelUploadButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView OverviewTable;
+        protected global::System.Web.UI.WebControls.Button ExcelUploadButton;
         
         /// <summary>
-        /// SLATab control.
+        /// ExcelUploadStatusLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel SLATab;
+        protected global::System.Web.UI.WebControls.Label ExcelUploadStatusLabel;
         
         /// <summary>
-        /// SLATable control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView SLATable;
-        
-        /// <summary>
-        /// AddlServicesTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel AddlServicesTab;
-        
-        /// <summary>
-        /// GraphsTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel GraphsTab;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }
