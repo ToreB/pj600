@@ -66,10 +66,6 @@
     <Content Include="About.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Admin\ManageSLAProjects.aspx" />
-    <Content Include="App_Data\ASPNETDB.MDF" />
-    <Content Include="App_Data\ASPNETDB_log.ldf">
-      <DependentUpon>ASPNETDB.MDF</DependentUpon>
-    </Content>
     <Content Include="App_Data\Database.mdf" />
     <Content Include="App_Data\Database_log.LDF">
       <DependentUpon>Database.mdf</DependentUpon>
