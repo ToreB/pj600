@@ -26,26 +26,26 @@ namespace no.nith.pj600.dashboard.Admin
          if (FileUpload.HasFile)
          {
 
-            /*string[] CSV_MIME = { "text/comma-separated-values", 
+            string[] allowedMimeTypes = { "text/comma-separated-values", 
                                          "text/csv", "application/csv", 
                                          "application/excel",
                                          "application/vnd.ms-excel",
-                                         "application/vnd.msexcel" };
+                                         "application/vnd.msexcel",
+                                         "text/plain"};
 
-            //Check if it's a csv file
+            //Check if it's a csv or txt file
             bool valid = false;
-            foreach (string mime in CSV_MIME)
+            foreach (string type in allowedMimeTypes)
             {
-               if (ExcelFileUpload.PostedFile.ContentType.Equals(mime))
+               if (FileUpload.PostedFile.ContentType.Equals(type))
                {
                   valid = true;
                   break;
                }
-            }*/
+            }
 
-            //if (valid)
-            //{
-               //ExcelFileUpload.SaveAs(Server.MapPath("~/App_Data/Excel.xlsx"));
+            if (valid)
+            {
                try
                {
                   FileHandler.ReadCSVAndWriteToDB(FileUpload.PostedFile.InputStream);
@@ -57,21 +57,18 @@ namespace no.nith.pj600.dashboard.Admin
                {
                   FileUploadStatusLabel.CssClass = "errorMessage";
                   FileUploadStatusLabel.Text = tiEx.Message;
-               }
-               
-
-               //log.Info("A new Excel data source has been uploaded.");
-            //}
-            /*else //Not an valid file
+               }   
+            }
+            else //Not an valid file type
             {
-               ExcelUploadStatusLabel.CssClass = "errorMessage";
-               ExcelUploadStatusLabel.Text = "The specified file is not an Excel file.";
-            }*/
+               FileUploadStatusLabel.CssClass = "errorMessage";
+               FileUploadStatusLabel.Text = "The selected file is not an a csv or txt file.";
+            }
          }
          else //No file selected
          {
             FileUploadStatusLabel.CssClass = "errorMessage";
-            FileUploadStatusLabel.Text = "You need to specify a file to upload.";
+            FileUploadStatusLabel.Text = "You need to select a file to upload.";
          }
       }
    }

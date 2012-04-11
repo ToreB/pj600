@@ -10,7 +10,6 @@
    <asp:Panel ID="FileUploadPanel" runat="server" CssClass="borderWithPadding" >
       <asp:Label ID="FileUploadLabel" runat="server" Text="Upload file: " AssociatedControlID="FileUploadPanel" /><asp:FileUpload ID="FileUpload" runat="server" />
       <asp:Button ID="FileUploadButton" runat="server" Text="Upload" OnClick="FileUploadButton_Click"/>
-      <br />
    </asp:Panel>
    <p>
       <asp:Label ID="FileUploadStatusLabel" runat="server" Text=""></asp:Label>
