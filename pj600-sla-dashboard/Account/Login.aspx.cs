@@ -16,7 +16,13 @@ namespace no.nith.pj600.dashboard.Account
 
       protected void Page_Load(object sender, EventArgs e)
       {
-         
+         if (!Page.IsPostBack)
+         {
+            if (Request.Params["logout"] != null)
+            {
+               LogoutMessagePanel.Visible = true;
+            }
+         }
       }
 
       /*

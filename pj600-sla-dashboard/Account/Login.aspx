@@ -5,6 +5,11 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div id="loginLeft">
+       
+       <asp:Panel ID="LogoutMessagePanel" runat="server" Visible="false" EnableViewState="false">
+          <asp:Label ID="LogoutMessage" runat="server" CssClass="infoMessage" Text="You have successfully been logged out." />
+       </asp:Panel>
+
        <h2>
            Log in
        </h2>
