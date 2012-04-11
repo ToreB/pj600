@@ -43,23 +43,34 @@ namespace no.nith.pj600.dashboard.Account
 
          if (VerifyEmail())
          {
-            string newPassword = user.ResetPassword();
-
-            String mailBody = "Your new password is: " + newPassword;
-            bool success = MailSender.Send(email, "Password Reset", mailBody);
-
-            if (success)
+            try
             {
-               message.Text = "Your password has been reset. Your new password has been sent to you in an email.";
+               string newPassword = user.ResetPassword();
+
+               String mailBody = "Your new password is: " + newPassword;
+               bool success = MailSender.Send(email, "Password Reset", mailBody);
+
+               if (success)
+               {
+                  message.CssClass = "infoMessage";
+                  message.Text = "Your password has been reset. Your new password has been sent to your email.";
+               }
+               else
+               {
+                  message.CssClass = "errorMessage";
+                  message.Text = "Something went wrong while trying to send email. Please try again later.";
+               }
             }
-            else
+            catch (Exception ex)
             {
-               message.Text = "Something went wrong. Please try again.";
+               message.CssClass = "errorMessage";
+               message.Text = "Something went wrong: " + ex.Message;
             }
          }
          else
          {
-            message.Text = "A user with that email is not found.";
+            message.CssClass = "errorMessage";
+            message.Text = "A user with that email was not found.";
          }
       }
    }

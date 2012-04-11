@@ -23,7 +23,9 @@
             <asp:Button ID="ResetButton" runat="server" Text="Reset password" OnClick="ResetButton_Click" ValidationGroup="EmailValidationGroup" />
 
             <br />
-            <asp:Label ID="Message" runat="server" Text=""></asp:Label>
+            <p>
+               <asp:Label ID="Message" runat="server" Text=""></asp:Label>
+            </p>
 
          </AnonymousTemplate>
       </asp:LoginView>
