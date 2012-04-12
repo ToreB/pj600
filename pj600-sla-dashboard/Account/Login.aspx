@@ -10,17 +10,24 @@
           <asp:Label ID="LogoutMessage" runat="server" CssClass="infoMessage" Text="You have successfully been logged out." />
        </asp:Panel>
 
+       <asp:Panel ID="AccountStatusPanel" runat="server" Visible="false" EnableViewState="false">
+          <p class="errorMessage"><asp:Label ID="AccountStatusLabel" runat="server" Text="" /></p>
+       </asp:Panel>
+
        <h2>
            Log in
        </h2>
        <p>
-           Please enter your username and password.
+           Please enter your username and password.<br />
        </p>
-       <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="false" OnLoggedIn="OnLoggedIn">
+
+       <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="false" OnLoggedIn="OnLoggedIn" 
+            OnLoginError="OnLoginError">
            <LayoutTemplate>
 
                <span class="failureNotification">
-                   <asp:Literal ID="FailureText" runat="server"></asp:Literal>
+                   <asp:Literal ID="FailureText" runat="server" />
+                   <asp:Literal ID="FailureAttemptsLiteral" runat="server" />
                </span>
 
                <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="errorMessage" 
@@ -48,7 +55,7 @@
                            <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline">Remember me</asp:Label>
                        </p>
                        <p>
-                          </a><asp:HyperLink ID="ResetLink" runat="server" NavigateUrl="~/Account/ResetPassword.aspx">Forgotten your password?</asp:HyperLink>
+                          <asp:HyperLink ID="ResetPasswordLink" runat="server" NavigateUrl="~/Account/ResetPassword.aspx">Forgotten your password?</asp:HyperLink>
                        </p>
                    </fieldset>
                    <p class="submitButton">

@@ -31,6 +31,24 @@ namespace no.nith.pj600.dashboard.Account {
         protected global::System.Web.UI.WebControls.Label LogoutMessage;
         
         /// <summary>
+        /// AccountStatusPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel AccountStatusPanel;
+        
+        /// <summary>
+        /// AccountStatusLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AccountStatusLabel;
+        
+        /// <summary>
         /// LoginUser control.
         /// </summary>
         /// <remarks>

@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using System.Web.Security;
 
 using log4net;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 
 namespace no.nith.pj600.dashboard.Account
 {
@@ -32,6 +35,41 @@ namespace no.nith.pj600.dashboard.Account
       {
          log.Info(LoginUser.UserName + " has logged in.");
          
+      }
+
+      protected void OnLoginError(object sender, EventArgs e)
+      {
+         MembershipUser user = Membership.GetUser(LoginUser.UserName);
+
+         if(user != null) {           
+
+            if (user.IsLockedOut)
+            {
+               AccountStatusPanel.Visible = true;
+               AccountStatusLabel.Text = "You have exceeded the allowed amount of login attempts and your account has been locked.<br />" +
+                                          "Please contact an Admin to have your account unlocked.";
+            }
+            else
+            {
+               //Get the failed password attemt count from the database
+               SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString);
+               con.Open();
+
+               SqlCommand command = new SqlCommand(
+                  string.Format("SELECT FailedPasswordAttemptCount FROM aspnet_Membership WHERE email = '{0}'", user.Email), con);
+               SqlDataReader reader = command.ExecuteReader();
+
+               //Should always return 1 column as result, so this should be safe
+               reader.Read();
+               int failedAttempts = (int) reader[0];               
+               int allowedAttepts = Membership.MaxInvalidPasswordAttempts;
+
+               ((Literal)LoginUser.FindControl("FailureAttemptsLiteral")).Text = "<br />You have " + (allowedAttepts - failedAttempts) + " login attempts left.";
+
+               reader.Close();
+               con.Close();
+            }
+         }
       }
    }
 }
