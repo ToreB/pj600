@@ -53,6 +53,9 @@
                <asp:RequiredFieldValidator ID="ProjectNoEditRequired" runat="server" ControlToValidate="ProjectNoEditBox"
                   CssClass="failureNotification" ErrorMessage="ProjectNo is required." ToolTip="ProjectNo is required." Text="*" 
                   ValidationGroup="EditValidationGroup" />
+               <asp:CompareValidator ID="ProjectNoEditCompare" runat="server" ControlToValidate="ProjectNoEditBox" 
+                  ErrorMessage="ProjectNo has to be an integer" CssClass="failureNotification" ToolTip="ProjectNo has to be an integer"
+                  ValidationGroup="EditValidationGroup" Operator="DataTypeCheck" Type="Integer" Text="*"/>
             </td>
             <td>
                <asp:LinkButton ID="UpdateButton" runat="server" CommandName="Update" 
@@ -76,9 +79,12 @@
             <td>
                <asp:TextBox ID="ProjectNoInputBox" runat="server" 
                   Text='<%# Bind("ProjectNo") %>' />
-               <asp:RequiredFieldValidator ID="ProjectNoInputRequired" runat="server" ControlToValidate="ProjectNoInputBox"
-                  CssClass="failureNotification" ErrorMessage="ProjectNo is required." ToolTip="ProjectNo is required." Text="*" 
-                  ValidationGroup="InputValidationGroup" />
+               <asp:RequiredFieldValidator ID="ProjectNoInputRequired" runat="server" ControlToValidate="ProjectNoInputBox" 
+                  ErrorMessage="ProjectNo is required" CssClass="failureNotification" ToolTip="This field requires an integer"
+                  ValidationGroup="InputValidationGroup" Text="*"/>
+               <asp:CompareValidator ID="ProjectNoInputCompare" runat="server" ControlToValidate="ProjectNoInputBox" 
+                  ErrorMessage="ProjectNo has to be an integer" CssClass="failureNotification" ToolTip="ProjectNo has to be an integer"
+                  ValidationGroup="InputValidationGroup" Operator="DataTypeCheck" Type="Integer" Text="*"/>
             </td>
             <td>
                <asp:LinkButton ID="InsertButton" runat="server" CommandName="Insert" 
