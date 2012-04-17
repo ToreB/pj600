@@ -32,10 +32,7 @@
             <h1>Overview</h1>
 
             <div class="dashboardTab">
-               <asp:GridView ID="OverviewTable" runat="server" AllowPaging="true" PageSize="10" 
-                  PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
-                  OnPageIndexChanged="OnPageIndexChanged">
-               </asp:GridView>
+               
             </div>
 
          </ContentTemplate>
@@ -64,6 +61,9 @@
             
             <!-- Content AddServicesTab goes here -->
             <h1>Additional Services</h1>
+            <div class="dashboardTab">
+               
+            </div>
 
          </ContentTemplate>
       </asp:TabPanel>
@@ -72,6 +72,9 @@
             
             <!-- Content GraphsTab goes here -->
             <h1>Graphs</h1>
+            <div class="dashboardTab">
+               
+            </div>
 
          </ContentTemplate>
       </asp:TabPanel>

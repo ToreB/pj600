@@ -99,7 +99,7 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: orange;
+    background: #FF6500;
     width: 100%;
 }
 
@@ -163,7 +163,7 @@ div.menu ul
 
 div.menu ul li a, div.menu ul li a:visited
 {
-    background-color: Orange;
+    background-color: #FF6500;
     border: 1px #4e667d solid;
     color: White;
     display: block;
@@ -375,5 +375,21 @@ div.accountInfo
 
 .dashboardTab 
 {
-   /*overflow: auto;*/
+   
+}
+
+.logo 
+{
+   width: 120px;
+   height: 100px;
+   float: left;
+}
+
+.headerText 
+{
+   color: White;
+   font-size: large;
+   font-weight: bold;
+   padding: 10px;
+   float: left;
 }

@@ -12,10 +12,11 @@
     <form runat="server">
     <div class="page">
         <div class="header">
-            <div class="title">
-                <h1>
-                    99<span style="color: #C96614;">X</span> DASHBOARD
-                </h1>
+            <div class="title">              
+                <img alt="99X" src="<%= Page.ResolveUrl("~")%>Pictures/logo_small.jpg" class="logo" />              
+                <p class="headerText">
+                  DASHBOARD
+                </p>
             </div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
