@@ -22,6 +22,24 @@ namespace no.nith.pj600.dashboard.Admin {
         protected global::System.Web.UI.WebControls.SqlDataSource SlaProjectsDataSource;
         
         /// <summary>
+        /// MessagePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel MessagePanel;
+        
+        /// <summary>
+        /// Message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Message;
+        
+        /// <summary>
         /// InputValidationSummary control.
         /// </summary>
         /// <remarks>

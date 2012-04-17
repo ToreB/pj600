@@ -48,10 +48,11 @@ namespace no.nith.pj600.dashboard.Account
                AccountStatusPanel.Visible = true;
                AccountStatusLabel.Text = "You have exceeded the allowed amount of login attempts and your account has been locked.<br />" +
                                           "Please contact an Admin to have your account unlocked.";
+
             }
             else
             {
-               //Get the failed password attemt count from the database
+               //Get the failed password attempt count from the database
                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString);
                con.Open();
 

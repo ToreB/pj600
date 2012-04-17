@@ -9,7 +9,9 @@
       SelectCommand="SELECT * FROM [SLAProjects] ORDER BY [ProjectNo]" 
       DeleteCommand="DELETE FROM [SLAProjects] WHERE [Id] = @Id" 
       InsertCommand="INSERT INTO [SLAProjects] ([ProjectNo]) VALUES (@ProjectNo)" 
-      UpdateCommand="UPDATE [SLAProjects] SET [ProjectNo] = @ProjectNo WHERE [Id] = @Id">
+      UpdateCommand="UPDATE [SLAProjects] SET [ProjectNo] = @ProjectNo WHERE [Id] = @Id"
+      OnInserted="CheckForExceptions" OnUpdated="CheckForExceptions" 
+      OnSelected="CheckForExceptions" OnDeleted="CheckForExceptions" on>
       <DeleteParameters>
          <asp:Parameter Name="Id" Type="Int32" />
       </DeleteParameters>
@@ -22,6 +24,9 @@
       </UpdateParameters>
    </asp:SqlDataSource>
    
+   <asp:Panel ID="MessagePanel" runat="server" Visible="false" EnableViewState="false">
+      <p class="errorMessage"><asp:Label ID="Message" runat="server" Text="" /></p>
+   </asp:Panel>    
    <asp:ValidationSummary ID="InputValidationSummary" runat="server" CssClass="errorMessage" 
                     ValidationGroup="InputValidationGroup" />
    <asp:ValidationSummary ID="EditValidationSummary" runat="server" CssClass="errorMessage" 

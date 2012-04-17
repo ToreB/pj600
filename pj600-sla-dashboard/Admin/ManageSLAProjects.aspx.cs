@@ -13,5 +13,17 @@ namespace no.nith.pj600.dashboard.Admin
       {
 
       }
+
+      protected void CheckForExceptions(object sender, SqlDataSourceStatusEventArgs e)
+      {
+         //Check if there's an exception
+         if (e.Exception != null)
+         {
+            MessagePanel.Visible = true;
+            Message.Text = e.Exception.Message;
+
+            e.ExceptionHandled = true;
+         }
+      }
    }
 }

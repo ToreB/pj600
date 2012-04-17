@@ -31,9 +31,10 @@ namespace no.nith.pj600.dashboard.Admin
                                          "application/excel",
                                          "application/vnd.ms-excel",
                                          "application/vnd.msexcel",
+                                         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                                          "text/plain"};
 
-            //Check if it's a csv or txt file
+            //Check if it's a csv, excel or txt file
             bool valid = false;
             foreach (string type in allowedMimeTypes)
             {
@@ -62,7 +63,7 @@ namespace no.nith.pj600.dashboard.Admin
             else //Not an valid file type
             {
                FileUploadStatusLabel.CssClass = "errorMessage";
-               FileUploadStatusLabel.Text = "The selected file is not an a csv or txt file.";
+               FileUploadStatusLabel.Text = "The selected file is not a csv, excel or txt file.";
             }
          }
          else //No file selected
