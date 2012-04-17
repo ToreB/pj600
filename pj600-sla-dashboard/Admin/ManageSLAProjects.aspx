@@ -11,7 +11,7 @@
       InsertCommand="INSERT INTO [SLAProjects] ([ProjectNo]) VALUES (@ProjectNo)" 
       UpdateCommand="UPDATE [SLAProjects] SET [ProjectNo] = @ProjectNo WHERE [Id] = @Id"
       OnInserted="CheckForExceptions" OnUpdated="CheckForExceptions" 
-      OnSelected="CheckForExceptions" OnDeleted="CheckForExceptions" on>
+      OnSelected="CheckForExceptions" OnDeleted="CheckForExceptions">
       <DeleteParameters>
          <asp:Parameter Name="Id" Type="Int32" />
       </DeleteParameters>
