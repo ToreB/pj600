@@ -49,7 +49,13 @@ namespace no.nith.pj600.dashboard.Account
                AccountStatusLabel.Text = "You have exceeded the allowed amount of login attempts and your account has been locked.<br />" +
                                           "Please contact an Admin to have your account unlocked.";
 
-               log.Info("The user with the username '" + user.UserName + "' has been locked out due to exceeding the allowed amount of login attempts.");
+               DateTime now = DateTime.Now;
+               now = now.Subtract(new TimeSpan(0, 0, 2));
+
+               if (now < user.LastLockoutDate)
+               {
+                  log.Info("The user with the username '" + user.UserName + "' has been locked out due to exceeding the allowed amount of login attempts.");
+               }
             }
             else
             {

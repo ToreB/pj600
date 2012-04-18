@@ -25,7 +25,12 @@
             SortExpression="LastLoginDate" />
          <asp:BoundField DataField="LastLockoutDate" HeaderText="LastLockoutDate" 
             SortExpression="LastLockoutDate" />
-         <asp:ButtonField HeaderText="Options" ButtonType="Link" Text="Unlock user" CommandName="Unlock" visible="true" />
+         <asp:TemplateField>
+            <ItemTemplate>
+               <asp:LinkButton ID="UnlockButton" runat="server" Text="Unlock User" 
+                  CommandName="Unlock" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" visible="true" Enabled="false"/>
+            </ItemTemplate>
+         </asp:TemplateField>
       </Columns>
    </asp:GridView>
 </asp:Content>
