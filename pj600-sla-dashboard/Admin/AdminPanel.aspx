@@ -18,6 +18,11 @@
    <br />
    
    <h2>SLA Projects</h2>
-   <asp:HyperLink ID="SlaProjectsLink" runat="server" NavigateUrl="ManageSLAProjects.aspx">Manage SLA Projects</asp:HyperLink>
+   <a href="ManageSLAProjects.aspx">Manage SLA Projects</a>
+
+   <br />
+
+   <h2>Account Management</h2>
+   <a href="AccountsManagement.aspx">Manage Accounts</a>
 
 </asp:Content>

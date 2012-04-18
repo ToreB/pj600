@@ -341,7 +341,7 @@ div.accountInfo
      margin:0;
      color: White;
      font-weight: bold;
-     background-color: Orange; 
+     background-color: #FF6500; 
 }
 
 .dashboardTabContainer .ajax__tab_hover .ajax__tab_tab 
@@ -353,8 +353,8 @@ div.accountInfo
 
 .dashboardTabContainer .ajax__tab_active .ajax__tab_tab 
 {
-   background-color: #BF6600;
-   color: #cfdbe6;
+   background-color: Orange;
+   color: White;
    text-decoration: none;
 }
 
