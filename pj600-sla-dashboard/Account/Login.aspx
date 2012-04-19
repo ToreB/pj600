@@ -51,7 +51,7 @@
                                 ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
                        </p>
                        <p>
-                           <asp:CheckBox ID="RememberMe" runat="server"/>
+                           <asp:CheckBox ID="RememberMe" runat="server" />
                            <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline">Remember me</asp:Label>
                        </p>
                        <p>

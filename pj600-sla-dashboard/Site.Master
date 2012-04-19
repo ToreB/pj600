@@ -30,13 +30,29 @@
                 </asp:LoginView>
             </div>
             <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Dashboard"/>
-                        <asp:MenuItem NavigateUrl="~/MyAccount.aspx" Text="My Account"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" /> 
-                    </Items>
-                </asp:Menu>
+               <table border="0">
+                  <tr>
+                   <td style="width: 75%;">
+                      
+                      <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                          <Items>
+                              <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Dashboard"/>
+                              <asp:MenuItem NavigateUrl="~/MyAccount.aspx" Text="My Account"/>
+                              <asp:MenuItem NavigateUrl="~/About.aspx" Text="About" /> 
+                          </Items>
+                      </asp:Menu>
+
+                   </td>
+                   <td style="width: 25%; padding-left: 10px;">
+                     
+                     <asp:Panel ID="SearchPanel" runat="server" Visible="false">
+                        <asp:TextBox ID="SearchInput" runat="server" Text="Search..." /> 
+                        <asp:Button ID="SearchButton" runat="server" Text="Search" PostBackUrl="~/SearchResults.aspx" UseSubmitBehavior="false" />
+                     </asp:Panel>
+                     
+                    </td>
+                  </tr>
+                </table>
             </div>
         </div>
         <div class="main">

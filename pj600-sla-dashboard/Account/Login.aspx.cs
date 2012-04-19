@@ -49,6 +49,7 @@ namespace no.nith.pj600.dashboard.Account
                AccountStatusLabel.Text = "You have exceeded the allowed amount of login attempts and your account has been locked.<br />" +
                                           "Please contact an Admin to have your account unlocked.";
 
+               //Logs only just after the account gets locked
                DateTime now = DateTime.Now;
                now = now.Subtract(new TimeSpan(0, 0, 2));
 

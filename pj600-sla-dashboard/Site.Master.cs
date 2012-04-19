@@ -23,6 +23,16 @@ namespace no.nith.pj600.dashboard
             MenuItem item = new MenuItem("Admin Panel", null, null, ADMINPANEL_PATH);
             NavigationMenu.Items.AddAt(2, item);
          }
+
+         if (Membership.GetUser() != null)
+         {
+            SearchPanel.Visible = true;
+
+            //Register events that makes the SearchInput go blank when it gets focus,
+            //and re-add 'Search...' when the SearchInput loses focus without anything beeing written.
+            SearchInput.Attributes.Add("onfocus", "if(this.value == 'Search...') this.value = '';");
+            SearchInput.Attributes.Add("onblur", "if(this.value == '') this.value = 'Search...';");
+         }
       }
 
       protected void OnLoggedOut(object sender, EventArgs e)

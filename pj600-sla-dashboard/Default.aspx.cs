@@ -20,12 +20,13 @@ namespace no.nith.pj600.dashboard
 
       protected void Page_Load(object sender, EventArgs e)
       {
+
          //Loads the Overview tab when the page loads, if it's not a postback.
          if (!Page.IsPostBack)
          {
             ViewState["sortExpression"] = "";
             ViewState["sortOrder"] = "";
-            LoadOverviewTab("", "");
+            LoadOverviewTab("", "");  
          }
          else
          {
