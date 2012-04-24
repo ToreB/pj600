@@ -13,7 +13,7 @@
     <div class="page">
         <div class="header">
             <div class="title">              
-                <img alt="99X" src="<%= Page.ResolveUrl("~")%>Pictures/logo_small.jpg" class="logo" />              
+                <img alt="99X" src="<%= Page.ResolveUrl("~")%>Images/logo_small.jpg" class="logo" />              
                 <p class="headerText">
                   DASHBOARD
                 </p>
@@ -45,9 +45,10 @@
                    </td>
                    <td style="width: 25%; padding-left: 10px;">
                      
-                     <asp:Panel ID="SearchPanel" runat="server" Visible="false">
+                     <asp:Panel ID="SearchPanel" runat="server" Visible="false" EnableViewState="false">
                         <asp:TextBox ID="SearchInput" runat="server" Text="Search..." /> 
-                        <asp:Button ID="SearchButton" runat="server" Text="Search" PostBackUrl="~/SearchResults.aspx" UseSubmitBehavior="false" />
+                        <asp:Button ID="SearchButton" runat="server" Text="Search" 
+                                    PostBackUrl="~/SearchResults.aspx" UseSubmitBehavior="false" />
                      </asp:Panel>
                      
                     </td>

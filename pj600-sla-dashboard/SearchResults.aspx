@@ -5,4 +5,9 @@
 
    <h1>Search Results</h1>
 
+   <br />
+
+   <asp:GridView ID="Results" runat="server">
+   </asp:GridView>
+
 </asp:Content>

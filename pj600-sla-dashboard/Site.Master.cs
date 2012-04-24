@@ -14,6 +14,7 @@ namespace no.nith.pj600.dashboard
    {
       private static readonly ILog log = LogManager.GetLogger(typeof(SiteMaster));
       private const string ADMINPANEL_PATH = "~/Admin/AdminPanel.aspx";
+      private const string SEARCH_DEFAULT_TEXT = "Search...";
 
       protected void Page_Load(object sender, EventArgs e)
       {
@@ -24,23 +25,21 @@ namespace no.nith.pj600.dashboard
             NavigationMenu.Items.AddAt(2, item);
          }
 
+         //Shows the SearchPanel if a user is logged in
          if (Membership.GetUser() != null)
          {
             SearchPanel.Visible = true;
 
             //Register events that makes the SearchInput go blank when it gets focus,
             //and re-add 'Search...' when the SearchInput loses focus without anything beeing written.
-            SearchInput.Attributes.Add("onfocus", "if(this.value == 'Search...') this.value = '';");
-            SearchInput.Attributes.Add("onblur", "if(this.value == '') this.value = 'Search...';");
+            SearchInput.Attributes.Add("onfocus", string.Format("if(this.value == '{0}') this.value = '';", SEARCH_DEFAULT_TEXT));
+            SearchInput.Attributes.Add("onblur", string.Format("if(this.value == '') this.value = '{0}';", SEARCH_DEFAULT_TEXT));
          }
       }
 
       protected void OnLoggedOut(object sender, EventArgs e)
       {
          log.Info(Membership.GetUser().UserName + " has logged out.");
-
-         //LogoutPanel.Visible = true;
-         //Context.Response.Redirect("Default.aspx");
       }
    }
 }

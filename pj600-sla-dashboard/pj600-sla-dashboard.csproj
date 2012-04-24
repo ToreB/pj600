@@ -76,7 +76,7 @@
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Content Include="Default.aspx" />
-    <Content Include="Pictures\logo_small.jpg" />
+    <Content Include="Images\logo_small.jpg" />
     <Content Include="SearchResults.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
