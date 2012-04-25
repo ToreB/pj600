@@ -24,13 +24,12 @@ namespace no.nith.pj600.dashboard
          //Loads the Overview tab when the page loads, if it's not a postback.
          if (!Page.IsPostBack)
          {
-            ViewState["sortExpression"] = "";
-            ViewState["sortOrder"] = "";
+            ResetViewState();
             LoadOverviewTab("", "");  
          }
          else
          {
-            LoadActiveTab("", "");
+            LoadActiveTab(SortExpression, ViewState["sortOrder"].ToString());
          }
       }
 
@@ -46,6 +45,7 @@ namespace no.nith.pj600.dashboard
 
       protected void TabContainerTabChange(object sender, EventArgs e)
       {
+         ResetViewState();
          LoadActiveTab("", "");
       }
 
@@ -135,7 +135,12 @@ namespace no.nith.pj600.dashboard
       {
          SortExpression = e.SortExpression;
          LoadActiveTab(e.SortExpression, SortOrder);
+      }
 
+      private void ResetViewState()
+      {
+         ViewState["sortExpression"] = "";
+         ViewState["sortOrder"] = "";
       }
 
       public string SortOrder

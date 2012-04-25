@@ -77,6 +77,8 @@
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
     <Content Include="Default.aspx" />
+    <Content Include="Images\arrow_sort_asc.png" />
+    <Content Include="Images\arrow_sort_desc.png" />
     <Content Include="Images\logo_small.jpg" />
     <Content Include="SearchResults.aspx" />
     <Content Include="Test.aspx" />

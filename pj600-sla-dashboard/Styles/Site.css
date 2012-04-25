@@ -383,6 +383,25 @@ div.accountInfo
    
 }
 
+.dashboardTab th a 
+{
+   padding-right: 20px;
+}
+
+.sortAsc
+{
+   display: block; 
+   padding:0 4px 0 15px;
+   background: url("../Images/arrow_sort_asc.png") no-repeat;
+}
+
+.sortDesc
+{
+   display: block; 
+   padding:0 4px 0 15px;
+   background: url("../Images/arrow_sort_asc.png") no-repeat;
+}
+
 .logo 
 {
    width: 120px;

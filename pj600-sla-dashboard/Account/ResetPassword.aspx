@@ -9,8 +9,6 @@
 
             <h1>Reset Password</h1>
 
-            <br />
-
             <asp:ValidationSummary ID="EmailValidationSummary" runat="server" CssClass="errorMessage" 
                     ValidationGroup="EmailValidationGroup" />
             <p>
@@ -33,8 +31,6 @@
                <asp:Button ID="ResetButton" runat="server" Text="Reset password" OnClick="ResetButton_Click" ValidationGroup="EmailValidationGroup" />
             </p>
             </div>
-            
-
 
          </AnonymousTemplate>
       </asp:LoginView>
