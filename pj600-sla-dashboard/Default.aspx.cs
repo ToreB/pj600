@@ -18,6 +18,9 @@ namespace no.nith.pj600.dashboard
       private static readonly ILog log = LogManager.GetLogger(typeof(_Default));
       private DatabaseClassesDataContext dataContext;
 
+      private const string ASC = "asc";
+      private const string DESC = "desc";
+
       protected void Page_Load(object sender, EventArgs e)
       {
 
@@ -36,10 +39,6 @@ namespace no.nith.pj600.dashboard
       protected void OnPageIndexChanging(object sender, EventArgs e)
       {
          ((GridView)sender).PageIndex = ((GridViewPageEventArgs)e).NewPageIndex;
-      }
-
-      protected void OnPageIndexChanged(object sender, EventArgs e)
-      {
          ((GridView)sender).DataBind();
       }
 
@@ -105,20 +104,17 @@ namespace no.nith.pj600.dashboard
             dt.Rows.Add(newRow);
          }
 
-         //Gets the DefaultView from the DataTable and sorts it if the sort expression isn't empty
-         DataView dv = dt.DefaultView;
+         SLATable.DataSource = dt;
+         SLATable.DataBind();
+
          if (sortExpression != string.Empty)
          {
-            dv.Sort = sortExpression + " " + sortOrder;
+            Sort(SLATable, sortExpression, sortOrder);
          }
          else
          {
-            dv.Sort = "ProjectNo asc";
+            Sort(SLATable, "ProjectNo", ASC);
          }
-
-         //Sets and binds the GridViews data
-         SLATable.DataSource = dv;
-         SLATable.DataBind();
       }
 
       private void LoadAddlServicesTab(string sortExpression, string sortOrder)
@@ -143,17 +139,31 @@ namespace no.nith.pj600.dashboard
          ViewState["sortOrder"] = "";
       }
 
+      private void Sort(GridView gridView, string sortExpression, string sortOrder)
+      {
+         DataTable dt = gridView.DataSource as DataTable;
+
+         if (dt != null)
+         {
+            DataView dv = dt.DefaultView;
+            dv.Sort = sortExpression + " " + sortOrder;
+
+            gridView.DataSource = dv;
+            gridView.DataBind();
+         }
+      }
+
       public string SortOrder
       {
          get
          {
-            if (ViewState["sortOrder"].Equals("desc"))
+            if (ViewState["sortOrder"].Equals(DESC))
             {
-               ViewState["sortOrder"] = "asc";
+               ViewState["sortOrder"] = ASC;
             }
             else
             {
-               ViewState["sortOrder"] = "desc";
+               ViewState["sortOrder"] = DESC;
             }
 
             return ViewState["sortOrder"].ToString();
