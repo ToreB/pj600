@@ -67,6 +67,7 @@
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Admin\AccountsManagement.aspx" />
     <Content Include="Admin\ManageSLAProjects.aspx" />
+    <Content Include="Admin\TripletexFileUpload.aspx" />
     <Content Include="App_Data\ASPNETDB.MDF" />
     <Content Include="App_Data\aspnetdb_log.ldf">
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
@@ -129,6 +130,13 @@
     </Compile>
     <Compile Include="Admin\ManageSLAProjects.aspx.designer.cs">
       <DependentUpon>ManageSLAProjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TripletexFileUpload.aspx.cs">
+      <DependentUpon>TripletexFileUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TripletexFileUpload.aspx.designer.cs">
+      <DependentUpon>TripletexFileUpload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Code\DatabaseClasses.designer.cs">
       <AutoGen>True</AutoGen>

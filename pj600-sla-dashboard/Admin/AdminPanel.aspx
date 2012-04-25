@@ -6,14 +6,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
    <h1>Admin Panel</h1>
 
-   <h2>Upload export file from Tripletex</h2>
-   <asp:Panel ID="FileUploadPanel" runat="server" CssClass="borderWithPadding" >
-      <asp:Label ID="FileUploadLabel" runat="server" Text="Upload file: " AssociatedControlID="FileUploadPanel" /><asp:FileUpload ID="FileUpload" runat="server" />
-      <asp:Button ID="FileUploadButton" runat="server" Text="Upload" OnClick="FileUploadButton_Click"/>
-   </asp:Panel>
-   <p>
-      <asp:Label ID="FileUploadStatusLabel" runat="server" Text=""></asp:Label>
-   </p>
+   <h2>Tripletex</h2>
+   <a href="TripletexFileUpload.aspx">Upload export file from Tripletex</a>
 
    <br />
    

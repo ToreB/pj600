@@ -11,50 +11,5 @@ namespace no.nith.pj600.dashboard.Admin {
     
     
     public partial class AdminPanel {
-        
-        /// <summary>
-        /// FileUploadPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel FileUploadPanel;
-        
-        /// <summary>
-        /// FileUploadLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FileUploadLabel;
-        
-        /// <summary>
-        /// FileUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload;
-        
-        /// <summary>
-        /// FileUploadButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button FileUploadButton;
-        
-        /// <summary>
-        /// FileUploadStatusLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FileUploadStatusLabel;
     }
 }
