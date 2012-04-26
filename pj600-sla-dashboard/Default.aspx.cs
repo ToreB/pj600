@@ -21,18 +21,67 @@ namespace no.nith.pj600.dashboard
       private const string ASC = "asc";
       private const string DESC = "desc";
 
+      
+
       protected void Page_Load(object sender, EventArgs e)
       {
 
          //Loads the Overview tab when the page loads, if it's not a postback.
          if (!Page.IsPostBack)
          {
-            ResetViewState();
+            Reset();
             LoadOverviewTab("", "");  
          }
          else
          {
             LoadActiveTab(SortExpression, ViewState["sortOrder"].ToString());
+         }
+      }
+
+      protected void RowCreated(object sender, GridViewRowEventArgs e)
+      {
+         GridView gridView = (GridView)sender;
+
+         if (e.Row.RowType == DataControlRowType.Header)
+         {
+            foreach (TableCell cell in e.Row.Cells)
+            {
+               if (cell.HasControls())
+               {
+                  LinkButton button = cell.Controls[0] as LinkButton;
+
+                  if (button != null)
+                  {
+                     if (button.Text.Equals(mapSortExpressionToHeaderText()))
+                     {
+                        AddSortImage(cell);
+                     }  
+                  }
+               }
+            }
+         }
+      }
+
+      private void AddSortImage(TableCell cell)
+      {
+         Image sortImage = new Image();
+
+         if (SortExpression != "")
+         {
+            if (ViewState["sortOrder"].Equals(ASC))
+            {
+               sortImage.ImageUrl = "~/Images/arrow_sort_asc.png";
+               sortImage.AlternateText = "asc";
+            }
+            else
+            {
+               sortImage.ImageUrl = "~/Images/arrow_sort_desc.png";
+               sortImage.AlternateText = "desc";
+            }
+
+            //((TextBox)Page.Master.FindControl("SearchInput")).Text = index + "";
+            
+            cell.Controls.Add(sortImage);
          }
       }
 
@@ -44,7 +93,7 @@ namespace no.nith.pj600.dashboard
 
       protected void TabContainerTabChange(object sender, EventArgs e)
       {
-         ResetViewState();
+         Reset();
          LoadActiveTab("", "");
       }
 
@@ -103,7 +152,7 @@ namespace no.nith.pj600.dashboard
             newRow["ProjectName"] = row.ProjectName;
             dt.Rows.Add(newRow);
          }
-
+         
          SLATable.DataSource = dt;
          SLATable.DataBind();
 
@@ -127,13 +176,27 @@ namespace no.nith.pj600.dashboard
 
       }
 
-      protected void SLATable_OnSorting(object sender, GridViewSortEventArgs e)
+      protected void OnSorting(object sender, GridViewSortEventArgs e)
       {
          SortExpression = e.SortExpression;
-         LoadActiveTab(e.SortExpression, SortOrder);
+
+         LoadActiveTab(SortExpression, SortOrder);
+         //Sort((GridView)sender, SortExpression, SortOrder); 
       }
 
-      private void ResetViewState()
+      private int GetColumnIndex(GridView gridView, string SortExpression)
+      {
+         int i = 0;
+         foreach (DataControlField field in gridView.Columns)
+         {
+            if (field.SortExpression == SortExpression)
+               break;
+            i++;
+         }
+         return i;
+      }
+
+      private void Reset()
       {
          ViewState["sortExpression"] = "";
          ViewState["sortOrder"] = "";
@@ -151,6 +214,26 @@ namespace no.nith.pj600.dashboard
             gridView.DataSource = dv;
             gridView.DataBind();
          }
+      }
+
+      private String mapSortExpressionToHeaderText()
+      {
+         String retVal = null;
+
+         if (SortExpression == "ProjectNo")
+         {
+            retVal = "Project No.";
+         }
+         else if (SortExpression == "ProjectName")
+         {
+            retVal = "Project Name";
+         }
+         else if (SortExpression == "CustomerName") 
+         {
+            retVal = "Customer Name";
+         }
+
+         return retVal;
       }
 
       public string SortOrder

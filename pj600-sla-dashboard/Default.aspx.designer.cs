@@ -49,6 +49,15 @@ namespace no.nith.pj600.dashboard {
         protected global::AjaxControlToolkit.TabPanel SLATab;
         
         /// <summary>
+        /// SLATable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView SLATable;
+        
+        /// <summary>
         /// AddlServicesTab control.
         /// </summary>
         /// <remarks>

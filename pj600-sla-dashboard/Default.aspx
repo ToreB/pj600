@@ -44,13 +44,12 @@
             <div class="dashboardTab">
                <asp:GridView ID="SLATable" runat="server" AllowPaging="true" PageSize="10" 
                   PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
-                  AutoGenerateColumns="false" 
-                  AllowSorting="true" OnSorting="SLATable_OnSorting"
-
+                  AutoGenerateColumns="false" OnRowCreated="RowCreated"
+                  AllowSorting="true" OnSorting="OnSorting">
                   <Columns>
-                     <asp:BoundField DataField="ProjectNo" HeaderText="Project No." SortExpression="ProjectNo"/>                  
-                     <asp:BoundField DataField="ProjectName" HeaderText="Project Name" SortExpression="ProjectName"/>
-                     <asp:BoundField DataField="CustomerName" HeaderText="Customer Name" SortExpression="CustomerName"/>
+                     <asp:BoundField DataField="ProjectNo" HeaderText="Project No." SortExpression="ProjectNo"  />                  
+                     <asp:BoundField DataField="ProjectName" HeaderText="Project Name" SortExpression="ProjectName"  />
+                     <asp:BoundField DataField="CustomerName" HeaderText="Customer Name" SortExpression="CustomerName"  />
                   </Columns>
                </asp:GridView>
             </div>
@@ -58,9 +57,6 @@
          </ContentTemplate>
       </asp:TabPanel>
       <asp:TabPanel ID="AddlServicesTab" runat="server" HeaderText="Additional Services" ScrollBars="Auto">
-         <HeaderTemplate>
-            Additional Services
-         </HeaderTemplate>
          <ContentTemplate>
             
             <!-- Content AddServicesTab goes here -->

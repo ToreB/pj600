@@ -390,16 +390,16 @@ div.accountInfo
 
 .sortAsc
 {
-   display: block; 
-   padding:0 4px 0 15px;
-   background: url("../Images/arrow_sort_asc.png") no-repeat;
+   display: block;
+   padding: 0 4px 0 15px; 
+   background: url("../Images/arrow_sort_asc.png") right center no-repeat;
 }
 
 .sortDesc
 {
    display: block; 
-   padding:0 4px 0 15px;
-   background: url("../Images/arrow_sort_asc.png") no-repeat;
+   padding: 0 4px 0 15px; 
+   background: url("../Images/arrow_sort_desc.png") right center no-repeat;
 }
 
 .logo 
