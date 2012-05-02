@@ -417,3 +417,14 @@ div.accountInfo
    padding-left: 10px;
    float: left;
 }
+
+.floatLeft 
+{
+  float: left;
+  padding: 5px; 
+}
+
+.width600
+{
+   width: 600px;
+}

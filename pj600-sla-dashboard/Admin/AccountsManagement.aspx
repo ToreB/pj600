@@ -2,13 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-   
+   <h1>Account Management</h1>
+
+   <h2>Unlock locked accounts</h2>
    <asp:SqlDataSource ID="AccountsDataSource" runat="server" 
       ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
-      
-      
       SelectCommand="SELECT [UserName], [Email], [IsApproved], [IsLockedOut], [LastLoginDate], [LastLockoutDate] FROM [vw_aspnet_MembershipUsers] ORDER BY [UserName]">
-      </asp:SqlDataSource>
+    </asp:SqlDataSource>
 
    <asp:GridView ID="AccountsList" runat="server" AllowPaging="True" 
       AllowSorting="false" AutoGenerateColumns="False" 
@@ -33,4 +33,8 @@
          </asp:TemplateField>
       </Columns>
    </asp:GridView>
+
+   <h2>Create a new Account</h2>
+   <a href="../Account/Register.aspx">Create a new account</a>
+
 </asp:Content>
