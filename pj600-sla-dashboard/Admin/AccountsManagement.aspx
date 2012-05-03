@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
    <h1>Account Management</h1>
 
-   <h2>Unlock locked accounts</h2>
+   <h2>Accounts Overview</h2>
    <asp:SqlDataSource ID="AccountsDataSource" runat="server" 
       ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
       
@@ -31,6 +31,12 @@
             <ItemTemplate>
                <asp:LinkButton ID="UnlockButton" runat="server" Text="Unlock User" 
                   CommandName="Unlock" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" visible="true" Enabled="false"/>
+            </ItemTemplate>
+         </asp:TemplateField>
+         <asp:TemplateField>
+            <ItemTemplate>
+               <asp:LinkButton ID="DeleteButton" runat="server" Text="Delete User" 
+                  CommandName="DeleteUser" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Are you sure you want to delete this user?');"/>
             </ItemTemplate>
          </asp:TemplateField>
       </Columns>

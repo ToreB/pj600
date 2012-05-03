@@ -15,7 +15,7 @@ namespace no.nith.pj600.dashboard.Admin
       private static readonly ILog log = LogManager.GetLogger(typeof(AccountsManagement));
 
       private const int IS_LOCKED_OUT_INDEX = 4;
-      private const int UNLOCK_BUTTON_INDEX = 7;
+      private const int UNLOCK_BUTTON_INDEX = 8;
 
       protected void Page_Load(object sender, EventArgs e)
       {        
@@ -33,25 +33,33 @@ namespace no.nith.pj600.dashboard.Admin
 
       protected void RowCommand(object sender, GridViewCommandEventArgs e)
       {
+         //Finds the row that were activated
+         int rowIndex = Convert.ToInt32(e.CommandArgument);
+         GridViewRow row = AccountsList.Rows[rowIndex];
+         
+         //Gets the username of the active row's user
+         String username = row.Cells[0].Text;        
+
          if (e.CommandName.Equals("Unlock"))
          {
-            //Finds the row that were activated
-            int rowIndex = Convert.ToInt32(e.CommandArgument);
-            GridViewRow row = AccountsList.Rows[rowIndex];
-
             //Unlocks the user's account
-            String username = row.Cells[0].Text;
             MembershipUser user = Membership.GetUser(username);
             user.UnlockUser();
-            
-            //"Refreshes" the GridView
-            AccountsList.DataBind();
 
             log.Info("The user with username '" + username + "' has been unlocked.");
             
             //TODO: Sjekke om mailen blir sendt?
             MailSender.Send(user.Email, "Account Unlocked", "Your account at 99X Dashboard has been unlocked.");
+         } 
+         else if (e.CommandName.Equals("DeleteUser")) 
+         {
+            Membership.DeleteUser(username, true);
+
+            log.Info("The user with username '" + username + "' has been deleted.");
          }
+
+         //"Refreshes" the GridView by rebinding the data
+         AccountsList.DataBind();
       }
    }
 }

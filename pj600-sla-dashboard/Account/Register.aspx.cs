@@ -75,11 +75,18 @@ namespace no.nith.pj600.dashboard.Account
 
             if (assignedRoles.Count != 0)
             {
-               mailBody += "\nYou have been assigned the following roles:";
+               mailBody += "\nYou have been assigned the following role" + (assignedRoles.Count > 1 ? "s" : "") + ": ";
 
-               foreach (string role in assignedRoles)
+               for (int i = 0; i < assignedRoles.Count; i++)
                {
-                  mailBody += " " + role;
+                  if (i == 0)
+                  {
+                     mailBody += assignedRoles[i];
+                  }
+                  else
+                  {
+                     mailBody += ", " + assignedRoles[i];
+                  }
                }
 
                mailBody += ".";
