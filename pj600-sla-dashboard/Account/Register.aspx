@@ -15,7 +15,9 @@
          Create a New Account
       </h2>
       <p>
-         Use the form below to create a new account.
+         Use the form below to create a new account.<br /><br />
+         Password will be generated automatically and an e-mail with account info<br />
+         will be sent to the registered specified e-mail.
       </p>
       
       <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="errorMessage" 

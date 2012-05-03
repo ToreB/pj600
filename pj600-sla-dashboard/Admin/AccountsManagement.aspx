@@ -7,20 +7,22 @@
    <h2>Unlock locked accounts</h2>
    <asp:SqlDataSource ID="AccountsDataSource" runat="server" 
       ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
-      SelectCommand="SELECT [UserName], [Email], [IsApproved], [IsLockedOut], [LastLoginDate], [LastLockoutDate] FROM [vw_aspnet_MembershipUsers] ORDER BY [UserName]">
+      
+      SelectCommand="SELECT MembershipUsers.UserName, MembershipUsers.Email, Roles.RoleName AS Role, MembershipUsers.IsApproved, MembershipUsers.IsLockedOut, MemberShipUsers.CreateDate, MembershipUsers.LastLoginDate, MembershipUsers.LastLockoutDate FROM vw_aspnet_MembershipUsers AS MembershipUsers LEFT JOIN vw_aspnet_UsersInRoles AS UsersInRoles ON MembershipUsers.UserId = UsersInRoles.UserId LEFT JOIN vw_aspnet_Roles AS Roles ON UsersInRoles.RoleId = Roles.RoleId ORDER BY MembershipUsers.UserName">
     </asp:SqlDataSource>
 
-   <asp:GridView ID="AccountsList" runat="server" AllowPaging="True" 
-      AllowSorting="false" AutoGenerateColumns="False" 
-      DataSourceID="AccountsDataSource" OnRowCommand="RowCommand">
+   <asp:GridView ID="AccountsList" runat="server" AllowPaging="True" AutoGenerateColumns="False" 
+      DataSourceID="AccountsDataSource" OnRowCommand="RowCommand" ShowHeaderWhenEmpty="true">
       <Columns>
          <asp:BoundField DataField="UserName" HeaderText="UserName" 
             SortExpression="UserName" />
          <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+         <asp:BoundField DataField="Role" HeaderText="Role" SortExpression="Role" />
          <asp:CheckBoxField DataField="IsApproved" HeaderText="IsApproved" 
             SortExpression="IsApproved" />
          <asp:CheckBoxField DataField="IsLockedOut" HeaderText="IsLockedOut" 
             SortExpression="IsLockedOut" />
+         <asp:BoundField DataField="CreateDate" HeaderText="CreateDate" SortExpression="CreateDate" />
          <asp:BoundField DataField="LastLoginDate" HeaderText="LastLoginDate" 
             SortExpression="LastLoginDate" />
          <asp:BoundField DataField="LastLockoutDate" HeaderText="LastLockoutDate" 

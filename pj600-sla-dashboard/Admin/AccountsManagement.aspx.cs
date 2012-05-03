@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 using log4net;
+using no.nith.pj600.dashboard.Code;
 
 namespace no.nith.pj600.dashboard.Admin
 {
@@ -13,8 +14,8 @@ namespace no.nith.pj600.dashboard.Admin
    {
       private static readonly ILog log = LogManager.GetLogger(typeof(AccountsManagement));
 
-      private const int IS_LOCKED_OUT_INDEX = 3;
-      private const int UNLOCK_BUTTON_INDEX = 6;
+      private const int IS_LOCKED_OUT_INDEX = 4;
+      private const int UNLOCK_BUTTON_INDEX = 7;
 
       protected void Page_Load(object sender, EventArgs e)
       {        
@@ -47,6 +48,9 @@ namespace no.nith.pj600.dashboard.Admin
             AccountsList.DataBind();
 
             log.Info("The user with username '" + username + "' has been unlocked.");
+            
+            //TODO: Sjekke om mailen blir sendt?
+            MailSender.Send(user.Email, "Account Unlocked", "Your account at 99X Dashboard has been unlocked.");
          }
       }
    }

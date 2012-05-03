@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using no.nith.pj600.dashboard.Code;
 using log4net;
 using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace no.nith.pj600.dashboard.Account
 {
@@ -57,19 +58,34 @@ namespace no.nith.pj600.dashboard.Account
             MembershipUser user = Membership.CreateUser(username, password, email);
             log.Info("A new user with the username '" + username + "' has been created.");
 
+            ArrayList assignedRoles = new ArrayList();
             foreach (ListItem li in RolesList.Items)
             {
                if (li.Selected == true)
                {
                   string role = li.Text;
+                  assignedRoles.Add(role);
                   Roles.AddUsersToRole(new string[]{username}, role);
                   log.Info(string.Format("'{0}' has been assigned to the role '{1}'", username, role));
                }
             }
 
-            string body = string.Format("Welcome to 99X Dashboard!\n\n" + 
-                                         "Your login information is:\nUsername: {0}\nPassword: {1}", username, password);
-            bool success = MailSender.Send(email, "Welcome to 99X Dashboard", body);
+            string mailBody = string.Format("Welcome to 99X Dashboard!\n\n" + 
+                                         "Your login information is:\nUsername: {0}\nPassword: {1}\n", username, password);
+
+            if (assignedRoles.Count != 0)
+            {
+               mailBody += "\nYou have been assigned the following roles:";
+
+               foreach (string role in assignedRoles)
+               {
+                  mailBody += " " + role;
+               }
+
+               mailBody += ".";
+            }
+
+            bool success = MailSender.Send(email, "Welcome to 99X Dashboard", mailBody);
 
             if (success)
             {
