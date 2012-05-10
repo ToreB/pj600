@@ -81,7 +81,7 @@ namespace no.nith.pj600.dashboard.Code
                   DepName = columns[3],
                   EmployeeName = columns[4],
                   Date = DateTime.Parse(columns[5]),
-                  Hours = decimal.Parse(columns[6]),
+                  Hours = double.Parse(columns[6]),
                   Comment = columns[7]
                };
 

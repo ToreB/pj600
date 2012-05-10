@@ -26,18 +26,34 @@
                      OnClientActiveTabChanged="ActiveTabChanged"
                      OnActiveTabChanged="TabContainerTabChange"
                      >
-      <asp:TabPanel ID="OverviewTab" runat="server" HeaderText="Overview" ScrollBars="Auto">
+      <asp:TabPanel ID="OverviewTab" runat="server" HeaderText="Overview" ScrollBars="Auto" TabIndex="0">
          <ContentTemplate>       
             <!-- Content OverviewTab goes here -->
-            <h1>Overview</h1>
 
             <div class="dashboardTab">
-               
+                <asp:GridView ID="OverviewTable" runat="server" AllowPaging="true" PageSize="10" 
+                  PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
+                  AutoGenerateColumns="false" OnRowCreated="RowCreated"
+                  AllowSorting="true" OnSorting="OnSorting" HeaderStyle-Wrap="false">
+                  <Columns>
+                     <asp:BoundField DataField="ProjectNo" HeaderText="Project No." SortExpression="ProjectNo" />
+                     <asp:BoundField DataField="ProjectName" HeaderText="Project Name" SortExpression="ProjectName" />
+                     <asp:BoundField DataField="CustomerName" HeaderText="Customer Name" SortExpression="CustomerName" />
+                     <asp:BoundField DataField="ProjectManager" HeaderText="Project Manager" SortExpression="ProjectManager" />
+                     <asp:BoundField DataField="ProjectStartTime" HeaderText="Project Start Time" SortExpression="ProjectStartTime" />
+                     <asp:BoundField DataField="ProjectStopTime" HeaderText="Project Stop Time" SortExpression="ProjectStopTime" />
+                     <asp:BoundField DataField="ProjectHourEstimate" HeaderText="Project Hour Estimate" SortExpression="ProjectHourEstimate" DataFormatString="{0:N}" />
+                     <asp:BoundField DataField="ProjectCostEstimate" HeaderText="Project Cost Estimate" SortExpression="ProjectCostEstimate" DataFormatString="{0:N}" />
+                     <asp:BoundField DataField="HoursSpent" HeaderText="Hours Spent" SortExpression="HoursSpent" DataFormatString="{0:N}" />
+                     <asp:BoundField DataField="TotalSalesAmount" HeaderText="Total Sales Amount" SortExpression="TotalSalesAmount" DataFormatString="{0:N}" />
+                     <asp:BoundField DataField="BalanceAmount" HeaderText="Balance Amount" SortExpression="BalanceAmount" DataFormatString="{0:N}" />
+                  </Columns>
+               </asp:GridView>
             </div>
 
          </ContentTemplate>
       </asp:TabPanel>
-      <asp:TabPanel ID="SLATab" runat="server" HeaderText="SLA Agreements" ScrollBars="Auto">
+      <asp:TabPanel ID="SLATab" runat="server" HeaderText="SLA Agreements" ScrollBars="Auto" TabIndex="1">
          <ContentTemplate>
             
             <!-- Content SLATab goes here -->
@@ -45,29 +61,41 @@
                <asp:GridView ID="SLATable" runat="server" AllowPaging="true" PageSize="10" 
                   PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
                   AutoGenerateColumns="false" OnRowCreated="RowCreated"
-                  AllowSorting="true" OnSorting="OnSorting">
+                  AllowSorting="true" OnSorting="OnSorting" HeaderStyle-Wrap="false">
                   <Columns>
                      <asp:BoundField DataField="ProjectNo" HeaderText="Project No." SortExpression="ProjectNo"  />                  
                      <asp:BoundField DataField="ProjectName" HeaderText="Project Name" SortExpression="ProjectName"  />
                      <asp:BoundField DataField="CustomerName" HeaderText="Customer Name" SortExpression="CustomerName"  />
+                     <asp:BoundField DataField="ProjectManager" HeaderText="Project Manager" SortExpression="ProjectManager" />
                   </Columns>
                </asp:GridView>
             </div>
 
          </ContentTemplate>
       </asp:TabPanel>
-      <asp:TabPanel ID="AddlServicesTab" runat="server" HeaderText="Additional Services" ScrollBars="Auto">
+      <asp:TabPanel ID="AddlServicesTab" runat="server" HeaderText="Additional Services" ScrollBars="Auto" TabIndex="2">
          <ContentTemplate>
             
             <!-- Content AddServicesTab goes here -->
-            <h1>Additional Services</h1>
             <div class="dashboardTab">
-               
+               <asp:GridView ID="AddlServicesTable" runat="server" AllowPaging="true" PageSize="10" 
+                  PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
+                  AutoGenerateColumns="false" OnRowCreated="RowCreated"
+                  AllowSorting="true" OnSorting="OnSorting" HeaderStyle-Wrap="false">
+                  <Columns>
+                     <asp:BoundField DataField="ProjectNo" HeaderText="Project No." SortExpression="ProjectNo"  />                  
+                     <asp:BoundField DataField="ProjectName" HeaderText="Project Name" SortExpression="ProjectName"  />
+                     <asp:BoundField DataField="CustomerName" HeaderText="Customer Name" SortExpression="CustomerName"  />
+                     <asp:BoundField DataField="ArticleNo" HeaderText="Article No." SortExpression="ArticleNo" />
+                     <asp:BoundField DataField="ArticleName" HeaderText="Article Name" SortExpression="ArticleName"  />
+                     <asp:BoundField DataField="TotalSalesAmount" HeaderText="Total Sales Amount" SortExpression="TotalSalesAmount" DataFormatString="{0:N}" />
+                  </Columns>
+               </asp:GridView>
             </div>
 
          </ContentTemplate>
       </asp:TabPanel>
-      <asp:TabPanel ID="GraphsTab" runat="server" HeaderText="Graphs" ScrollBars="Auto">
+      <asp:TabPanel ID="GraphsTab" runat="server" HeaderText="Graphs" ScrollBars="Auto" TabIndex="3">
          <ContentTemplate>
             
             <!-- Content GraphsTab goes here -->

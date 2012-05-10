@@ -145,56 +145,6 @@
       <Column Name="CreditBlockAllowOfferAndNewOrders" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="[99x].CustomerSum" Member="CustomerSums">
-    <Type Name="CustomerSum">
-      <Column Name="Balance" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TotalOffer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TotalLoan" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TotalOrder" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TotalDiscountPeriod" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TotalDiscountYear" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TotalPurchaseValuePeriod" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TotalPurchaseValueYear" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TotalSalesAmountPeriod" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="TotalSalesAmountYear" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="CustomerNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LastMovementDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UtilityBits" Type="System.Data.Linq.Binary" DbType="Binary(6)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="LastUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LastUpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="[99x].DebLBalance" Member="DebLBalances">
-    <Type Name="DebLBalance">
-      <Column Name="CustomerNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Period" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BalanceType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="EmployeeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProductNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProjectNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DepNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UniqueNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="YearMonth" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExchangeAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="CurrencyNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VoucherTypeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UtilityBits" Type="System.Data.Linq.Binary" DbType="Binary(6)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="ExtraCostUnitIVNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExtraCostUnitIIINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExtraCostUnitIINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExtraCostUnitINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LastUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LastUpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CountryType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Quantity" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="[99x].Employee" Member="Employees">
     <Type Name="Employee">
       <Column Name="EmployeeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -258,53 +208,6 @@
       <Column Name="SuperiorNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="BizWebUser" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="BizWebPassword" Type="System.String" DbType="VarChar(1024)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="[99x].GLAccount" Member="GLAccounts">
-    <Type Name="GLAccount">
-      <Column Name="GLAccountNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="VATCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TaxClassNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CurrencyNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SingelCurrencyAccountYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="ReferenceAkelius" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="ColumnAkelius" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="InActiveYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LastUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LastUpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MergeToGLAccountNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="UtilityBits" Type="System.Data.Linq.Binary" DbType="Binary(6)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="VATReportCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="AccountGroupNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SRUCode2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SRUCode1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DepNoSpec" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="EmployeeNoSpec" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DebitCredit" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DisabledForVoucherEntry" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DepNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="EmployeeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AccountType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="QuantitySpec" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Quantity" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="QuantityUnit" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
-      <Column Name="TransactionInfoSpec" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TransactionInfo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="ProjectNoSpec" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProjectNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="InterimTransactionYesNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="InterimAccount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProductNoSpec" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExtraCostUnit1Spec" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExtraCostUnit2Spec" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExtraCostUnit3Spec" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExtraCostUnit4Spec" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ChangedFromVatReportCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="InterimYesNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AccountingRuleNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="[99x].GLAccountTransaction" Member="GLAccountTransactions">
@@ -403,6 +306,98 @@
       <Column Name="TimeIncludeExtCommentAsTextLineYesNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.SLAProjects" Member="SLAProjects">
+    <Type Name="SLAProject">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProjectNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="[99x].Balance" Member="Balances">
+    <Type Name="Balance">
+      <Column Name="DepNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Period" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BalanceType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EmployeeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UniqueNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TaxClassNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearMonth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExchangeAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CurrencyNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VoucherTypeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitIVNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitIIINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitIINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CountryType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="[99x].SalesFigures" Member="SalesFigures">
+    <Type Name="SalesFigure">
+      <Column Name="CommissionNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiscountGrpArtNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiscountGrpCustNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubGroupNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChainNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalVolume" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="EmployeeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalPurhasePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalDiscount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalSalesQuantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalSalesAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Period" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MainGroupNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerGrpNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DepNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticleNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WareHouseNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalFee" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountryNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UniqueNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AffectSalesYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SumExchangeDiscount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SumExchangeAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CurrencyNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalCommision" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DistrictNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UtilityBits" Type="System.Data.Linq.Binary" DbType="Binary(6)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ExtraCostUnitIVNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitIIINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitIINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalBonus" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AgentNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalEvironmentDuty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalSpecialDuty" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalMarketingSupport" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BuContactNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TotalOriginalValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IntermediateGroupNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EUFiguresNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PriceListNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CountryType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.TripletexImport" Member="TripletexImports">
     <Type Name="TripletexImport">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -412,14 +407,129 @@
       <Column Name="DepName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="EmployeeName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Hours" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Hours" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Comment" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.SLAProjects" Member="SLAProjects">
-    <Type Name="SLAProject">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ProjectNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+  <Table Name="[99x].Article" Member="Articles">
+    <Type Name="Article">
+      <Column Name="Volume" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ArticleNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="AltArtNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MainGroupNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitOnOrder" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UnitOnReminder" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UnitOnPurchase" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UnitInStock" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AltSupplierNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArtTypeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AutoPricePeriodOrderYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="CalcFactor" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CatalogRef" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ComplaintPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CostingMethods" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CountedUnit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CountedYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerRestrictionsYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DepNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DiscountGrpArtNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EANNo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="EmployeeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EnvironmentDutyProfileNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EUFiguresNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitIIINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitIINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraCostUnitIVNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraIntermediateGroupNo1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraIntermediateGroupNo2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraIntermediateGroupNo3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraMainGroupNo1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraMainGroupNo2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraMainGroupNo3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraSubGroupNo1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraSubGroupNo2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExtraSubGroupNo3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FullCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GenPurchaseProfileNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GrossPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GuaranteePeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InActiveYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="IntermediateGroupNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastMovementDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastUpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LoanPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LoanPricePeriodInDays" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MainStructureArtYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MainSupplierNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MarketingSupport" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MaxStock" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MergeToArticleNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MinStock" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MiscArticleYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="NotBreakageYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="NumberOfDeliveryDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumberOfFreightDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumberOfPackages" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OfferPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PackingWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PLUNo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PostingTemplateNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Price2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Price3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Price4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Price5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PriceCalcMethodsNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PriceCalculationNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PriceMarkUpGroup" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProductNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjectNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurchasePacking" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QuantityPerUnitPurchase" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QuantityPerUnitSale" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QuantityPerUnitTextPurchase" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="QuantityPerUnitTextSale" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RegistrationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SalaryDeductionTypeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SerialNoProfileNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpecialDutyProfileNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDateOfferPrice" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StockProfileNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StopDateOfferPrice" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StorageTypeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubGroupNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SuggestedRetailPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SupplArtName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SupplArtNo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="SuppliersSuggestedRetailPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SupplPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TypeOfGuaranteeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitOnLoan" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UnitTypeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UtilityBits" Type="System.Data.Linq.Binary" DbType="Binary(6)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WareHouseNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ShowOnWebYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Name2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StdUnitCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="WebshopArticleYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="WebshopLastAvailableInStock" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PaymentTypeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CountryOfOriginNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZUsrTekst" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="NonStockItemYesNo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="PicturePath" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="MemoFilePath" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="POSArticleInfo" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
 </Database>

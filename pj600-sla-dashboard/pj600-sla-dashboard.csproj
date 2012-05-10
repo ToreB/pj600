@@ -148,6 +148,8 @@
     <Compile Include="Code\Exceptions\TripletexImportException.cs" />
     <Compile Include="Code\FileHandler.cs" />
     <Compile Include="Code\MailSender.cs" />
+    <Compile Include="Code\OverviewTableStruct.cs" />
+    <Compile Include="Code\SlaTableStruct.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

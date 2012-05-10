@@ -40,6 +40,15 @@ namespace no.nith.pj600.dashboard {
         protected global::AjaxControlToolkit.TabPanel OverviewTab;
         
         /// <summary>
+        /// OverviewTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView OverviewTable;
+        
+        /// <summary>
         /// SLATab control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace no.nith.pj600.dashboard {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel AddlServicesTab;
+        
+        /// <summary>
+        /// AddlServicesTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView AddlServicesTable;
         
         /// <summary>
         /// GraphsTab control.
