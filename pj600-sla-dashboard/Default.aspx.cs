@@ -38,7 +38,6 @@ namespace no.nith.pj600.dashboard
 
       protected void Page_Load(object sender, EventArgs e)
       {
-
          //Loads the Overview tab when the page loads, if it's not a postback.
          if (!Page.IsPostBack)
          {
@@ -205,8 +204,8 @@ namespace no.nith.pj600.dashboard
          dt.Columns.Add(PROJECT_NAME);
          dt.Columns.Add(CUSTOMER_NAME);
          dt.Columns.Add(PROJECT_MANAGER);
-         dt.Columns.Add(PROJECT_START_TIME);
-         dt.Columns.Add(PROJECT_STOP_TIME);
+         dt.Columns.Add(PROJECT_START_TIME, Type.GetType("System.DateTime"));
+         dt.Columns.Add(PROJECT_STOP_TIME, Type.GetType("System.DateTime"));
          dt.Columns.Add(PROJECT_HOUR_ESTIMATE, Type.GetType("System.Double"));
          dt.Columns.Add(PROJECT_COST_ESTIMATE, Type.GetType("System.Double"));
          dt.Columns.Add(HOURS_SPENT, Type.GetType("System.Double"));
@@ -249,38 +248,78 @@ namespace no.nith.pj600.dashboard
       {
          dataContext = new DatabaseClassesDataContext();
 
-         var query = (from c in dataContext.Customers
-                      join p in dataContext.Projects on c.CustomerNo equals p.CustomerNo
-                      join slaProjects in dataContext.SLAProjects on p.ProjectNo equals slaProjects.ProjectNo
-                      join employee in dataContext.Employees on p.PMEmployeeNo equals employee.EmployeeNo
-                      orderby p.ProjectNo
-                      select new SlaTableStruct { 
-                         CustomerName = c.Name, 
-                         ProjectNo = (int) p.ProjectNo, 
-                         ProjectName = p.Name, 
-                         ProjectManager = employee.Name
+         var mainQuery = (from project in dataContext.Projects
+                      join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
+                      join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
+                      join employee in dataContext.Employees on project.PMEmployeeNo equals employee.EmployeeNo
+                      join balance in
+                         (
+                            from b in dataContext.Balances
+                            group b by b.ProjectNo into g
+                            select new { ProjectNo = g.Key, BalanceAmount = g.Sum(p => p.Amount) }
+                         ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
+                      from balance in balanceGroup.DefaultIfEmpty()
+                      orderby project.ProjectNo ascending
+                      select new {        
+                         ProjectNo = project.ProjectNo, 
+                         ProjectName = project.Name,
+                         CustomerName = customer.Name,
+                         ProjectManager = employee.Name,
+                         BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0
                       }).Distinct();
 
-         /*List<SlaTableStruct> result = query.ToList();
+         /*int currentYear = DateTime.Now.Year;
+         var balancePerMonth = from slaProject in dataContext.SLAProjects
+                               join balance in
+                                  (
+                                   from b in dataContext.Balances
+                                   where b.Year == currentYear
+                                   group b by new { b.ProjectNo, b.Period, b.Year } into g
+                                   select new { ProjectNo = g.Key.ProjectNo, Period = g.Key.Period, Year = g.Key.Year, BalancePerMonth = g.Sum(p => p.Amount) }
+                                  ).Union(
+                                 from  b in dataContext.Balances
+                                 where b.Year == (currentYear - 1) &&
+                                 !(from b2 in dataContext.Balances where b2.Year == currentYear select b2.Period).Contains(b.Period)
+                                 group b by new { b.ProjectNo, b.Period, b.Year } into g
+                                 select new { ProjectNo = g.Key.ProjectNo, Period = g.Key.Period, Year = g.Key.Year, BalancePerMonth = g.Sum(p => p.Amount) }
+                               ) on slaProject.ProjectNo equals balance.ProjectNo into balanceSlaProjectsJoin
+                               from selection in balanceSlaProjectsJoin.DefaultIfEmpty()
+                               orderby selection.ProjectNo ascending, selection.Year descending, selection.Period ascending
+                               select new
+                               {
+                                  Period = selection.Period,
+                                  Year = selection.Year,
+                                  BalancePerMonth = selection.BalancePerMonth
+                               };
 
-         string[] columns = { PROJECT_NO, PROJECT_NAME, CUSTOMER_NAME };        
-         string[,] data = new string[result.Count, columns.Length];
-
-         for (int row = 0; row < result.Count; row++)
-         {
-            SlaTableStruct item = result[row];
-            data[row, 0] = item.ProjectNo.ToString();
-            data[row, 1] = item.ProjectName;
-            data[row, 2] = item.CustomerName;
-         }*/
+         var balancePerMonthList = balancePerMonth.ToList();*/
 
          DataTable dt = new DataTable();
          dt.Columns.Add(PROJECT_NO, Type.GetType("System.Int32"));
          dt.Columns.Add(PROJECT_NAME);
          dt.Columns.Add(CUSTOMER_NAME);
          dt.Columns.Add(PROJECT_MANAGER);
+         dt.Columns.Add(BALANCE_AMOUNT, Type.GetType("System.Double"));
 
-         foreach (var row in query)
+         /*DateTime date = new DateTime(currentYear, 1, 1);
+         DateTime currentTime = DateTime.Now;
+         string[] headers = new String[12];
+         for (int i = 1; i <= 12; i++)
+         {
+            string header = date.ToString("MMM");
+            headers[i - 1] = header;
+            dt.Columns.Add(header);*/
+
+            /*BoundField column = new BoundField();
+            columnataField = header;
+            column.HeaderText = header;
+            column.SortExpression = header;
+            SLATable.Columns.Add(column);*/
+
+            /*date = date.AddMonths(1);
+         }*/
+
+         foreach (var row in mainQuery)
          {
             DataRow newRow = dt.NewRow();
 
@@ -288,6 +327,7 @@ namespace no.nith.pj600.dashboard
             newRow[PROJECT_NAME] = row.ProjectName;
             newRow[CUSTOMER_NAME] = row.CustomerName;
             newRow[PROJECT_MANAGER] = row.ProjectManager;
+            newRow[BALANCE_AMOUNT] = row.BalanceAmount;
 
             dt.Rows.Add(newRow);
          }

@@ -20,13 +20,18 @@
    <asp:ScriptManager ID="ScriptManager" runat="server" />
 
    <asp:TabContainer ID="TabContainer" runat="server" 
-                     ActiveTabIndex="0" ScrollBars="Auto" UseVerticalStripPlacement="true"
+                     ActiveTabIndex="1" ScrollBars="Auto" UseVerticalStripPlacement="true"
                      VerticalStripWidth="130px"
                      CssClass="dashboardTabContainer"
                      OnClientActiveTabChanged="ActiveTabChanged"
                      OnActiveTabChanged="TabContainerTabChange"
                      >
-      <asp:TabPanel ID="OverviewTab" runat="server" HeaderText="Overview" ScrollBars="Auto" TabIndex="0">
+      <asp:TabPanel ID="BugFix" runat="server" Visible="false" TabIndex="0">
+         <ContentTemplate>
+            <!-- Inserted this TabPanel to fix a bug where the first tab wouldn't behave properly -->
+         </ContentTemplate>
+      </asp:TabPanel>
+      <asp:TabPanel ID="OverviewTab" runat="server" HeaderText="Overview" ScrollBars="Auto" TabIndex="1">
          <ContentTemplate>       
             <!-- Content OverviewTab goes here -->
 
@@ -53,7 +58,7 @@
 
          </ContentTemplate>
       </asp:TabPanel>
-      <asp:TabPanel ID="SLATab" runat="server" HeaderText="SLA Agreements" ScrollBars="Auto" TabIndex="1">
+      <asp:TabPanel ID="SLATab" runat="server" HeaderText="SLA Agreements" ScrollBars="Auto" TabIndex="2">
          <ContentTemplate>
             
             <!-- Content SLATab goes here -->
@@ -67,13 +72,14 @@
                      <asp:BoundField DataField="ProjectName" HeaderText="Project Name" SortExpression="ProjectName"  />
                      <asp:BoundField DataField="CustomerName" HeaderText="Customer Name" SortExpression="CustomerName"  />
                      <asp:BoundField DataField="ProjectManager" HeaderText="Project Manager" SortExpression="ProjectManager" />
+                     <asp:BoundField DataField="BalanceAmount" HeaderText="Balance Amount" SortExpression="BalanceAmount" DataFormatString="{0:N}" />
                   </Columns>
                </asp:GridView>
             </div>
 
          </ContentTemplate>
       </asp:TabPanel>
-      <asp:TabPanel ID="AddlServicesTab" runat="server" HeaderText="Additional Services" ScrollBars="Auto" TabIndex="2">
+      <asp:TabPanel ID="AddlServicesTab" runat="server" HeaderText="Additional Services" ScrollBars="Auto" TabIndex="3">
          <ContentTemplate>
             
             <!-- Content AddServicesTab goes here -->
@@ -95,7 +101,7 @@
 
          </ContentTemplate>
       </asp:TabPanel>
-      <asp:TabPanel ID="GraphsTab" runat="server" HeaderText="Graphs" ScrollBars="Auto" TabIndex="3">
+      <asp:TabPanel ID="GraphsTab" runat="server" HeaderText="Graphs" ScrollBars="Auto" TabIndex="4">
          <ContentTemplate>
             
             <!-- Content GraphsTab goes here -->

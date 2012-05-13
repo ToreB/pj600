@@ -31,6 +31,15 @@ namespace no.nith.pj600.dashboard {
         protected global::AjaxControlToolkit.TabContainer TabContainer;
         
         /// <summary>
+        /// BugFix control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel BugFix;
+        
+        /// <summary>
         /// OverviewTab control.
         /// </summary>
         /// <remarks>
