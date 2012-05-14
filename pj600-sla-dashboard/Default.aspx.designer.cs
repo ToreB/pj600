@@ -49,6 +49,15 @@ namespace no.nith.pj600.dashboard {
         protected global::AjaxControlToolkit.TabPanel OverviewTab;
         
         /// <summary>
+        /// OverviewFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList OverviewFilter;
+        
+        /// <summary>
         /// OverviewTable control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace no.nith.pj600.dashboard {
         protected global::AjaxControlToolkit.TabPanel SLATab;
         
         /// <summary>
+        /// SLaTableFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList SLaTableFilter;
+        
+        /// <summary>
         /// SLATable control.
         /// </summary>
         /// <remarks>
@@ -83,6 +101,15 @@ namespace no.nith.pj600.dashboard {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.TabPanel AddlServicesTab;
+        
+        /// <summary>
+        /// AddlServicesFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList AddlServicesFilter;
         
         /// <summary>
         /// AddlServicesTable control.

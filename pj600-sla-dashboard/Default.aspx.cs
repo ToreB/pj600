@@ -509,6 +509,30 @@ namespace no.nith.pj600.dashboard
          createGraph(DataSelect.SelectedValue, type, Convert.ToInt32(CountSelect.SelectedValue), DirectionSelect.SelectedValue);
       }
 
+      protected void Filter_SelectedChanged(object sender, EventArgs e)
+      {
+         CheckBoxList list = (CheckBoxList) sender;
+         GridView gv;
+         if(list.ID.Equals(OverviewFilter.ID)) {
+            gv = OverviewTable;
+         }
+         else if (list.ID.Equals(SLaTableFilter.ID))
+         {
+            gv = SLATable;
+         }
+         else //AddlServicesTable
+         {
+            gv = AddlServicesTable;
+         }
+
+         for (int i = 0; i < gv.Columns.Count; i++)
+         {
+            gv.Columns[i].Visible = list.Items[i].Selected;
+         }
+
+         LoadActiveTab(SortExpression, ViewState["sortOrder"].ToString());
+      }
+
       protected void OnSorting(object sender, GridViewSortEventArgs e)
       {
          SortExpression = e.SortExpression;

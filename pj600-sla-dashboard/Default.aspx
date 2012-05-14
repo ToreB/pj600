@@ -39,6 +39,22 @@
             <!-- Content OverviewTab goes here -->
 
             <div class="dashboardTab">
+
+            <div class="Filter">
+                  <asp:CheckBoxList ID="OverviewFilter" runat="server" AutoPostBack="true" 
+                     RepeatDirection="Horizontal" RepeatLayout="flow" Width="1000" OnSelectedIndexChanged="Filter_SelectedChanged">
+                     <asp:ListItem Text="Project No." Value="ProjectNo" Selected="true"/>
+                     <asp:ListItem Text="Project Name" Value="ProjectName" Selected="true"/>
+                     <asp:ListItem Text="Customer Name" Value="CustomerName" Selected="true"/>
+                     <asp:ListItem Text="Project Manager" Value="ProjectManager" Selected="true"/>
+                     <asp:ListItem Text="Project Start Time" Value="ProjectStartTime" Selected="true"/>
+                     <asp:ListItem Text="Project Stop Time" Value="ProjectStopTime" Selected="true"/>
+                     <asp:ListItem Text="Hours Spent" Value="HoursSpent" Selected="true"/>
+                     <asp:ListItem Text="Total Sales Amount" Value="TotalSalesAmount" Selected="true"/>
+                     <asp:ListItem Text="Balance Amount" Value="BalanceAmount" Selected="true"/>
+                  </asp:CheckBoxList>
+               </div>
+
                 <asp:GridView ID="OverviewTable" runat="server" AllowPaging="true" PageSize="10" 
                   PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
                   AutoGenerateColumns="false" OnRowCreated="RowCreated"
@@ -64,6 +80,19 @@
             
             <!-- Content SLATab goes here -->
             <div class="dashboardTab">
+
+             <div class="Filter">
+                <asp:CheckBoxList ID="SLaTableFilter" runat="server" AutoPostBack="true" 
+                     RepeatDirection="Horizontal" RepeatLayout="flow" Width="600" 
+                     OnSelectedIndexChanged="Filter_SelectedChanged">
+                     <asp:ListItem Text="Project No." Value="ProjectNo" Selected="true"/>
+                     <asp:ListItem Text="Project Name" Value="ProjectName" Selected="true"/>
+                     <asp:ListItem Text="Customer Name" Value="CustomerName" Selected="true"/>
+                     <asp:ListItem Text="Project Manager" Value="ProjectManager" Selected="true"/>
+                     <asp:ListItem Text="Balance Amount" Value="BalanceAmount" Selected="true"/>
+                  </asp:CheckBoxList>
+               </div>
+
                <asp:GridView ID="SLATable" runat="server" AllowPaging="true" PageSize="10" 
                   PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
                   AutoGenerateColumns="false" OnRowCreated="RowCreated"
@@ -85,6 +114,19 @@
             
             <!-- Content AddServicesTab goes here -->
             <div class="dashboardTab">
+
+            <div class="Filter">
+               <asp:CheckBoxList ID="AddlServicesFilter" runat="server" AutoPostBack="true" 
+                     RepeatDirection="Horizontal" RepeatLayout="flow" Width="600" OnSelectedIndexChanged="Filter_SelectedChanged">
+                     <asp:ListItem Text="Project No." Value="ProjectNo" Selected="true"/>
+                     <asp:ListItem Text="Project Name" Value="ProjectName" Selected="true"/>
+                     <asp:ListItem Text="Customer Name" Value="CustomerName" Selected="true"/>
+                     <asp:ListItem Text="Article No." Value="ArticleNo" Selected="true"/>
+                     <asp:ListItem Text="Article Name." Value="ArticleName" Selected="true"/>
+                     <asp:ListItem Text="Total Sales Amount" Value="TotalSalesAmount" Selected="true"/>
+                  </asp:CheckBoxList>
+               </div>
+
                <asp:GridView ID="AddlServicesTable" runat="server" AllowPaging="true" PageSize="10" 
                   PagerSettings-Mode="NumericFirstLast" OnPageIndexChanging="OnPageIndexChanging"
                   AutoGenerateColumns="false" OnRowCreated="RowCreated"
