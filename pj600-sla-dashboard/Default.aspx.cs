@@ -10,6 +10,7 @@ using System.Data;
 
 using log4net;
 using no.nith.pj600.dashboard.Code;
+using System.Web.UI.DataVisualization.Charting;
 
 namespace no.nith.pj600.dashboard
 {
@@ -17,6 +18,7 @@ namespace no.nith.pj600.dashboard
    {
       private static readonly ILog log = LogManager.GetLogger(typeof(_Default));
       private DatabaseClassesDataContext dataContext;
+      private double hourPrice;
 
       private const string ASC = "asc";
       private const string DESC = "desc";
@@ -128,7 +130,7 @@ namespace no.nith.pj600.dashboard
          }
          else
          {
-            LoadGraphsTab(sortExpression, sortOrder);
+            LoadGraphsTab();
          }
       }
 
@@ -136,7 +138,7 @@ namespace no.nith.pj600.dashboard
       {
          dataContext = new DatabaseClassesDataContext();
 
-         double hourPrice = 500;
+         hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
 
          var query = (from project in dataContext.Projects
                       join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
@@ -163,42 +165,21 @@ namespace no.nith.pj600.dashboard
                             select new { ProjectNo = g.Key, BalanceAmount = g.Sum(p => p.Amount) }
                          ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
                       from balance in balanceGroup.DefaultIfEmpty()
-                      select new OverviewTableStruct
+                      select new 
                       {
-                         ProjectNo = (int)project.ProjectNo,
+                         ProjectNo = project.ProjectNo,
                          ProjectName = project.Name,
                          CustomerName = customer.Name,
                          ProjectManager = employee.Name,
-                         ProjectStartTime = (DateTime)project.StartTime,
-                         ProjectStopTime = (DateTime)project.StopTime,
-                         ProjectHourEstimate = (double)project.HourEstimate,
-                         ProjectCostEstimate = (double)project.CostEstimate,
+                         ProjectStartTime = project.StartTime,
+                         ProjectStopTime = project.StopTime,
+                         //ProjectHourEstimate = project.HourEstimate,
+                         //ProjectCostEstimate = project.CostEstimate,
                          HoursSpent = hoursSpent.HoursSpent != null ? hoursSpent.HoursSpent * hourPrice : 0.0,
                          TotalSalesAmount = salesFigures.TotalSalesAmount != null ? salesFigures.TotalSalesAmount : 0.0,
                          BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0.0
                       }).Distinct();
 
-         /*List<OverviewTableStruct> result = query.ToList();
-
-         string[] columns = {PROJECT_NO, PROJECT_NAME, CUSTOMER_NAME, PROJECT_MANAGER, PROJECT_START_TIME, PROJECT_STOP_TIME,
-                             PROJECT_HOUR_ESTIMATE, PROJECT_COST_ESTIMATE, HOURS_SPENT, TOTAL_SALES_AMOUNT, BALANCE_AMOUNT};         
-         string[,] data = new string[result.Count, columns.Length];
-        
-         for (int row = 0; row < result.Count; row++)
-         {
-            OverviewTableStruct item = result[row];
-            data[row, 0] = item.ProjectNo.ToString();
-            data[row, 1] = item.ProjectName;
-            data[row, 2] = item.CustomerName;
-            data[row, 3] = item.ProjectManager;
-            data[row, 4] = item.ProjectStartTime.ToString();
-            data[row, 5] = item.ProjectStopTime.ToString();
-            data[row, 6] = item.ProjectHourEstimate.ToString();
-            data[row, 7] = item.ProjectCostEstimate.ToString();
-            data[row, 8] = item.HoursSpent.ToString();
-            data[row, 9] = item.TotalSalesAmount.ToString();
-            data[row, 10] = item.BalanceAmount.ToString();
-         }*/
          DataTable dt = new DataTable();
          dt.Columns.Add(PROJECT_NO, Type.GetType("System.Int32"));
          dt.Columns.Add(PROJECT_NAME);
@@ -206,8 +187,8 @@ namespace no.nith.pj600.dashboard
          dt.Columns.Add(PROJECT_MANAGER);
          dt.Columns.Add(PROJECT_START_TIME, Type.GetType("System.DateTime"));
          dt.Columns.Add(PROJECT_STOP_TIME, Type.GetType("System.DateTime"));
-         dt.Columns.Add(PROJECT_HOUR_ESTIMATE, Type.GetType("System.Double"));
-         dt.Columns.Add(PROJECT_COST_ESTIMATE, Type.GetType("System.Double"));
+         //dt.Columns.Add(PROJECT_HOUR_ESTIMATE, Type.GetType("System.Double"));
+         //dt.Columns.Add(PROJECT_COST_ESTIMATE, Type.GetType("System.Double"));
          dt.Columns.Add(HOURS_SPENT, Type.GetType("System.Double"));
          dt.Columns.Add(TOTAL_SALES_AMOUNT, Type.GetType("System.Double"));
          dt.Columns.Add(BALANCE_AMOUNT, Type.GetType("System.Double"));
@@ -222,8 +203,8 @@ namespace no.nith.pj600.dashboard
             newRow[PROJECT_MANAGER] = row.ProjectManager;
             newRow[PROJECT_START_TIME] = row.ProjectStartTime;
             newRow[PROJECT_STOP_TIME] = row.ProjectStopTime;
-            newRow[PROJECT_HOUR_ESTIMATE] = row.ProjectHourEstimate;
-            newRow[PROJECT_COST_ESTIMATE] = row.ProjectCostEstimate;
+            //newRow[PROJECT_HOUR_ESTIMATE] = row.ProjectHourEstimate;
+            //newRow[PROJECT_COST_ESTIMATE] = row.ProjectCostEstimate;
             newRow[HOURS_SPENT] = row.HoursSpent;
             newRow[TOTAL_SALES_AMOUNT] = row.TotalSalesAmount;
             newRow[BALANCE_AMOUNT] = row.BalanceAmount;
@@ -415,9 +396,117 @@ namespace no.nith.pj600.dashboard
          }
       }
 
-      private void LoadGraphsTab(string sortExpression, string sortOrder)
+      private void LoadGraphsTab()
       {
+         string[] columns = {BALANCE_AMOUNT, HOURS_SPENT, TOTAL_SALES_AMOUNT };
+         DataSelect.DataSource = columns;
+         DataSelect.DataBind();
 
+         SeriesChartType[] types = { SeriesChartType.Column, SeriesChartType.Pie };
+         TypeSelect.DataSource = types;
+         TypeSelect.DataBind();
+
+         int[] counts = { 5, 10, 15, 20 };
+         CountSelect.DataSource = counts;
+         CountSelect.DataBind();
+
+         createGraph(BALANCE_AMOUNT, SeriesChartType.Column, 5, DESC);
+      }
+
+      private void createGraph(string dataSelection, SeriesChartType chartType, int count, string direction)
+      {
+         dataContext = new DatabaseClassesDataContext();
+         hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
+         var query = (from project in dataContext.Projects
+                      join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
+                      join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
+                      join tripletexImport in
+                         (
+                            from ti in dataContext.TripletexImports
+                            group ti by ti.ProjectNo into g
+                            select new { ProjectNo = g.Key, HoursSpent = g.Sum(p => p.Hours) }
+                            ) on project.ProjectNo equals tripletexImport.ProjectNo into tripletexImportGroup
+                      from hoursSpent in tripletexImportGroup.DefaultIfEmpty()
+                      join salesFigures in
+                         (
+                            from sf in dataContext.SalesFigures
+                            group sf by sf.ProjectNo into g
+                            select new { ProjectNo = g.Key, TotalSalesAmount = g.Sum(p => p.TotalSalesAmount) }
+                         ) on project.ProjectNo equals salesFigures.ProjectNo into salesFiguresGroup
+                      from salesFigures in salesFiguresGroup.DefaultIfEmpty()
+                      join balance in
+                         (
+                            from b in dataContext.Balances
+                            group b by b.ProjectNo into g
+                            select new { ProjectNo = g.Key, BalanceAmount = g.Sum(p => p.Amount) }
+                         ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
+                      from balance in balanceGroup.DefaultIfEmpty()
+                      select new
+                      {
+                         ProjectNo = project.ProjectNo,
+                         ProjectName = project.Name,
+                         CustomerName = customer.Name,
+                         HoursSpent = hoursSpent.HoursSpent != null ? hoursSpent.HoursSpent * hourPrice : 0.0,
+                         TotalSalesAmount = salesFigures.TotalSalesAmount != null ? salesFigures.TotalSalesAmount : 0.0,
+                         BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0.0
+                      }).Distinct();
+
+         if(dataSelection.Equals(BALANCE_AMOUNT)) {
+            if (direction.Equals(DESC))
+            {
+               Graph.DataSource = query.OrderByDescending(p => p.BalanceAmount).Take(count);
+            }
+            else
+            {
+               Graph.DataSource = query.OrderBy(p => p.BalanceAmount).Take(count);
+            }
+         }
+         else if (dataSelection.Equals(HOURS_SPENT))
+         {
+            if (direction.Equals(DESC))
+            {
+               Graph.DataSource = query.OrderByDescending(p => p.HoursSpent).Take(count);
+            }
+            else
+            {
+               Graph.DataSource = query.OrderBy(p => p.HoursSpent).Take(count);
+            }
+         }
+         else if (dataSelection.Equals(TOTAL_SALES_AMOUNT))
+         {
+            if (direction.Equals(DESC))
+            {
+               Graph.DataSource = query.OrderByDescending(p => p.TotalSalesAmount).Take(count);
+            }
+            else
+            {
+               Graph.DataSource = query.OrderBy(p => p.TotalSalesAmount).Take(count);
+            }
+         }
+
+         Series series = new Series("Series1");
+         series.ChartArea = "ChartArea1";
+         series.ChartType = chartType;
+         series.XValueMember = "ProjectName";
+         series.YValueMembers = dataSelection;
+         series["PointWidth"] = "0.5";
+         Graph.Series.Add(series);
+
+         Graph.DataBind();
+      }
+
+      protected void GraphTab_SelectionChange(object sender, EventArgs e)
+      {
+         Graph.Series.Clear();
+
+         SeriesChartType type;
+         if(TypeSelect.SelectedValue.Equals(SeriesChartType.Column.ToString())) {
+            type = SeriesChartType.Column;
+         } else {
+            type = SeriesChartType.Pie;
+         } 
+
+         createGraph(DataSelect.SelectedValue, type, Convert.ToInt32(CountSelect.SelectedValue), DirectionSelect.SelectedValue);
       }
 
       protected void OnSorting(object sender, GridViewSortEventArgs e)

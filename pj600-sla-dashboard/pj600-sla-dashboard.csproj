@@ -50,6 +50,7 @@
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -235,6 +236,7 @@
   <ItemGroup>
     <Folder Include="Code\Libs\" />
     <Folder Include="LogFiles\" />
+    <Folder Include="TempImageFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

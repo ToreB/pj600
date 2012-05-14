@@ -428,3 +428,14 @@ div.accountInfo
 {
    width: 600px;
 }
+
+.graphSelection 
+{
+   width: 100px;
+   padding: 10px;
+}
+
+.graphTabSelectionPadding 
+{
+   padding-left: 50px;  
+}

@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="no.nith.pj600.dashboard._Default" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+   Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -47,8 +50,6 @@
                      <asp:BoundField DataField="ProjectManager" HeaderText="Project Manager" SortExpression="ProjectManager" />
                      <asp:BoundField DataField="ProjectStartTime" HeaderText="Project Start Time" SortExpression="ProjectStartTime" />
                      <asp:BoundField DataField="ProjectStopTime" HeaderText="Project Stop Time" SortExpression="ProjectStopTime" />
-                     <asp:BoundField DataField="ProjectHourEstimate" HeaderText="Project Hour Estimate" SortExpression="ProjectHourEstimate" DataFormatString="{0:N}" />
-                     <asp:BoundField DataField="ProjectCostEstimate" HeaderText="Project Cost Estimate" SortExpression="ProjectCostEstimate" DataFormatString="{0:N}" />
                      <asp:BoundField DataField="HoursSpent" HeaderText="Hours Spent" SortExpression="HoursSpent" DataFormatString="{0:N}" />
                      <asp:BoundField DataField="TotalSalesAmount" HeaderText="Total Sales Amount" SortExpression="TotalSalesAmount" DataFormatString="{0:N}" />
                      <asp:BoundField DataField="BalanceAmount" HeaderText="Balance Amount" SortExpression="BalanceAmount" DataFormatString="{0:N}" />
@@ -105,9 +106,59 @@
          <ContentTemplate>
             
             <!-- Content GraphsTab goes here -->
-            <h1>Graphs</h1>
             <div class="dashboardTab">
-               
+               <div class="clear graphSelection">
+
+                  <table>
+                     <tr>
+                        <th>Data</th>
+                        <th>Graph Type</th>
+                        <th>Project count</th>
+                        <th>Direction</th>
+                     </tr>
+                     <tr>
+                        <td class="graphTabSelectionPadding">
+                           <asp:DropDownList ID="DataSelect" runat="server" AutoPostBack="true" 
+                              OnSelectedIndexChanged="GraphTab_SelectionChange">
+                           </asp:DropDownList>
+                        </td>
+                        <td class="graphTabSelectionPadding">
+                           <asp:DropDownList ID="TypeSelect" runat="server" AutoPostBack="true" 
+                              OnSelectedIndexChanged="GraphTab_SelectionChange">
+                           </asp:DropDownList>
+                        </td>
+                        <td class="graphTabSelectionPadding">
+                           <asp:DropDownList ID="CountSelect" runat="server" AutoPostBack="true" 
+                              OnSelectedIndexChanged="GraphTab_SelectionChange">
+                           </asp:DropDownList>
+                        </td>
+                        <td class="graphTabSelectionPadding">
+                           <asp:DropDownList ID="DirectionSelect" runat="server" AutoPostBack="true" 
+                              OnSelectedIndexChanged="GraphTab_SelectionChange">
+                              <asp:ListItem Selected="True" Text="Descending" Value="desc"></asp:ListItem>
+                              <asp:ListItem Text="Ascending" Value="asc"></asp:ListItem>
+                           </asp:DropDownList>
+                        </td>
+                     </tr>
+                  </table>
+
+               </div>
+               <div>
+                  
+                  <asp:Chart ID="Graph" runat="server" Width="600" Height="400">
+                     <Series>
+                        
+                     </Series>
+                     <ChartAreas>
+                        <asp:ChartArea Name="ChartArea1">
+                           <AxisX Interval="1">
+                              
+                           </AxisX>
+                        </asp:ChartArea>
+                     </ChartAreas>
+                  </asp:Chart>
+
+               </div>
             </div>
 
          </ContentTemplate>

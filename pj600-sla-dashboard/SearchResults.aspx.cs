@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using no.nith.pj600.dashboard.Code;
 using System.Data;
 using System.Data.Linq.SqlClient;
+using System.Configuration;
 
 namespace no.nith.pj600.dashboard
 {
@@ -40,18 +41,48 @@ namespace no.nith.pj600.dashboard
       {
          dataContext = new DatabaseClassesDataContext();
 
+         double hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
+
          var query = (from project in dataContext.Projects
+                      join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
                       join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
-                      join slaProject in dataContext.SLAProjects on project.ProjectNo equals slaProject.ProjectNo
-                      join employee in dataContext.Employees on project.PMEmployeeNo equals employee.EmployeeNo 
+                      join employee in dataContext.Employees on project.PMEmployeeNo equals employee.EmployeeNo
+                      join tripletexImport in
+                         (
+                            from ti in dataContext.TripletexImports
+                            group ti by ti.ProjectNo into g
+                            select new { ProjectNo = g.Key, HoursSpent = g.Sum(p => p.Hours) }
+                            ) on project.ProjectNo equals tripletexImport.ProjectNo into tripletexImportGroup
+                      from hoursSpent in tripletexImportGroup.DefaultIfEmpty()
+                      join salesFigures in
+                         (
+                            from sf in dataContext.SalesFigures
+                            group sf by sf.ProjectNo into g
+                            select new { ProjectNo = g.Key, TotalSalesAmount = g.Sum(p => p.TotalSalesAmount) }
+                         ) on project.ProjectNo equals salesFigures.ProjectNo into salesFiguresGroup
+                      from salesFigures in salesFiguresGroup.DefaultIfEmpty()
+                      join balance in
+                         (
+                            from b in dataContext.Balances
+                            group b by b.ProjectNo into g
+                            select new { ProjectNo = g.Key, BalanceAmount = g.Sum(p => p.Amount) }
+                         ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
+                      from balance in balanceGroup.DefaultIfEmpty() 
                       where SqlMethods.Like(project.ProjectNo.ToString(), string.Format("%{0}%", input)) ||
                       SqlMethods.Like(project.Name.ToLower(), string.Format("%{0}%", input.ToLower())) ||
                       SqlMethods.Like(employee.Name.ToLower(), string.Format("%{0}%", input.ToLower()))
-                      select new { 
-                         ProjectNo = project.ProjectNo, 
-                         ProjectName = project.Name, 
+                      select new {
+                         ProjectNo = project.ProjectNo,
+                         ProjectName = project.Name,
                          CustomerName = customer.Name,
-                         ProjectManager = employee.Name
+                         ProjectManager = employee.Name,
+                         ProjectStartTime = project.StartTime,
+                         ProjectStopTime = project.StopTime,
+                         //ProjectHourEstimate = project.HourEstimate,
+                         //ProjectCostEstimate = project.CostEstimate,
+                         HoursSpent = hoursSpent.HoursSpent != null ? hoursSpent.HoursSpent * hourPrice : 0.0,
+                         TotalSalesAmount = salesFigures.TotalSalesAmount != null ? salesFigures.TotalSalesAmount : 0.0,
+                         BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0.0
                       }).Distinct();
 
          Results.DataSource = query;
