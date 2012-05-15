@@ -23,7 +23,7 @@ namespace no.nith.pj600.dashboard.Admin
          {
             CheckBox checkbox = (CheckBox)row.Cells[IS_LOCKED_OUT_INDEX].Controls[0];
 
-            //Enables the unlock button if the checkbox is checked
+            //Enables the unlock button if the checkbox is checked (user is locked out)
             if (checkbox.Checked)
             {   
                ((LinkButton)row.Cells[UNLOCK_BUTTON_INDEX].FindControl("UnlockButton")).Enabled = true;
@@ -31,6 +31,11 @@ namespace no.nith.pj600.dashboard.Admin
          }     
       }
 
+      /*
+       * Method that's called when a RowCommand event is raised from the GridView Server Control,
+       * when a button inside the GridView is clicked.
+       * Handles the unlocking and deleting of a user.
+       */
       protected void RowCommand(object sender, GridViewCommandEventArgs e)
       {
          //Finds the row that were activated
@@ -48,7 +53,6 @@ namespace no.nith.pj600.dashboard.Admin
 
             log.Info("The user with username '" + username + "' has been unlocked.");
             
-            //TODO: Sjekke om mailen blir sendt?
             MailSender.Send(user.Email, "Account Unlocked", "Your account at 99X Dashboard has been unlocked.");
          } 
          else if (e.CommandName.Equals("DeleteUser")) 

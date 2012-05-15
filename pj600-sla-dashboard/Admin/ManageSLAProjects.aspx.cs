@@ -14,6 +14,10 @@ namespace no.nith.pj600.dashboard.Admin
 
       }
 
+      /*
+       * Method that checks for exceptions, and handles them, when the SqlDataSource's Inserted, Updated, Selected and Deleted
+       * events are raised.
+       */
       protected void CheckForExceptions(object sender, SqlDataSourceStatusEventArgs e)
       {
          //Check if there's an exception

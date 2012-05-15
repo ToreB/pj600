@@ -24,19 +24,19 @@ namespace no.nith.pj600.dashboard
       private const string DESC = "desc";
 
       //DataTable columns
-      protected const string PROJECT_NO = "ProjectNo";
-      protected const string PROJECT_NAME = "ProjectName";
-      protected const string CUSTOMER_NAME = "CustomerName";
-      protected const string PROJECT_MANAGER = "ProjectManager";
-      protected const string PROJECT_START_TIME = "ProjectStartTime";
-      protected const string PROJECT_STOP_TIME = "ProjectStopTime";
-      protected const string PROJECT_HOUR_ESTIMATE = "ProjectHourEstimate";
-      protected const string PROJECT_COST_ESTIMATE = "ProjectCostEstimate";
-      protected const string HOURS_SPENT = "HoursSpent";
-      protected const string TOTAL_SALES_AMOUNT = "TotalSalesAmount";
-      protected const string BALANCE_AMOUNT = "BalanceAmount";
-      protected const string ARTICLE_NAME = "ArticleName";
-      protected const string ARTICLE_NO = "ArticleNo";
+      private const string PROJECT_NO = "ProjectNo";
+      private const string PROJECT_NAME = "ProjectName";
+      private const string CUSTOMER_NAME = "CustomerName";
+      private const string PROJECT_MANAGER = "ProjectManager";
+      private const string PROJECT_START_TIME = "ProjectStartTime";
+      private const string PROJECT_STOP_TIME = "ProjectStopTime";
+      private const string PROJECT_HOUR_ESTIMATE = "ProjectHourEstimate";
+      private const string PROJECT_COST_ESTIMATE = "ProjectCostEstimate";
+      private const string HOURS_SPENT = "HoursSpent";
+      private const string TOTAL_SALES_AMOUNT = "TotalSalesAmount";
+      private const string BALANCE_AMOUNT = "BalanceAmount";
+      private const string ARTICLE_NAME = "ArticleName";
+      private const string ARTICLE_NO = "ArticleNo";
 
       protected void Page_Load(object sender, EventArgs e)
       {
@@ -52,10 +52,16 @@ namespace no.nith.pj600.dashboard
          }
       }
 
+      /*
+       * Method that's called when the RowCreated event is raised in the GridView Server Control,
+       * when a row is created.
+       * Adds a sorting image to the row that the GridView is beeing sorted on.
+       */
       protected void RowCreated(object sender, GridViewRowEventArgs e)
       {
          GridView gridView = (GridView)sender;
 
+         //If the row is a header
          if (e.Row.RowType == DataControlRowType.Header)
          {
             foreach (TableCell cell in e.Row.Cells)
@@ -66,6 +72,7 @@ namespace no.nith.pj600.dashboard
 
                   if (button != null)
                   {
+                     //Checks if the LinkButton's text is equal the SortExpression
                      if (button.Text.Equals(MapSortExpressionToHeaderText()))
                      {
                         AddSortImage(cell);
@@ -76,6 +83,11 @@ namespace no.nith.pj600.dashboard
          }
       }
 
+      /**
+       * <summary>
+       * Adds a sorting image to a cell, if the GridView is beeing sorted.
+       * </summary>
+       */
       private void AddSortImage(TableCell cell)
       {
          Image sortImage = new Image();
@@ -92,28 +104,38 @@ namespace no.nith.pj600.dashboard
                sortImage.ImageUrl = "~/Images/arrow_sort_desc.png";
                sortImage.AlternateText = "desc";
             }
-
-            //((TextBox)Page.Master.FindControl("SearchInput")).Text = SortExpression + " " + ViewState["sortOrder"];
             
             cell.Controls.Add(sortImage);
          }
       }
 
+      /*
+       * Method that's called when the PageIndexChanging event is called from a GridView Server Control,
+       * when one of the pager buttons is clicked.
+       * Changes the PageIndex to the new page and reloads the active tab.
+       */
       protected void OnPageIndexChanging(object sender, EventArgs e)
       {
          ((GridView)sender).PageIndex = ((GridViewPageEventArgs)e).NewPageIndex;
-         //((GridView)sender).DataBind();
          LoadActiveTab(SortExpression, ViewState["sortOrder"].ToString());
-         //((TextBox)Page.Master.FindControl("SearchInput")).Text = SortExpression + " " + ViewState["sortOrder"];
       }
 
+      /*
+       * Method that's called when the TabChanged event is raised from the TabContainer Server Control,
+       * when a tab is changed after a postback.
+       * Resets the ViewState and loads the new tab.
+       */
       protected void TabContainerTabChange(object sender, EventArgs e)
       {
          Reset();
          LoadActiveTab("", "");
-         //((TextBox)Page.Master.FindControl("SearchInput")).Text = "TabChange";
       }
 
+      /**
+       * <summary>
+       * Loads the active TabPanel in the TabContainer, with the specified sorting expression and sorting order.
+       * </summary>
+       */
       private void LoadActiveTab(string sortExpression, string sortOrder)
       {
          if (TabContainer.ActiveTab.ID.Equals("OverviewTab"))
@@ -134,12 +156,20 @@ namespace no.nith.pj600.dashboard
          }
       }
 
+      /**
+       * <summary>
+       * Loads the OverviewTab, with the specified sorting expression and sorting order.
+       * </summary>
+       */
       private void LoadOverviewTab(string sortExpression, string sortOrder)
       {
          dataContext = new DatabaseClassesDataContext();
 
+         //Gets the HourPrice configured in the Web.Config's AppSettings section
          hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
 
+         //Query that gets the project number, project name, customer name, project manager, project start time,
+         //project stop time, hours spent, sum of total sales amount and the sum of the balance for each SLA project.
          var query = (from project in dataContext.Projects
                       join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
                       join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
@@ -173,13 +203,12 @@ namespace no.nith.pj600.dashboard
                          ProjectManager = employee.Name,
                          ProjectStartTime = project.StartTime,
                          ProjectStopTime = project.StopTime,
-                         //ProjectHourEstimate = project.HourEstimate,
-                         //ProjectCostEstimate = project.CostEstimate,
                          HoursSpent = hoursSpent.HoursSpent != null ? hoursSpent.HoursSpent * hourPrice : 0.0,
                          TotalSalesAmount = salesFigures.TotalSalesAmount != null ? salesFigures.TotalSalesAmount : 0.0,
                          BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0.0
                       }).Distinct();
 
+         //Creates a DataTable to fill with the results from the query.
          DataTable dt = new DataTable();
          dt.Columns.Add(PROJECT_NO, Type.GetType("System.Int32"));
          dt.Columns.Add(PROJECT_NAME);
@@ -187,12 +216,11 @@ namespace no.nith.pj600.dashboard
          dt.Columns.Add(PROJECT_MANAGER);
          dt.Columns.Add(PROJECT_START_TIME, Type.GetType("System.DateTime"));
          dt.Columns.Add(PROJECT_STOP_TIME, Type.GetType("System.DateTime"));
-         //dt.Columns.Add(PROJECT_HOUR_ESTIMATE, Type.GetType("System.Double"));
-         //dt.Columns.Add(PROJECT_COST_ESTIMATE, Type.GetType("System.Double"));
          dt.Columns.Add(HOURS_SPENT, Type.GetType("System.Double"));
          dt.Columns.Add(TOTAL_SALES_AMOUNT, Type.GetType("System.Double"));
          dt.Columns.Add(BALANCE_AMOUNT, Type.GetType("System.Double"));
 
+         //Fills the DataTable with data
          foreach (var row in query)
          {
             DataRow newRow = dt.NewRow();
@@ -203,8 +231,6 @@ namespace no.nith.pj600.dashboard
             newRow[PROJECT_MANAGER] = row.ProjectManager;
             newRow[PROJECT_START_TIME] = row.ProjectStartTime;
             newRow[PROJECT_STOP_TIME] = row.ProjectStopTime;
-            //newRow[PROJECT_HOUR_ESTIMATE] = row.ProjectHourEstimate;
-            //newRow[PROJECT_COST_ESTIMATE] = row.ProjectCostEstimate;
             newRow[HOURS_SPENT] = row.HoursSpent;
             newRow[TOTAL_SALES_AMOUNT] = row.TotalSalesAmount;
             newRow[BALANCE_AMOUNT] = row.BalanceAmount;
@@ -212,9 +238,11 @@ namespace no.nith.pj600.dashboard
             dt.Rows.Add(newRow);
          }
 
+         //Binds the data to the GridView
          OverviewTable.DataSource = dt;
          OverviewTable.DataBind();
 
+         //Sorts the GridView
          if (sortExpression != string.Empty)
          {
             Sort(OverviewTable, sortExpression, sortOrder);
@@ -225,10 +253,17 @@ namespace no.nith.pj600.dashboard
          }
       }
 
+      /**
+       * <summary>
+       * Loads the SLATab, with the specified sorting expression and sorting order.
+       * </summary>
+       */
       private void LoadSLATab(string sortExpression, string sortOrder)
       {
          dataContext = new DatabaseClassesDataContext();
 
+         //Query that gets the project number, project name, customer name, project manager
+         //and the sum of the balance for each SLA project.
          var mainQuery = (from project in dataContext.Projects
                       join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
                       join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
@@ -249,32 +284,7 @@ namespace no.nith.pj600.dashboard
                          BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0
                       }).Distinct();
 
-         /*int currentYear = DateTime.Now.Year;
-         var balancePerMonth = from slaProject in dataContext.SLAProjects
-                               join balance in
-                                  (
-                                   from b in dataContext.Balances
-                                   where b.Year == currentYear
-                                   group b by new { b.ProjectNo, b.Period, b.Year } into g
-                                   select new { ProjectNo = g.Key.ProjectNo, Period = g.Key.Period, Year = g.Key.Year, BalancePerMonth = g.Sum(p => p.Amount) }
-                                  ).Union(
-                                 from  b in dataContext.Balances
-                                 where b.Year == (currentYear - 1) &&
-                                 !(from b2 in dataContext.Balances where b2.Year == currentYear select b2.Period).Contains(b.Period)
-                                 group b by new { b.ProjectNo, b.Period, b.Year } into g
-                                 select new { ProjectNo = g.Key.ProjectNo, Period = g.Key.Period, Year = g.Key.Year, BalancePerMonth = g.Sum(p => p.Amount) }
-                               ) on slaProject.ProjectNo equals balance.ProjectNo into balanceSlaProjectsJoin
-                               from selection in balanceSlaProjectsJoin.DefaultIfEmpty()
-                               orderby selection.ProjectNo ascending, selection.Year descending, selection.Period ascending
-                               select new
-                               {
-                                  Period = selection.Period,
-                                  Year = selection.Year,
-                                  BalancePerMonth = selection.BalancePerMonth
-                               };
-
-         var balancePerMonthList = balancePerMonth.ToList();*/
-
+         //Creates a DataTable to fill with the results from the query.
          DataTable dt = new DataTable();
          dt.Columns.Add(PROJECT_NO, Type.GetType("System.Int32"));
          dt.Columns.Add(PROJECT_NAME);
@@ -282,24 +292,7 @@ namespace no.nith.pj600.dashboard
          dt.Columns.Add(PROJECT_MANAGER);
          dt.Columns.Add(BALANCE_AMOUNT, Type.GetType("System.Double"));
 
-         /*DateTime date = new DateTime(currentYear, 1, 1);
-         DateTime currentTime = DateTime.Now;
-         string[] headers = new String[12];
-         for (int i = 1; i <= 12; i++)
-         {
-            string header = date.ToString("MMM");
-            headers[i - 1] = header;
-            dt.Columns.Add(header);*/
-
-            /*BoundField column = new BoundField();
-            columnataField = header;
-            column.HeaderText = header;
-            column.SortExpression = header;
-            SLATable.Columns.Add(column);*/
-
-            /*date = date.AddMonths(1);
-         }*/
-
+         //Fills the DataTable with data
          foreach (var row in mainQuery)
          {
             DataRow newRow = dt.NewRow();
@@ -313,9 +306,11 @@ namespace no.nith.pj600.dashboard
             dt.Rows.Add(newRow);
          }
 
+         //Binds the data to the GridView
          SLATable.DataSource = dt;
          SLATable.DataBind();
 
+         //Sorts the GridView
          if (sortExpression != string.Empty)
          {
             Sort(SLATable, sortExpression, sortOrder);
@@ -326,10 +321,17 @@ namespace no.nith.pj600.dashboard
          }
       }
 
+      /**
+       * <summary>
+       * Loads the AddlServicesTab, with the specified sorting expression and sorting order.
+       * </summary>
+       */
       private void LoadAddlServicesTab(string sortExpression, string sortOrder)
       {
          dataContext = new DatabaseClassesDataContext();
 
+         //Query that gets the project number, project name, customer name and the sum of total sales amount for a sla project,
+         //and also gets the article numbers and article names of the articles sold to the customer.
          var query = (from project in dataContext.Projects
                       join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
                       join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
@@ -361,6 +363,7 @@ namespace no.nith.pj600.dashboard
                         TotalSalesAmount = salesFigures.TotalSalesAmount
                       }).Distinct();
 
+         //Creates a DataTable to fill with the results from the query.
          DataTable dt = new DataTable();
          dt.Columns.Add(PROJECT_NO, Type.GetType("System.Int32"));
          dt.Columns.Add(PROJECT_NAME);
@@ -369,6 +372,7 @@ namespace no.nith.pj600.dashboard
          dt.Columns.Add(ARTICLE_NAME);
          dt.Columns.Add(TOTAL_SALES_AMOUNT, Type.GetType("System.Double"));
 
+         //Fills the DataTable with data.
          foreach (var row in query)
          {
             DataRow newRow = dt.NewRow();
@@ -383,9 +387,11 @@ namespace no.nith.pj600.dashboard
             dt.Rows.Add(newRow);
          }
 
+         //Binds the data to the GridView
          AddlServicesTable.DataSource = dt;
          AddlServicesTable.DataBind();
 
+         //Sorts the GridView
          if (sortExpression != string.Empty)
          {
             Sort(AddlServicesTable, sortExpression, sortOrder);
@@ -396,94 +402,141 @@ namespace no.nith.pj600.dashboard
          }
       }
 
+      /**
+       * <summary>
+       * Loads the GraphsTab.
+       * </summary>
+       */
       private void LoadGraphsTab()
       {
+         //Fills the DataSelect DropDownList with data
          string[] columns = {BALANCE_AMOUNT, HOURS_SPENT, TOTAL_SALES_AMOUNT };
          DataSelect.DataSource = columns;
          DataSelect.DataBind();
 
+         //Fills the TypeSelect DropDownList with data
          SeriesChartType[] types = { SeriesChartType.Column, SeriesChartType.Pie };
          TypeSelect.DataSource = types;
          TypeSelect.DataBind();
 
+         //Fills the CountSelect DropDownList with data
          int[] counts = { 5, 10, 15, 20 };
          CountSelect.DataSource = counts;
          CountSelect.DataBind();
 
-         createGraph(BALANCE_AMOUNT, SeriesChartType.Column, 5, DESC);
+         //Creates the initial graph
+         CreateGraph(BALANCE_AMOUNT, SeriesChartType.Column, 5, DESC);
       }
 
-      private void createGraph(string dataSelection, SeriesChartType chartType, int count, string direction)
+      /**
+       * <summary>
+       * Method that creates a graph with the specified data from the dataSelection parameter, as the type specified 
+       * by the chartType parameter, with the specified number of projects from the count paramater and in the direction
+       * specified by the direction parameter.
+       * </summary>
+       */
+      private void CreateGraph(string dataSelection, SeriesChartType chartType, int count, string direction)
       {
          dataContext = new DatabaseClassesDataContext();
+
+         //Gets the HourPrice configured in the Web.Config's AppSettings section
          hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
-         var query = (from project in dataContext.Projects
-                      join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
-                      join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
-                      join tripletexImport in
-                         (
-                            from ti in dataContext.TripletexImports
-                            group ti by ti.ProjectNo into g
-                            select new { ProjectNo = g.Key, HoursSpent = g.Sum(p => p.Hours) }
-                            ) on project.ProjectNo equals tripletexImport.ProjectNo into tripletexImportGroup
-                      from hoursSpent in tripletexImportGroup.DefaultIfEmpty()
-                      join salesFigures in
-                         (
-                            from sf in dataContext.SalesFigures
-                            group sf by sf.ProjectNo into g
-                            select new { ProjectNo = g.Key, TotalSalesAmount = g.Sum(p => p.TotalSalesAmount) }
-                         ) on project.ProjectNo equals salesFigures.ProjectNo into salesFiguresGroup
-                      from salesFigures in salesFiguresGroup.DefaultIfEmpty()
-                      join balance in
-                         (
-                            from b in dataContext.Balances
-                            group b by b.ProjectNo into g
-                            select new { ProjectNo = g.Key, BalanceAmount = g.Sum(p => p.Amount) }
-                         ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
-                      from balance in balanceGroup.DefaultIfEmpty()
-                      select new
-                      {
-                         ProjectNo = project.ProjectNo,
-                         ProjectName = project.Name,
-                         CustomerName = customer.Name,
-                         HoursSpent = hoursSpent.HoursSpent != null ? hoursSpent.HoursSpent * hourPrice : 0.0,
-                         TotalSalesAmount = salesFigures.TotalSalesAmount != null ? salesFigures.TotalSalesAmount : 0.0,
-                         BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0.0
-                      }).Distinct();
+
+         //Query that gets the Project name, customer name and the sum of the balance for each SLA project
+         var balanceAmountQuery = (from project in dataContext.Projects
+                                   join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
+                                   join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
+                                   join balance in
+                                      (
+                                         from b in dataContext.Balances
+                                         group b by b.ProjectNo into g
+                                         select new { ProjectNo = g.Key, BalanceAmount = g.Sum(p => p.Amount) }
+                                      ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
+                                   from balance in balanceGroup.DefaultIfEmpty()
+                                   select new
+                                   {
+                                      ProjectName = project.Name,
+                                      CustomerName = customer.Name,
+                                      BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0.0
+                                   }).Distinct();
+
+         //Query that gets the project name, customer name and the product of the sum of the hours spent
+         //multiplied with the hour price
+         var hoursSpentQuery = (from project in dataContext.Projects
+                                join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
+                                join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
+                                join tripletexImport in
+                                   (
+                                      from ti in dataContext.TripletexImports
+                                      group ti by ti.ProjectNo into g
+                                      select new { ProjectNo = g.Key, HoursSpent = g.Sum(p => p.Hours) }
+                                      ) on project.ProjectNo equals tripletexImport.ProjectNo into tripletexImportGroup
+                                from hoursSpent in tripletexImportGroup.DefaultIfEmpty()
+                                select new
+                                {
+                                   ProjectName = project.Name,
+                                   CustomerName = customer.Name,
+                                   HoursSpent = hoursSpent.HoursSpent != null ? hoursSpent.HoursSpent * hourPrice : 0.0,
+                                }).Distinct();
+
+         //Query that gets the project name, customer name and the sum of the total sales amount for a SLA project.
+         var totalSalesAmountQuery = (from project in dataContext.Projects
+                                      join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
+                                      join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
+                                      join salesFigures in
+                                         (
+                                            from sf in dataContext.SalesFigures
+                                            group sf by sf.ProjectNo into g
+                                            select new { ProjectNo = g.Key, TotalSalesAmount = g.Sum(p => p.TotalSalesAmount) }
+                                         ) on project.ProjectNo equals salesFigures.ProjectNo into salesFiguresGroup
+                                      from salesFigures in salesFiguresGroup.DefaultIfEmpty()
+                                      select new
+                                      {
+                                         ProjectName = project.Name,
+                                         CustomerName = customer.Name,
+                                         TotalSalesAmount = salesFigures.TotalSalesAmount != null ? salesFigures.TotalSalesAmount : 0.0
+                                      }).Distinct();
 
          if(dataSelection.Equals(BALANCE_AMOUNT)) {
             if (direction.Equals(DESC))
             {
-               Graph.DataSource = query.OrderByDescending(p => p.BalanceAmount).Take(count);
+               //Takes the <count> projects from the result in descending order, ordered by BalanceAmount 
+               Graph.DataSource = balanceAmountQuery.OrderByDescending(p => p.BalanceAmount).Take(count);
             }
             else
             {
-               Graph.DataSource = query.OrderBy(p => p.BalanceAmount).Take(count);
+               //Takes the <count> projects from the result in ascending order, ordered by BalanceAmount 
+               Graph.DataSource = balanceAmountQuery.OrderBy(p => p.BalanceAmount).Take(count);
             }
          }
          else if (dataSelection.Equals(HOURS_SPENT))
          {
             if (direction.Equals(DESC))
             {
-               Graph.DataSource = query.OrderByDescending(p => p.HoursSpent).Take(count);
+               //Takes the <count> projects from the result in descending order, ordered by Hours spent 
+               Graph.DataSource = hoursSpentQuery.OrderByDescending(p => p.HoursSpent).Take(count);
             }
             else
             {
-               Graph.DataSource = query.OrderBy(p => p.HoursSpent).Take(count);
+               //Takes the <count> projects from the result in ascending order, ordered by Hours spent 
+               Graph.DataSource = hoursSpentQuery.OrderBy(p => p.HoursSpent).Take(count);
             }
          }
          else if (dataSelection.Equals(TOTAL_SALES_AMOUNT))
          {
             if (direction.Equals(DESC))
             {
-               Graph.DataSource = query.OrderByDescending(p => p.TotalSalesAmount).Take(count);
+               //Takes the <count> projects from the result in descending order, ordered by Total Sales Amount 
+               Graph.DataSource = totalSalesAmountQuery.OrderByDescending(p => p.TotalSalesAmount).Take(count);
             }
             else
             {
-               Graph.DataSource = query.OrderBy(p => p.TotalSalesAmount).Take(count);
+               //Takes the <count> projects from the result in ascending order, ordered by Total Sales Amount
+               Graph.DataSource = totalSalesAmountQuery.OrderBy(p => p.TotalSalesAmount).Take(count);
             }
          }
 
+         //Creates the graph
          Series series = new Series("Series1");
          series.ChartArea = "ChartArea1";
          series.ChartType = chartType;
@@ -492,9 +545,15 @@ namespace no.nith.pj600.dashboard
          series["PointWidth"] = "0.5";
          Graph.Series.Add(series);
 
+         //Binds the data to the Graph
          Graph.DataBind();
       }
 
+      /* 
+       * Method that's called when the SelectedIndexChanged event is raised from the DropDownList Server Controls in the
+       * GraphTab, when the selected item in a DropDownList is changed.
+       * Creates a new graph based on the new selected values.
+       */
       protected void GraphTab_SelectionChange(object sender, EventArgs e)
       {
          Graph.Series.Clear();
@@ -506,13 +565,21 @@ namespace no.nith.pj600.dashboard
             type = SeriesChartType.Pie;
          } 
 
-         createGraph(DataSelect.SelectedValue, type, Convert.ToInt32(CountSelect.SelectedValue), DirectionSelect.SelectedValue);
+         CreateGraph(DataSelect.SelectedValue, type, Convert.ToInt32(CountSelect.SelectedValue), DirectionSelect.SelectedValue);
       }
 
+      /*
+       * Method that's called when the SelectedIndexChanged event is raised from the CheckBoxList Server Controls on the page,
+       * when a checkbox is selected/deselected.
+       * Hides/Showes columns in a GridView based on the checked checkboxes.
+       */
       protected void Filter_SelectedChanged(object sender, EventArgs e)
       {
          CheckBoxList list = (CheckBoxList) sender;
          GridView gv;
+
+         //Checks which CheckBoxList that raised the event and get the
+         //GridView associated with it
          if(list.ID.Equals(OverviewFilter.ID)) {
             gv = OverviewTable;
          }
@@ -525,28 +592,45 @@ namespace no.nith.pj600.dashboard
             gv = AddlServicesTable;
          }
 
+         //Hides/Showes columns in the GridView
          for (int i = 0; i < gv.Columns.Count; i++)
          {
             gv.Columns[i].Visible = list.Items[i].Selected;
          }
 
+         //Reloads the active Tab
          LoadActiveTab(SortExpression, ViewState["sortOrder"].ToString());
       }
 
+      /*
+       * Method that's called when the Sorting event is raised from a GridView Server Control,
+       * when a columns header is clicked to sort a column.
+       * Sets the sorting expression to the sorting expression associated with the event and reloads the
+       * active tab to sort it.
+       */
       protected void OnSorting(object sender, GridViewSortEventArgs e)
       {
          SortExpression = e.SortExpression;
 
          LoadActiveTab(SortExpression, SortOrder);
-         //Sort((GridView)sender, SortExpression, SortOrder); 
       }
 
+      /**
+       * <summary>
+       * Method that resets some ViewState information.
+       * </summary>
+       */
       private void Reset()
       {
          ViewState["sortExpression"] = "";
          ViewState["sortOrder"] = "";
       }
 
+      /**
+       * <summary>
+       * Method that sorts the GridView sent in as parameter, based on the sortExpression and sortOrder.
+       * </summary>
+       */
       private void Sort(GridView gridView, string sortExpression, string sortOrder)
       {
          DataTable dt = gridView.DataSource as DataTable;
@@ -561,6 +645,11 @@ namespace no.nith.pj600.dashboard
          }
       }
 
+      /**
+       * <summary>
+       * Method that returns the header text associated with the SortExpression.
+       * </summary>
+       */
       private String MapSortExpressionToHeaderText()
       {
          String retVal = null;
@@ -621,30 +710,12 @@ namespace no.nith.pj600.dashboard
          return retVal;
       }
 
-      private DataTable CreateDataTable(string[] columns, string[,] data)
-      {
-         DataTable dt = new DataTable();
-
-         foreach (string column in columns)
-         {
-            dt.Columns.Add(column);
-         }
-
-         for (int row = 0; row < data.GetLength(0); row++)
-         {
-            DataRow newRow = dt.NewRow();
-
-            for (int column = 0; column < data.GetLength(1); column++)
-            {
-               newRow[dt.Columns[column]] = data[row, column];
-            }
-
-            dt.Rows.Add(newRow);
-         }
-
-         return dt;
-      }
-
+      /**
+       * <summary>
+       * Property for the SortOrder. Changes the SortOrder everytime the Property is read. 
+       * Sets the property to the specified value when written to.
+       * </summary>
+       */
       public string SortOrder
       {
          get
@@ -666,6 +737,13 @@ namespace no.nith.pj600.dashboard
          }
       }
 
+
+      /**
+       * <summary>
+       * Property for the SortExpression.
+       * Returns the SortExpression when read, sets the SortExpression when written to.
+       * </summary>
+       */
       public string SortExpression
       {
          get

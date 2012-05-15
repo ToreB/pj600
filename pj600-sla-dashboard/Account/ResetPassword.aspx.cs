@@ -21,6 +21,11 @@ namespace no.nith.pj600.dashboard.Account
          
       }
 
+      /**
+       * <summary>
+       * Method that checks if the email in the EmailInput is registered to a user.
+       * </summary>
+       */
       private bool VerifyEmail()
       {
          email = ((TextBox) ResetPasswordView.FindControl("EmailInput")).Text;
@@ -37,6 +42,11 @@ namespace no.nith.pj600.dashboard.Account
          }
       }
 
+      /*
+       * Method that's called when the Click event is fired from the Button Server Control, ResetButton,
+       * when the button is clicked.
+       * Resets a user's password and sends an email confirmation.
+       */
       protected void ResetButton_Click(object sender, EventArgs e)
       {
          Label message = (Label) ResetPasswordView.FindControl("Message");
@@ -67,7 +77,7 @@ namespace no.nith.pj600.dashboard.Account
                message.Text = "Something went wrong: " + ex.Message;
             }
          }
-         else
+         else //VerifyEmail returns false
          {
             message.CssClass = "errorMessage";
             message.Text = "A user with that email was not found.";

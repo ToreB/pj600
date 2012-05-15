@@ -36,7 +36,6 @@
       </asp:TabPanel>
       <asp:TabPanel ID="OverviewTab" runat="server" HeaderText="Overview" ScrollBars="Auto" TabIndex="1">
          <ContentTemplate>       
-            <!-- Content OverviewTab goes here -->
 
             <div class="dashboardTab">
 
@@ -77,8 +76,7 @@
       </asp:TabPanel>
       <asp:TabPanel ID="SLATab" runat="server" HeaderText="SLA Agreements" ScrollBars="Auto" TabIndex="2">
          <ContentTemplate>
-            
-            <!-- Content SLATab goes here -->
+
             <div class="dashboardTab">
 
              <div class="Filter">
@@ -111,8 +109,7 @@
       </asp:TabPanel>
       <asp:TabPanel ID="AddlServicesTab" runat="server" HeaderText="Additional Services" ScrollBars="Auto" TabIndex="3">
          <ContentTemplate>
-            
-            <!-- Content AddServicesTab goes here -->
+
             <div class="dashboardTab">
 
             <div class="Filter">
@@ -147,7 +144,6 @@
       <asp:TabPanel ID="GraphsTab" runat="server" HeaderText="Graphs" ScrollBars="Auto" TabIndex="4">
          <ContentTemplate>
             
-            <!-- Content GraphsTab goes here -->
             <div class="dashboardTab">
                <div class="clear graphSelection">
 
@@ -187,7 +183,7 @@
                </div>
                <div>
                   
-                  <asp:Chart ID="Graph" runat="server" Width="600" Height="400">
+                  <asp:Chart ID="Graph" runat="server" Width="750" Height="400">
                      <Series>
                         
                      </Series>

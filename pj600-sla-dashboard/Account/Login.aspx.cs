@@ -19,9 +19,11 @@ namespace no.nith.pj600.dashboard.Account
 
       protected void Page_Load(object sender, EventArgs e)
       {
+         //If it's a new request to the page
          if (!Page.IsPostBack)
          {
-            if (Request.Params["logout"] != null)
+            //Check if the request has the logout parameter and that it's value is true
+            if (Request.Params["logout"] != null && Request.Params["logout"].Equals("true"))
             {
                LogoutMessagePanel.Visible = true;
             }
@@ -29,7 +31,9 @@ namespace no.nith.pj600.dashboard.Account
       }
 
       /*
-       * Method that's run after a successfull login
+       * Method that's called after the LoggedIn event is fired from the Login server control, 
+       * after the user a user has been authenticated.
+       * Logs that the user has logged in.
        */ 
       protected void OnLoggedIn(object sender, EventArgs e)
       {
@@ -37,8 +41,15 @@ namespace no.nith.pj600.dashboard.Account
          
       }
 
+      /*
+       *  Method that's called after the LoginError event is fired from the login server control,
+       *  when a login error is detected.
+       *  Notifies the user of how many tries are left till the account gets locked out, and shows a
+       *  message if the account is locked out.
+       */
       protected void OnLoginError(object sender, EventArgs e)
       {
+         //Finds the user
          MembershipUser user = Membership.GetUser(LoginUser.UserName);
 
          if(user != null) {           
@@ -58,17 +69,18 @@ namespace no.nith.pj600.dashboard.Account
                   log.Info("The user with the username '" + user.UserName + "' has been locked out due to exceeding the allowed amount of login attempts.");
                }
             }
-            else
+            else //User is not locked out
             {
-               //Get the failed password attempt count from the database
+               
                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString);
                con.Open();
 
+               //Get the failed password attempt count from the database
                SqlCommand command = new SqlCommand(
                   string.Format("SELECT FailedPasswordAttemptCount FROM aspnet_Membership WHERE email = '{0}'", user.Email), con);
                SqlDataReader reader = command.ExecuteReader();
 
-               //Should always return 1 column as result, so this should be safe
+               //Should always return 1 column as result, due to unique emails, so this should be safe
                reader.Read();
                int failedAttempts = (int) reader[0];               
                int allowedAttepts = Membership.MaxInvalidPasswordAttempts;

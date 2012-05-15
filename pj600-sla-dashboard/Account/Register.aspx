@@ -4,11 +4,13 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+
    <asp:SqlDataSource ID="RolesDataSource" runat="server" 
       ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
       SelectCommand="SELECT [RoleName] FROM [vw_aspnet_Roles] ORDER BY [RoleName]"></asp:SqlDataSource>
    
    <asp:panel ID="RegisterPanel" runat="server">
+      
       <asp:Label ID="Message" runat="server" Text="" EnableViewState="false" />
       
       <h2>
@@ -22,7 +24,9 @@
       
       <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="errorMessage" 
             ValidationGroup="RegisterUserValidationGroup"/>
+
       <div id="RegisterLeft" class="floatLeft accountInfo">
+         
          <fieldset class="register">
                <legend>Account Information</legend>
                <p>
@@ -39,12 +43,15 @@
                         CssClass="failureNotification" ErrorMessage="E-mail is required." ToolTip="E-mail is required." 
                         ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                </p>
+
          </fieldset>
          <p class="submitButton">
                <asp:Button ID="CreateUserButton" runat="server" Text="Create User" 
                   ValidationGroup="RegisterUserValidationGroup" OnClick="CreateUser"/>
          </p>
+
       </div>
+
       <div id="RegisterRight" class="floatLeft">
          <fieldset>
             <legend>Roles</legend>
@@ -54,5 +61,6 @@
 
          </fieldset>
       </div>
+
    </asp:panel>
 </asp:Content>

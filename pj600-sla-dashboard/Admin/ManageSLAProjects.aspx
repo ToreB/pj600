@@ -74,7 +74,8 @@
          <table runat="server" style="">
             <tr>
                <td>
-                  No data was returned.</td>
+                  No data was returned.
+               </td>
             </tr>
          </table>
       </EmptyDataTemplate>

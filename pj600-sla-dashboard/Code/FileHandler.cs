@@ -10,57 +10,21 @@ using no.nith.pj600.dashboard.Code.Exceptions;
 namespace no.nith.pj600.dashboard.Code
 {
 
+   /**
+    * <summary>
+    * Class that handles reading from files.
+    * </summary>
+    */
    public class FileHandler
    {
       private static readonly ILog log = LogManager.GetLogger(typeof(FileHandler));
 
-      public const string XLS_MIME = "application/vnd.ms-excel";
-      public const string XLSX_MIME = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-
-      /**<summary>
-       * Gets a DataSet for the specified Excel document.
+      /**
+       * <summary>
+       * Method that reads a Tripletex export file and write it's content to a table in the database.
        * </summary>
        */
-      public static DataSet GetDataSetFromExcel(string fileName)
-      {
-         /*
-            "HDR=Yes;" indicates that the first row contains columnnames, not data. "HDR=No;" indicates the opposite.
-            "IMEX=1;" tells the driver to always read "intermixed" (numbers, dates, strings etc) data columns as text. Note that this option might affect excel sheet write access negative. 
-          */
-         string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\" + fileName + ";Extended Properties=\"Excel 12.0 Xml;HDR=YES;IMEX=1;\"";
-         OleDbConnection con = new OleDbConnection(connectionString);
-         DataSet dataSet = null;
-
-         try
-         {
-            con.Open();
-
-            //Gets the name of the first sheet in the Excel document
-            DataTable dataTable = con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-            string sheetName = dataTable.Rows[0]["TABLE_NAME"].ToString();
-
-            //Sets the select command
-            OleDbCommand cmd = new OleDbCommand("select * from [" + sheetName + "]", con);
-            OleDbDataAdapter adapter = new OleDbDataAdapter();
-            adapter.SelectCommand = cmd;
-
-            //Fills a DataSet with the data from the Excel document
-            dataSet = new DataSet();
-            adapter.Fill(dataSet);
-         }
-         catch (Exception ex)
-         {
-            log.Error("Something went wrong while accessing " + fileName + ": " + ex.Message);
-         }
-         finally
-         {
-            con.Close();
-         }
-
-         return dataSet;
-      }
-
-      public static void ReadCSVAndWriteToDB(Stream stream)
+      public static void ReadFileAndWriteToDB(Stream stream)
       {        
          StreamReader reader = new StreamReader(stream);
          DatabaseClassesDataContext db = new DatabaseClassesDataContext();

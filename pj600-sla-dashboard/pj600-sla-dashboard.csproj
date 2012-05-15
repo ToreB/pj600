@@ -82,12 +82,10 @@
     <Content Include="Images\arrow_sort_desc.png" />
     <Content Include="Images\logo_small.jpg" />
     <Content Include="SearchResults.aspx" />
-    <Content Include="Test.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Account\LogoutMessage.aspx" />
     <Content Include="MyAccount.aspx" />
     <Content Include="Admin\AdminPanel.aspx" />
     <Content Include="Styles\Site.css" />
@@ -163,13 +161,6 @@
     <Compile Include="SearchResults.aspx.designer.cs">
       <DependentUpon>SearchResults.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -200,13 +191,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Account\LogoutMessage.aspx.cs">
-      <DependentUpon>LogoutMessage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\LogoutMessage.aspx.designer.cs">
-      <DependentUpon>LogoutMessage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MyAccount.aspx.cs">
       <DependentUpon>MyAccount.aspx</DependentUpon>

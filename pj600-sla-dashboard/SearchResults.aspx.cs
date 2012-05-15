@@ -37,12 +37,21 @@ namespace no.nith.pj600.dashboard
          }
       }
 
+      /**
+       * <summary>
+       * Method that performs the search for the specified input.
+       * </summary>
+       */
       private void performSearch(string input)
       {
          dataContext = new DatabaseClassesDataContext();
 
+         //Gets the HourPrice that's configured in the Web.config's AppSettings section.
          double hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
 
+         //Query that gets the project number, project name, customer name, project manager, project start time,
+         //project stop time, hours spent, sum of total sales amount and the sum of the balance for each SLA project that
+         //matches the input parameter.
          var query = (from project in dataContext.Projects
                       join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
                       join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
@@ -78,13 +87,12 @@ namespace no.nith.pj600.dashboard
                          ProjectManager = employee.Name,
                          ProjectStartTime = project.StartTime,
                          ProjectStopTime = project.StopTime,
-                         //ProjectHourEstimate = project.HourEstimate,
-                         //ProjectCostEstimate = project.CostEstimate,
                          HoursSpent = hoursSpent.HoursSpent != null ? hoursSpent.HoursSpent * hourPrice : 0.0,
                          TotalSalesAmount = salesFigures.TotalSalesAmount != null ? salesFigures.TotalSalesAmount : 0.0,
                          BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0.0
                       }).Distinct();
 
+         //Binds the data to the GridView
          Results.DataSource = query;
          Results.DataBind();
       }

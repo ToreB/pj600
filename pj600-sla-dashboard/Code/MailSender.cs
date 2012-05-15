@@ -9,12 +9,16 @@ using log4net;
 
 namespace no.nith.pj600.dashboard.Code
 {
+   /**
+    * Class that exposes methods for sending email.
+    */
    public class MailSender
    {
       private static readonly ILog log = LogManager.GetLogger(typeof(MailSender));
 
       public static bool Send(string to, string subject, string body)
       {
+         //Gets the email stored in the Web.config file in the AppSettings section.
          string from = ConfigurationManager.AppSettings["Email"];
          MailMessage message = new MailMessage(from, to, subject, body);
 

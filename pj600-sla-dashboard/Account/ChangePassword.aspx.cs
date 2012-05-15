@@ -18,6 +18,10 @@ namespace no.nith.pj600.dashboard.Account
 
       }
 
+      /*
+       * Method that is called when the ChangedPassword event is fired from the ChangePassword server control.
+       * Logs that the user has changed the passoword.
+       */
       protected void OnChangedPassword(object sender, EventArgs e)
       {
          string username = Membership.GetUser().UserName;

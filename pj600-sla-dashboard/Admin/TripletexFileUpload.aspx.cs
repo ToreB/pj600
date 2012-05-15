@@ -16,12 +16,17 @@ namespace no.nith.pj600.dashboard.Admin
 
       }
 
+      /*
+       * Method that's called when the Click event is raised from the Button Server Control, FileUploadButton,
+       * when the button is clicked.
+       * Handles the uploading of the Tripletex export file.
+       */
       protected void FileUploadButton_Click(object sender, EventArgs e)
       {
 
          if (FileUpload.HasFile)
          {
-
+            //Mime types for csv, txt and xls/xlsx files
             string[] allowedMimeTypes = { "text/comma-separated-values", 
                                          "text/csv", "application/csv", 
                                          "application/excel",
@@ -45,7 +50,8 @@ namespace no.nith.pj600.dashboard.Admin
             {
                try
                {
-                  FileHandler.ReadCSVAndWriteToDB(FileUpload.PostedFile.InputStream);
+                  //Reads the file and write it's content to a table in the database
+                  FileHandler.ReadFileAndWriteToDB(FileUpload.PostedFile.InputStream);
 
                   FileUploadStatusLabel.CssClass = "infoMessage";
                   FileUploadStatusLabel.Text = "File successfully uploaded.";

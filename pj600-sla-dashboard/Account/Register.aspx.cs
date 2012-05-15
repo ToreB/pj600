@@ -16,29 +16,20 @@ namespace no.nith.pj600.dashboard.Account
    {
       private static readonly ILog log = LogManager.GetLogger(typeof(Register));
 
-      /* RegEx from http://msdn.microsoft.com/en-us/library/01escwtf(v=vs.95).aspx */
+      // RegEx from http://msdn.microsoft.com/en-us/library/01escwtf(v=vs.95).aspx
       private const string EMAIL_FORMAT = @"^(?("")(""[^""]+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))" +
                                           @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$";
 
       protected void Page_Load(object sender, EventArgs e)
       {
-         //RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];  
+          
       }
 
       /*
-      protected void RegisterUser_CreatedUser(object sender, EventArgs e)
-      {
-         FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false);
-
-         string continueUrl = RegisterUser.ContinueDestinationPageUrl;
-         if (String.IsNullOrEmpty(continueUrl))
-         {
-            continueUrl = "~/";
-         }
-         Response.Redirect(continueUrl);
-      }
-      */
-
+       * Method that's called when the Click event is fired from the Button server control, CreateUserButton,
+       * when the button is clicked.
+       * Registers a new user in the database and sends a confirmation email to the registered user's email.
+       */
       protected void CreateUser(object sender, EventArgs e)
       {
          string email = Email.Text;
@@ -70,6 +61,7 @@ namespace no.nith.pj600.dashboard.Account
                }
             }
 
+            //Builds a email body string
             string mailBody = string.Format("Welcome to 99X Dashboard!\n\n" + 
                                          "Your login information is:\nUsername: {0}\nPassword: {1}\n", username, password);
 
@@ -92,6 +84,7 @@ namespace no.nith.pj600.dashboard.Account
                mailBody += ".";
             }
 
+            //Sends email to the registered users email
             bool success = MailSender.Send(email, "Welcome to 99X Dashboard", mailBody);
 
             if (success)
@@ -112,6 +105,11 @@ namespace no.nith.pj600.dashboard.Account
          }
       }
 
+      /**
+       * <summary>
+       * Method that checks if an email is in a valid format.
+       * </summary>
+       */
       private bool IsValidEmail(string email)
       {
          // Return true if email is in valid e-mail format.

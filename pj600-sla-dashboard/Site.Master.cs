@@ -37,6 +37,11 @@ namespace no.nith.pj600.dashboard
          }
       }
 
+      /*
+       * Method that's called when the LoggedOut event is raised from the LoginStatus Server Controll, HeadLoginStatus,
+       * when the logout link is clicked.
+       * Logs that a user has logged out.
+       */
       protected void OnLoggedOut(object sender, EventArgs e)
       {
          log.Info(Membership.GetUser().UserName + " has logged out.");
