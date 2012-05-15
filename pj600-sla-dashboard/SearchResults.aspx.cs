@@ -22,14 +22,14 @@ namespace no.nith.pj600.dashboard
 
          //Search from another page
          if (Page.PreviousPage != null)
-         {
+         {          
             searchInput = ((TextBox) Page.PreviousPage.Master.FindControl(SEARCH_BOX)).Text;
             performSearch(searchInput);
          }
          else 
          {
             //Search from the SearchResult page
-            if (Page.IsPostBack)
+            if (Page.IsPostBack && !Request.Form["__EVENTTARGET"].Contains("Filter"))
             {
                searchInput = ((TextBox)Page.Master.FindControl(SEARCH_BOX)).Text;
                performSearch(searchInput);
@@ -44,6 +44,12 @@ namespace no.nith.pj600.dashboard
        */
       private void performSearch(string input)
       {
+         SearchInputHidden.Value = input;
+         //Resets the page
+         Filter.Visible = false;
+         Results.DataSource = null;
+         Results.DataBind();
+
          dataContext = new DatabaseClassesDataContext();
 
          //Gets the HourPrice that's configured in the Web.config's AppSettings section.
@@ -92,10 +98,37 @@ namespace no.nith.pj600.dashboard
                          BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0.0
                       }).Distinct();
 
-         //Binds the data to the GridView
-         Results.DataSource = query;
-         Results.DataBind();
+         var list = query.ToList();
+
+         if (list.Count != 0)
+         {
+            Filter.Visible = true;
+            //Binds the data to the GridView
+            Results.DataSource = list;
+            Results.DataBind();
+         }
+         else
+         {
+            MessagePanel.Visible = true;
+         }
       }
-      
+
+      /*
+       * Method that's called when the SelectedIndexChanged event is raised from the CheckBoxList Server Controls on the page,
+       * when a checkbox is selected/deselected.
+       * Hides/Showes columns in a GridView based on the checked checkboxes.
+       */
+      protected void Filter_SelectedChanged(object sender, EventArgs e)
+      {
+         CheckBoxList list = (CheckBoxList)sender;
+
+         //Hides/Showes columns in the GridView
+         for (int i = 0; i < Results.Columns.Count; i++)
+         {
+            Results.Columns[i].Visible = list.Items[i].Selected;
+         }
+
+         performSearch(SearchInputHidden.Value);
+      }
    }
 }
