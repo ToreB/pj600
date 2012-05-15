@@ -191,10 +191,10 @@ namespace no.nith.pj600.dashboard
                       join balance in
                          (
                             from b in dataContext.Balances
-                            group b by b.ProjectNo into g
-                            select new { ProjectNo = g.Key, BalanceAmount = g.Sum(p => p.Amount) }
+                            orderby b.LastUpdate descending, b.Year descending, b.Period descending
+                            select new { ProjectNo = b.ProjectNo, BalanceAmount = b.Amount }
                          ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
-                      from balance in balanceGroup.DefaultIfEmpty()
+                      from balance in balanceGroup.DefaultIfEmpty().Take(1)
                       select new 
                       {
                          ProjectNo = project.ProjectNo,
@@ -265,24 +265,25 @@ namespace no.nith.pj600.dashboard
          //Query that gets the project number, project name, customer name, project manager
          //and the sum of the balance for each SLA project.
          var mainQuery = (from project in dataContext.Projects
-                      join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
-                      join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
-                      join employee in dataContext.Employees on project.PMEmployeeNo equals employee.EmployeeNo
-                      join balance in
-                         (
-                            from b in dataContext.Balances
-                            group b by b.ProjectNo into g
-                            select new { ProjectNo = g.Key, BalanceAmount = g.Sum(p => p.Amount) }
-                         ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
-                      from balance in balanceGroup.DefaultIfEmpty()
-                      orderby project.ProjectNo ascending
-                      select new {        
-                         ProjectNo = project.ProjectNo, 
-                         ProjectName = project.Name,
-                         CustomerName = customer.Name,
-                         ProjectManager = employee.Name,
-                         BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0
-                      }).Distinct();
+                          join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
+                          join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
+                          join employee in dataContext.Employees on project.PMEmployeeNo equals employee.EmployeeNo
+                          join balance in
+                             (
+                                from b in dataContext.Balances
+                                orderby b.LastUpdate descending, b.Year descending, b.Period descending
+                                select new { ProjectNo = b.ProjectNo, BalanceAmount = b.Amount }
+                             ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
+                          from balance in balanceGroup.DefaultIfEmpty().Take(1)
+                          orderby project.ProjectNo ascending
+                          select new
+                          {
+                             ProjectNo = project.ProjectNo,
+                             ProjectName = project.Name,
+                             CustomerName = customer.Name,
+                             ProjectManager = employee.Name,
+                             BalanceAmount = balance.BalanceAmount != null ? balance.BalanceAmount : 0
+                          }).Distinct();
 
          //Creates a DataTable to fill with the results from the query.
          DataTable dt = new DataTable();
@@ -449,10 +450,10 @@ namespace no.nith.pj600.dashboard
                                    join balance in
                                       (
                                          from b in dataContext.Balances
-                                         group b by b.ProjectNo into g
-                                         select new { ProjectNo = g.Key, BalanceAmount = g.Sum(p => p.Amount) }
+                                         orderby b.LastUpdate descending, b.Year descending, b.Period descending
+                                         select new { ProjectNo = b.ProjectNo, BalanceAmount = b.Amount }
                                       ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
-                                   from balance in balanceGroup.DefaultIfEmpty()
+                                   from balance in balanceGroup.DefaultIfEmpty().Take(1)
                                    select new
                                    {
                                       ProjectName = project.Name,

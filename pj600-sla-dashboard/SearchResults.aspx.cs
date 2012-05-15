@@ -79,10 +79,10 @@ namespace no.nith.pj600.dashboard
                       join balance in
                          (
                             from b in dataContext.Balances
-                            group b by b.ProjectNo into g
-                            select new { ProjectNo = g.Key, BalanceAmount = g.Sum(p => p.Amount) }
+                            orderby b.LastUpdate descending, b.Year descending, b.Period descending
+                            select new { ProjectNo = b.ProjectNo, BalanceAmount = b.Amount }
                          ) on project.ProjectNo equals balance.ProjectNo into balanceGroup
-                      from balance in balanceGroup.DefaultIfEmpty() 
+                      from balance in balanceGroup.DefaultIfEmpty().Take(1)
                       where SqlMethods.Like(project.ProjectNo.ToString(), string.Format("%{0}%", input)) ||
                       SqlMethods.Like(project.Name.ToLower(), string.Format("%{0}%", input.ToLower())) ||
                       SqlMethods.Like(employee.Name.ToLower(), string.Format("%{0}%", input.ToLower()))
