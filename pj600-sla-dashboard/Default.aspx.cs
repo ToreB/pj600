@@ -169,7 +169,7 @@ namespace no.nith.pj600.dashboard
          hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
 
          //Query that gets the project number, project name, customer name, project manager, project start time,
-         //project stop time, hours spent, sum of total sales amount and the sum of the balance for each SLA project.
+         //project stop time, hours spent, sum of total sales amount and the latest balance for each SLA project.
          var query = (from project in dataContext.Projects
                       join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
                       join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
@@ -263,7 +263,7 @@ namespace no.nith.pj600.dashboard
          dataContext = new DatabaseClassesDataContext();
 
          //Query that gets the project number, project name, customer name, project manager
-         //and the sum of the balance for each SLA project.
+         //and the latest balance for each SLA project.
          var mainQuery = (from project in dataContext.Projects
                           join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo
                           join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
@@ -443,7 +443,7 @@ namespace no.nith.pj600.dashboard
          //Gets the HourPrice configured in the Web.Config's AppSettings section
          hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
 
-         //Query that gets the Project name, customer name and the sum of the balance for each SLA project
+         //Query that gets the Project name, customer name and the latest balance for each SLA project
          var balanceAmountQuery = (from project in dataContext.Projects
                                    join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
                                    join customer in dataContext.Customers on project.CustomerNo equals customer.CustomerNo

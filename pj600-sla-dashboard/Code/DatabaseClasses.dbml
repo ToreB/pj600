@@ -210,64 +210,6 @@
       <Column Name="BizWebPassword" Type="System.String" DbType="VarChar(1024)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="[99x].GLAccountTransaction" Member="GLAccountTransactions">
-    <Type Name="GLAccountTransaction">
-      <Column Name="GLAccountNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VoucherDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="VoucherNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="AccountingYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AttestStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BatchNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CorrectedFromUniqueNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CountryType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CurrencyNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DepNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="EmployeeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExchangeAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ExchangeRate" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="ExtraCostUnitIIINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExtraCostUnitIINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExtraCostUnitINo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ExtraCostUnitIVNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LastUpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LastUpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OldGLAccountNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Period" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PLDocNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProductNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProjectNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Quantity" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SLAccount" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StatusTransaction" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TaxClassNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UniqueNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UtilityBits" Type="System.Data.Linq.Binary" DbType="Binary(6)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="VATCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VoucherTypeNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="WeekNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VATReportCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="VatReportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="EntryDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="BankReconciliationRef" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="BankReconciliationStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VoucherChainNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ChangeDone" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VoucherSerialNo" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
-      <Column Name="MainVoucherText" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CustomerNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SupplierNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ContraEntryChainNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StatusChain" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VoucherID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ReferenceType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ReferenceId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ReferenceRemainderValue" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="[99x].Project" Member="Projects">
     <Type Name="Project">
       <Column Name="ProjectNo" Type="System.Int32" DbType="Int" CanBeNull="true" />

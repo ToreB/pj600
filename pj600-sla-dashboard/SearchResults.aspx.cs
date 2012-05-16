@@ -56,7 +56,7 @@ namespace no.nith.pj600.dashboard
          double hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
 
          //Query that gets the project number, project name, customer name, project manager, project start time,
-         //project stop time, hours spent, sum of total sales amount and the sum of the balance for each SLA project that
+         //project stop time, hours spent, sum of total sales amount and the latest balance for each SLA project that
          //matches the input parameter.
          var query = (from project in dataContext.Projects
                       join slaProjects in dataContext.SLAProjects on project.ProjectNo equals slaProjects.ProjectNo
