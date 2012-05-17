@@ -163,7 +163,7 @@ namespace no.nith.pj600.dashboard
        */
       private void LoadOverviewTab(string sortExpression, string sortOrder)
       {
-         dataContext = new DatabaseClassesDataContext(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString);
+         dataContext = new DatabaseClassesDataContext();
 
          //Gets the HourPrice configured in the Web.Config's AppSettings section
          hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
@@ -260,7 +260,7 @@ namespace no.nith.pj600.dashboard
        */
       private void LoadSLATab(string sortExpression, string sortOrder)
       {
-         dataContext = new DatabaseClassesDataContext(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString);
+         dataContext = new DatabaseClassesDataContext();
 
          //Query that gets the project number, project name, customer name, project manager
          //and the latest balance for each SLA project.
@@ -329,7 +329,7 @@ namespace no.nith.pj600.dashboard
        */
       private void LoadAddlServicesTab(string sortExpression, string sortOrder)
       {
-         dataContext = new DatabaseClassesDataContext(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString);
+         dataContext = new DatabaseClassesDataContext();
 
          //Query that gets the project number, project name, customer name and the sum of total sales amount for a sla project,
          //and also gets the article numbers and article names of the articles sold to the customer.
@@ -438,7 +438,7 @@ namespace no.nith.pj600.dashboard
        */
       private void CreateGraph(string dataSelection, SeriesChartType chartType, int count, string direction)
       {
-         dataContext = new DatabaseClassesDataContext(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString);
+         dataContext = new DatabaseClassesDataContext();
 
          //Gets the HourPrice configured in the Web.Config's AppSettings section
          hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
