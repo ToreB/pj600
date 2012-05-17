@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Server=640d8b2d-5531-47bc-b553-a05400ffaf25.sqlserver.sequelizer.com;Database=db640d8b2d553147bcb553a05400ffaf25;User ID=wgsvrdzseqssjhuh;Password=BsobUMxjkzGZ7yhHoGMCBfjSJ3TsQdRyuKLdth8oYHPqHdUTFjDXNuXwiDzZ2fBh;" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DatabaseConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="[99x].Customer" Member="Customers">
     <Type Name="Customer">
       <Column Name="CustomerNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
