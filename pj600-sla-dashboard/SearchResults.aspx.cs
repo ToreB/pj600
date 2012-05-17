@@ -45,7 +45,9 @@ namespace no.nith.pj600.dashboard
       private void performSearch(string input)
       {
          SearchInputHidden.Value = input;
+         
          //Resets the page
+         MessagePanel.Visible = false;
          Filter.Visible = false;
          Results.DataSource = null;
          Results.DataBind();
