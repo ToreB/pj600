@@ -69,7 +69,10 @@
     <div id="loginRight">
       <h2>Welcome to 99X Dashboard</h2>
       <p>
-         Information about 99X dashboard goes here.
+         Information about 99X Dashboard goes here.            
+      </p>
+      <p style="font-size: large; font-weight: bold; color: Red">
+         THIS WEBAPP IS THE RESULT OF A SCHOOL<br /> PROJECT AND IS NOT AN OFFICIAL TOOL FOR 99X.
       </p>
     </div>
 </asp:Content>

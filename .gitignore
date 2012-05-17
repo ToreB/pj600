@@ -26,6 +26,4 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 
-/pj600-sla-dashboard/App_Data/Database.mdf
-/pj600-sla-dashboard/App_Data/Database_log.LDF
 /pj600-sla-dashboard/LogFiles/Log*.txt
