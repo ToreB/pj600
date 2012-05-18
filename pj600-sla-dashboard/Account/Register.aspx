@@ -6,7 +6,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
    <asp:SqlDataSource ID="RolesDataSource" runat="server" 
-      ConnectionString="<%$ ConnectionStrings:DatabaseConnectionString %>" 
+      ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
       SelectCommand="SELECT [RoleName] FROM [vw_aspnet_Roles] ORDER BY [RoleName]"></asp:SqlDataSource>
    
    <asp:panel ID="RegisterPanel" runat="server">
