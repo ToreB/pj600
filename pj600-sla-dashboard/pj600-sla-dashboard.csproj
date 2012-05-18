@@ -230,8 +230,8 @@
   <ItemGroup>
     <None Include="Code\DatabaseClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DatabaseClasses.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>DatabaseClasses.designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

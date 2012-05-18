@@ -52,7 +52,7 @@ namespace no.nith.pj600.dashboard
          Results.DataSource = null;
          Results.DataBind();
 
-         dataContext = new DatabaseClassesDataContext();
+         dataContext = new DatabaseClassesDataContext(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString);
 
          //Gets the HourPrice that's configured in the Web.config's AppSettings section.
          double hourPrice = Convert.ToDouble(ConfigurationManager.AppSettings["HourPrice"]);
