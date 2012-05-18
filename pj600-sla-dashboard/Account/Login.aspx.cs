@@ -37,7 +37,7 @@ namespace no.nith.pj600.dashboard.Account
        */ 
       protected void OnLoggedIn(object sender, EventArgs e)
       {
-         //log.Info(LoginUser.UserName + " has logged in.");
+         log.Info(LoginUser.UserName + " has logged in.");
          
       }
 
