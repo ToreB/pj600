@@ -6,7 +6,7 @@
 
    <h2>Accounts Overview</h2>
    <asp:SqlDataSource ID="AccountsDataSource" runat="server" 
-      ConnectionString="<%$ ConnectionStrings:ApplicationServices %>" 
+      ConnectionString="<%$ ConnectionStrings:DatabaseConnectionString %>" 
       
       SelectCommand="SELECT MembershipUsers.UserName, MembershipUsers.Email, Roles.RoleName AS Role, MembershipUsers.IsApproved, MembershipUsers.IsLockedOut, MemberShipUsers.CreateDate, MembershipUsers.LastLoginDate, MembershipUsers.LastLockoutDate FROM vw_aspnet_MembershipUsers AS MembershipUsers LEFT JOIN vw_aspnet_UsersInRoles AS UsersInRoles ON MembershipUsers.UserId = UsersInRoles.UserId LEFT JOIN vw_aspnet_Roles AS Roles ON UsersInRoles.RoleId = Roles.RoleId ORDER BY MembershipUsers.UserName">
     </asp:SqlDataSource>

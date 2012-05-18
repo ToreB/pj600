@@ -71,8 +71,8 @@ namespace no.nith.pj600.dashboard.Account
             }
             else //User is not locked out
             {
-               
-               SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString);
+
+               SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString);
                con.Open();
 
                //Get the failed password attempt count from the database
