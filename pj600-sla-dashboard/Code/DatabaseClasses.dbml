@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Server=9d0adc8c-32f3-4169-8505-a05501102e32.sqlserver.sequelizer.com;Database=db9d0adc8c32f341698505a05501102e32;User ID=qnfqrwccdhnyuvcd;Password=jLYVbgcY6LXRirHeDoZYFDky3gEYeqKCJ3g3EqxGBwRcew6YQzCG8oHMzz24HmUN;" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DatabaseConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="[99x].Article" Member="Articles">
     <Type Name="Article">
       <Column Name="ArticleNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
