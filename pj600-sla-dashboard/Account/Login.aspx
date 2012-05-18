@@ -19,6 +19,7 @@
        </h2>
        <p>
            Please enter your username and password.<br />
+           <%= ConfigurationManager.ConnectionStrings["DatabaseConnectioNString"].ConnectionString %>
        </p>
 
        <asp:Login ID="LoginUser" runat="server" EnableViewState="false" RenderOuterTable="false" OnLoggedIn="OnLoggedIn" 
