@@ -428,7 +428,7 @@ namespace no.nith.pj600.dashboard
          //Creates the initial graph
          CreateGraph(BALANCE_AMOUNT, SeriesChartType.Column, 5, DESC);
       }
-
+    
       /**
        * <summary>
        * Method that creates a graph with the specified data from the dataSelection parameter, as the type specified 
