@@ -23,13 +23,6 @@ namespace no.nith.pj600.dashboard.Account
          //If it's a new request to the page
          if (!Page.IsPostBack)
          {
-            DatabaseClassesDataContext db = new DatabaseClassesDataContext();
-            var query = from p in db.Projects
-                        where p.Name.Equals("Project 1")
-                        select p.Name;
-            var list = query.ToList();
-            AccountStatusPanel.Visible = true;
-            AccountStatusLabel.Text = "Yo" + list[0];
 
             //Check if the request has the logout parameter and that it's value is true
             if (Request.Params["logout"] != null && Request.Params["logout"].Equals("true"))
