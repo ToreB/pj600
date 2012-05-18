@@ -38,6 +38,12 @@ namespace no.nith.pj600.dashboard.Code
     partial void DeleteTripletexImport(TripletexImport instance);
     #endregion
 		
+		public DatabaseClassesDataContext() : 
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString, mappingSource)
+		{
+			OnCreated();
+		}
+		
 		public DatabaseClassesDataContext(string connection) : 
 				base(connection, mappingSource)
 		{

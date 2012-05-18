@@ -28,7 +28,7 @@ namespace no.nith.pj600.dashboard.Code
       public static void ReadFileAndWriteToDB(Stream stream)
       {        
          StreamReader reader = new StreamReader(stream);
-         DatabaseClassesDataContext db = new DatabaseClassesDataContext(ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString);
+         DatabaseClassesDataContext db = new DatabaseClassesDataContext();
 
          string line;
          while((line = reader.ReadLine()) != null) 
