@@ -43,6 +43,11 @@ namespace no.nith.pj600.dashboard.Account
          
       }
 
+      protected void OnAuthenticate(object sender, AuthenticateEventArgs e)
+      {
+         e.Authenticated = true;
+      }
+
       /*
        *  Method that's called after the LoginError event is fired from the login server control,
        *  when a login error is detected.
