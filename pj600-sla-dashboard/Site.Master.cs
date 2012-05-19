@@ -18,7 +18,8 @@ namespace no.nith.pj600.dashboard
 
       protected void Page_Load(object sender, EventArgs e)
       {
-         //Adds a link in the navigation menu if the current user is an admin
+         SearchInput.Text = Page.User.Identity.Name;
+         /*//Adds a link in the navigation menu if the current user is an admin
          if (Page.User.IsInRole("Admin"))
          //if(Roles.IsUserInRole("Admin"))
          {
@@ -35,7 +36,7 @@ namespace no.nith.pj600.dashboard
             //and re-add 'Search...' when the SearchInput loses focus without anything beeing written.
             SearchInput.Attributes.Add("onfocus", string.Format("if(this.value == '{0}') this.value = '';", SEARCH_DEFAULT_TEXT));
             SearchInput.Attributes.Add("onblur", string.Format("if(this.value == '') this.value = '{0}';", SEARCH_DEFAULT_TEXT));
-            }
+            }*/
       }
 
       /*
