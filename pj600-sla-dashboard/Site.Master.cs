@@ -18,14 +18,13 @@ namespace no.nith.pj600.dashboard
 
       protected void Page_Load(object sender, EventArgs e)
       {
-         SearchInput.Text = Page.User.Identity.Name;
-         /*//Adds a link in the navigation menu if the current user is an admin
+         //Adds a link in the navigation menu if the current user is an admin
          if (Page.User.IsInRole("Admin"))
          //if(Roles.IsUserInRole("Admin"))
          {
             MenuItem item = new MenuItem("Admin Panel", null, null, ADMINPANEL_PATH);
             NavigationMenu.Items.AddAt(2, item);
-         }*/
+         }
 
          //Shows the SearchPanel if a user is logged in
          if (Membership.GetUser() != null)
